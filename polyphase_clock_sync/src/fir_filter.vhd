@@ -7,7 +7,7 @@ entity fir_filter is
       
       
 	generic(																		   			
-			AXIS_IQ_TDATA_WIDTH : integer := 32;--te? potem zeby przy tb nie zapomniec 
+			AXIS_DATA_WIDTH : integer := 32;--te? potem zeby przy tb nie zapomniec 
 			--FILTER_SIZE : integer := 2;
 			FILTER_INDEX : integer := 0;
 			OVERSAMPLING_RATE : integer := 1; 
@@ -18,15 +18,15 @@ entity fir_filter is
             );
       port (   
             aclk      : in std_logic;
-            aresetn      : in std_logic; 
+            aresetn     : in std_logic; 
             aclken      : in std_logic; 
             -- Ports of Axi Slave Bus Interface s_axis   
-            s_axis_data_tdata      : in std_logic_vector(AXIS_IQ_TDATA_WIDTH -1 downto 0);
+            s_axis_data_tdata      : in signed(AXIS_DATA_WIDTH -1 downto 0);	-- by這 std_logic_vector
             s_axis_data_tready      : out std_logic;
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out std_logic_vector(AXIS_IQ_TDATA_WIDTH -1 downto 0);
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);	-- by這 std_logic_vector
             m_axis_data_tvalid      : out std_logic;
             m_axis_data_tready      : in std_logic
             );                                                               
@@ -73,12 +73,12 @@ type mult_table is array (num_of_coef - 1 downto 0) of signed (((coef_size)+(s_a
 
 type add_table is array (num_of_coef - 1 downto 0) of signed (((coef_size)+(s_axis_data_tdata'length)) +6 -1 downto 0);        -- +6 becouse we have 51 coefs to write it binary we need 6 bits
 
-constant zero  :std_logic_vector (((coef_size)+(s_axis_data_tdata'length))+6 -1 downto 0) := (others => '0');      --zeros vector with the same length as add_table vectors
+constant zero : std_logic_vector (((coef_size)+(s_axis_data_tdata'length))+6 -1 downto 0) := (others => '0');      --zeros vector with the same length as add_table vectors
 
 
 signal mult : mult_table := (others => (others => '0'));       
 signal add : add_table := (others => (others => '0')); 
-signal data : std_logic_vector(s_axis_data_tdata'range):= (others => '0');
+signal data : signed(s_axis_data_tdata'range):= (others => '0'); -- by這 std_logic_vector
 --type DINS_TYPE is array(N-1 downto 0) of std_logic_vector(s_axis_data_tdata'range);
 --signal DINS : DINS_TYPE;
 --attribute syn_multstyle : string;
@@ -111,7 +111,8 @@ begin
                                     add(i) <= mult(i) + add(i-1);
                               end if;
                         end loop;
-                        m_axis_data_tdata <= std_logic_vector(add(num_of_coef-1)(31 downto 0));--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
+						m_axis_data_tdata <= add(num_of_coef-1)(31 downto 0);--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
+                        -- by這 to: m_axis_data_tdata <= std_logic_vector(add(num_of_coef-1)(31 downto 0));--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
                         --full_out :=  std_logic_vector(add(num_of_coef-1));
                   end if;       
             end if;

@@ -1,6 +1,6 @@
-148
+166
 ~E 1 "../src/dual_mux.vhd" 29 dual_MUX
-~A 1 "../src/dual_mux.vhd" 46 dual_MUX
+~A 1 "../src/dual_mux.vhd" 50 dual_MUX
 ~E 1 "../src/filter_bank.vhd" 28 filter_bank
 ~A 1 "../src/filter_bank.vhd" 44 filter_bank_arch
 ~E 1 "../src/fir_filter.vhd" 6 fir_filter
@@ -11,5 +11,5 @@
 ~A 1 "../src/loop_filter.vhd" 41 loop_filter_arch
 ~E 1 "../src/modulo_sps_counter.vhd" 26 modulo_sps_counter
 ~A 1 "../src/modulo_sps_counter.vhd" 42 modulo_sps_counter_arch
-~E 1 "../compile/polyphase_clock_sync.vhd" 33 polyphase_clock_sync
-~A 0 "" 0 polyphase_clock_sync
+~E 1 "../compile/polyphase_clock_sync.vhd" 32 polyphase_clock_sync
+~A 1 "../compile/polyphase_clock_sync.vhd" 47 polyphase_clock_sync

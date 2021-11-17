@@ -135,15 +135,24 @@ GenerateToCustomFolder=0
 [ORDER]
 Synchronize=0
 
+[HierarchyViewer]
+HierarchyInformation=
+ShowHide=ShowTopLevel
+Selected=
+
+[Groups]
+not_used=1
+
 [Files]
 /polyphase_clock_sync.bde=-1
 /filter_bank.vhd=-1
 /fir_filter.vhd=-1
 /dual_mux.vhd=-1
 /array_type_pkg.vhd=-1
-/loop_filter.vhd=-1
-/modulo_sps_counter.vhd=-1
-/index_selector.vhd=-1
+/TED.vhd=-1
+not_used/loop_filter.vhd=-1
+not_used/modulo_sps_counter.vhd=-1
+not_used/index_selector.vhd=-1
 
 [Files.Data]
 .\src\polyphase_clock_sync.bde=Block Diagram
@@ -151,14 +160,10 @@ Synchronize=0
 .\src\fir_filter.vhd=VHDL Source Code
 .\src\dual_mux.vhd=VHDL Source Code
 .\src\array_type_pkg.vhd=VHDL Source Code
-.\src\loop_filter.vhd=VHDL Source Code
-.\src\modulo_sps_counter.vhd=VHDL Source Code
-.\src\index_selector.vhd=VHDL Source Code
+.\src\TED.vhd=VHDL Source Code
+.\src\not_used\loop_filter.vhd=VHDL Source Code
+.\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
+.\src\not_used\index_selector.vhd=VHDL Source Code
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
-
-[HierarchyViewer]
-HierarchyInformation=
-ShowHide=ShowTopLevel
-Selected=

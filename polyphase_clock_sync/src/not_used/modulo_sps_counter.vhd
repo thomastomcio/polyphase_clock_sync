@@ -53,7 +53,7 @@ begin
 		elsif (rising_edge(clk)) then 	  
 			s_tmp_data_out<= s_data_out;
 			s_data_out <= s_data_out + data_in + data_out'length/4;
-			if(s_tmp_data_out(2*DATA_WIDTH+FACTOR_WIDTH+3-1) xor
+			--if(s_tmp_data_out(2*DATA_WIDTH+FACTOR_WIDTH+3-1) xor
 		end if;		
 	end process;  
 	data_out <= s_data_out;
