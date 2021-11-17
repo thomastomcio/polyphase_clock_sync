@@ -46,7 +46,7 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 18;
+p = 6;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
@@ -112,6 +112,7 @@ CNT_next = 1;
 underflow = 1;
 vi = 0;
 
+% na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
 Kp = 1;
 damping_factor = 0.707;
 loop_bw = 0.0628;
@@ -129,6 +130,7 @@ for n=1:num_of_samples
         e = 0;
     end
 
+    % Loop filter - second order IIR
     vp = K1*e;
     vi = vi + K2*e;
     v = vp + vi;
