@@ -1,0 +1,8 @@
+.\src\fir_filter.vhd
+.\src\filter_bank.vhd
+.\src\dual_mux.vhd
+.\src\array_type_pkg.vhd
+.\src\loop_filter.vhd
+.\src\modulo_sps_counter.vhd
+.\src\index_selector.vhd
+.\src\polyphase_clock_sync.bde

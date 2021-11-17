@@ -1,0 +1,6 @@
+WARNING DAGGEN_0523: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
+MESSAGE "File: c:/My_Designs/polyphase_clock_sync/LUT/src/LUT.vhd" 
+MESSAGE "Compile Entity "LUT"" 
+MESSAGE "Compile Architecture "LUT_arch" of Entity "LUT"" 
+WARNING DAGGEN_0002: "Process has no effect - no sequential statements." "c:/My_Designs/polyphase_clock_sync/LUT/src/LUT.vhd" 38 0
+SUCCESS "Compile success 0 Errors 1 Warnings  Analysis time :  0.1 [s]" 

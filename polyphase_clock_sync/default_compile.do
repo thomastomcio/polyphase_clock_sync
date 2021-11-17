@@ -1,0 +1,8 @@
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/fir_filter.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/filter_bank.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/dual_mux.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/array_type_pkg.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/loop_filter.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/modulo_sps_counter.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/index_selector.vhd"
+acom -2008 -O3 -e 100 -protect 0 -reorder "$dsn/src/polyphase_clock_sync.bde"

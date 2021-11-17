@@ -1,0 +1,5 @@
+10
+~E 1 "../src/filter_bank.vhd" 38 filter_bank
+~A 1 "../src/filter_bank.vhd" 54 filter_bank_arch
+~E 1 "../src/fir_filter.vhd" 8 fir_filter
+~A 1 "../src/fir_filter.vhd" 41 fir_arch

@@ -1,0 +1,4 @@
+MESSAGE "File: fir_filter_component_test.vhd" 
+MESSAGE "Compile Entity "fir_filter_component_test"" 
+MESSAGE "Compile Architecture "COSIMULATION" of Entity "fir_filter_component_test"" 
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  63.0 [ms]" 

@@ -1,0 +1,29 @@
+WARNING DAGGEN_0523: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
+MESSAGE "File: .\polyphase_clock_sync.vhd" 
+MESSAGE "Compile Entity "polyphase_clock_sync"" 
+MESSAGE "Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"" 
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 64 23
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 64 23
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 89 21
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 89 21
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 105 22
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 105 22
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 106 23
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 106 23
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 117 21
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 117 21
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 118 23
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 118 23
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 130 24
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 130 24
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 131 23
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 131 23
+ERROR COMP96_0272: "Ambiguous reference to type "SIGNED"." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 132 16
+ERROR COMP96_0064: "Unknown type." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 132 16
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 144 8
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 143 8
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 151 8
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 161 8
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 162 8
+ERROR COMP96_0333: "Formal must be locally static name." "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd" 191 8
+FAILURE "Compile failure 24 Errors 0 Warnings  Analysis time :  0.2 [s]" 

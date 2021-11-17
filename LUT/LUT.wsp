@@ -1,0 +1,19 @@
+[COMPILESTATUS|.\src\LUT.vhd]
+FileTimeLow=30919735
+Status=Modified
+
+[CACHESIMPLE|Aldec.SymbolsCommands.7]
+matched_filter=1
+Built-in symbols=0
+LUT=0
+filter_bank=0
+
+[CACHEDOC|Aldec.Project.Generic.7|.\LUT\LUT.adf|]
+Path=
+
+[Gui config]
+RunFor=100 ns
+
+[General]
+CurrentVersion=103
+

@@ -1,0 +1,1 @@
+-w -erf c:/My_Designs/polyphase_clock_sync/LUT/compile/LUT.erf -d c:/My_Designs/polyphase_clock_sync/LUT/compile -s c:/My_Designs/polyphase_clock_sync/library.cfg -j c:/My_Designs/polyphase_clock_sync/LUT/projlib.cfg -work LUT -O3 -e 100 -work LUT -2002 c:/My_Designs/polyphase_clock_sync/LUT/src/LUT.vhd 

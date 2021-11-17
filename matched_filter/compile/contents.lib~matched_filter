@@ -1,0 +1,3 @@
+2
+~E 1 "../src/matched_filter.vhd" 5 fir_filter_4
+~A 1 "../src/matched_filter.vhd" 20 rtl

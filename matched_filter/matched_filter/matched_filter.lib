@@ -1,0 +1,24 @@
+timestamp=1635771040592
+
+[~A]
+ModifyID=2
+Version=74
+
+[fir_filter_4]
+A/rtl=21|../src/matched_filter.vhd|20|1*3092
+BinI32/rtl=3*0
+I=0*3576
+I/rtl=0*5491
+M=11|0|ve1|1635771040521|../src/matched_filter.vhd|0*2984*0x13655db87263eb33f68286fe09caf122801c9626|0*3485*0x23b75c12e3e89f2ef000564498faa8c2
+M/rtl=21|0|ve1|1635771040525|../src/matched_filter.vhd|0*3820*0xd3c8c19b071c42ada119e3eb67b0a2f1ee5ac3e2|0*5393*0x20116f55b147878295aeff36dce7fc50
+R=../src/matched_filter.vhd|5
+Version=10.5a.12.6914 (Windows)|00000003789cd3f5370600015b00b0|8793f4eceec1fc9b589bfd7d50194f6b53e9d84f68b676873915eeb95f57d9aee5d5e9de9124f000e01e63dbde0653da
+Version/rtl=10.5a.12.6914 (Windows)|00000003789cd3f5370600015b00b0|9dbb47eebe7da777b751efca131652c5e3ecae6c095cd1f66023ccac2a43b941
+
+[~MFT]
+0=16|0matched_filter.mgf|5491|2743
+1=2|1matched_filter.mgf|3092|3092
+3=2|3matched_filter.mgf|0|0
+
+[~U]
+fir_filter_4=11|0*2743|

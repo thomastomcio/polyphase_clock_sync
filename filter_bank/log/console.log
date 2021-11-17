@@ -1,0 +1,8 @@
+simulinkgenmod -f -o "C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\Simulink\filter_bank.m" filter_bank filter_bank_arch
+# Generating block description file: 'C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\Simulink\filter_bank.m'...
+# Generation of block description file for "filter_bank (filter_bank_arch)" completed successfully.
+# quiet on
+# design activate matlab_cosim
+# Design: Design "matlab_cosim" has been set as active.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].

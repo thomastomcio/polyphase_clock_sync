@@ -1,0 +1,13 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.1 [s].
+# Waveform file 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/matlab_cosim/src/fir_filter_component_test.awc' connected to 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/matlab_cosim/src/fir_filter_component_test.asdb'.
+# Design: Design "polyphase_clock_sync" has been set as active.
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Entity polyphase_clock_sync.fir_filter has been compiled after architecture polyphase_clock_sync.filter_bank(filter_bank_arch) that instantiates and binds this entity at simulation initialization. Recompile the source files in the correct order to perform the binding operation during compilation and simultaneously reduce the time required to initialize the simulation.
+# ELBREAD: Warning: The contents of entity 'fir_filter' instantiated in architecture 'filter_bank_arch' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Elaboration time 0.6 [s].
+# Design: Design "polyphase_clock_sync" has been set as active.
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Entity polyphase_clock_sync.fir_filter has been compiled after architecture polyphase_clock_sync.filter_bank(filter_bank_arch) that instantiates and binds this entity at simulation initialization. Recompile the source files in the correct order to perform the binding operation during compilation and simultaneously reduce the time required to initialize the simulation.
+# ELBREAD: Warning: The contents of entity 'fir_filter' instantiated in architecture 'filter_bank_arch' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Elaboration time 0.2 [s].

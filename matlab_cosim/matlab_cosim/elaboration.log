@@ -1,0 +1,32 @@
+Active-HDL 10.5a.12.6914 2021-11-06 14:08:47
+
+Elaboration top modules:
+Architecture                  COSIMULATION(fir_filter_component_test)
+
+
+---------------------------------------------------------------------------------------------------------------
+Entity                    | Architecture | Library      | Info | Compiler Version        | Compilation Options
+---------------------------------------------------------------------------------------------------------------
+fir_filter_component_test | COSIMULATION | matlab_cosim |      | 10.5a.12.6914 (Windows) | -dbg -2008
+fir                       | fir_arch     | fir_filter   |      | 10.5a.12.6914 (Windows) | -O3
+---------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------
+VHDL Package                             | Library      | Info | Compiler Version        | Compilation Options
+---------------------------------------------------------------------------------------------------------------
+standard                                 | std          |      |                         | <unavailable>
+TEXTIO                                   | std          |      |                         | <unavailable>
+std_logic_1164                           | ieee         |      |                         | <unavailable>
+NUMERIC_STD                              | ieee         |      |                         | <unavailable>
+std_logic_arith                          | ieee         |      |                         | <unavailable>
+STD_LOGIC_SIGNED                         | ieee         |      |                         | <unavailable>
+---------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------
+Library                                  | Comment
+---------------------------------------------------------------------------------------------------------------
+fir_filter                               | None
+ieee                                     | Standard IEEE packages library
+matlab_cosim                             | None
+std                                      | Standard VHDL library
+---------------------------------------------------------------------------------------------------------------

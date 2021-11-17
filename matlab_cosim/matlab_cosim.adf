@@ -1,0 +1,101 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=4
+Current Config=compile
+
+[Configurations]
+compile=matlab_cosim
+
+[Library]
+matlab_cosim=.\matlab_cosim\matlab_cosim.lib
+
+[Settings]
+AccessRead=0
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=1
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+WaveformOutput=fir_filter_component_test.asdb
+
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+
+[LocalVhdlSets]
+CompileWithDebug=0
+
+[$LibMap$]
+matlab_cosim=.
+
+[Folders]
+Name3=Makefiles
+Directory3=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension3=mak
+Name4=Memory
+Directory4=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension5=dll
+Name6=PDF
+Directory6=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension6=pdf
+Name7=HTML
+Directory7=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension7=htm;html
+Name8=ALINT-PRO Workspaces
+Directory8=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Extension8=alintws
+
+[SpecTracer]
+WindowVisible=0
+
+[HierarchyViewer]
+HierarchyInformation=filter_bank_test|COSIMULATION|0 fir_filter_component_test|COSIMULATION|0
+ShowHide=ShowTopLevel
+Selected=
+
+[Groups]
+impulse_response=1
+
+[Files]
+/fir_filter_test_proj.vhd=-1
+/fir_filter_test_proj.asdb=-1
+/fir_filter_test_proj.awc=-1
+/fir_filter_component_test.vhd=-1
+/fir_filter_impulse_response.asdb=-1
+/fir_filter_impulse_response.awc=-1
+/piopru_fir_test.vhd=-1
+/fir_filter_component_test.asdb=-1
+/fir_filter_component_test.awc=-1
+/untitled.vhd=-1
+/filter_bank_test.vhd=-1
+/filter_bank_test.asdb=-1
+/filter_bank_test.awc=-1
+impulse_response/impulse_response.asdb=-1
+impulse_response/impulse_response.awc=-1
+
+[Files.Data]
+.\src\fir_filter_test_proj.vhd=VHDL Source Code
+.\src\fir_filter_test_proj.asdb=Accelerated Waveform File
+.\src\fir_filter_test_proj.awc=Accelerated Waveform Configuration
+.\src\fir_filter_component_test.vhd=VHDL Source Code
+.\src\fir_filter_impulse_response.asdb=Accelerated Waveform File
+.\src\fir_filter_impulse_response.awc=Accelerated Waveform Configuration
+.\src\piopru_fir_test.vhd=VHDL Source Code
+.\src\fir_filter_component_test.asdb=Accelerated Waveform File
+.\src\fir_filter_component_test.awc=Accelerated Waveform Configuration
+.\src\untitled.vhd=VHDL Source Code
+.\src\filter_bank_test.vhd=VHDL Source Code
+.\src\filter_bank_test.asdb=Accelerated Waveform File
+.\src\filter_bank_test.awc=Accelerated Waveform Configuration
+.\src\impulse_response\impulse_response.asdb=Accelerated Waveform File
+.\src\impulse_response\impulse_response.awc=Accelerated Waveform Configuration
+

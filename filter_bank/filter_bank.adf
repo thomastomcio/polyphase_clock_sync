@@ -1,0 +1,74 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=4
+Current Config=compile
+[Configurations]
+compile=filter_bank
+[Library]
+filter_bank=.\filter_bank\filter_bank.lib
+[$LibMap$]
+filter_bank=.
+Active_lib=
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+FLOWTOOLS=ONLY_IMPL
+ON_SERVERFARM_SYNTH=0
+ON_SERVERFARM_IMPL=0
+ON_SERVERFARM_SIM=0
+REFRESH_FLOW=1
+RUN_MODE_SYNTH=1
+[IMPLEMENTATION]
+UCF=
+IMPL_DONT_RUN_LOGIC_OPTIMIZATION=0
+IMPL_DONT_RUN_POWER_OPTIMIZATION=1
+IMPL_DONT_RUN_PLACE=0
+IMPL_DONT_RUN_POST_PLACE_POWER_OPTIMIZATION=0
+IMPL_DONT_RUN_PLACED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_ROUTE=0
+IMPL_DONT_RUN_ROUTED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_BITSTREAM=0
+FLOW_STEPS_RESET=0
+[Files]
+/filter_bank.vhd=-1
+/fir_filter.vhd=-1
+[Files.Data]
+.\src\filter_bank.vhd=VHDL Source Code
+.\src\fir_filter.vhd=VHDL Source Code
+[Folders]
+Name0=Event Lists
+Directory0=c:\My_Designs\polyphase_clock_sync\filter_bank\
+Extension0=lst
+Name1=Logs
+Directory1=c:\My_Designs\polyphase_clock_sync\filter_bank\
+Extension1=log;htm;xml;txt
+Name2=Waveforms
+Directory2=c:\My_Designs\polyphase_clock_sync\filter_bank\
+Extension2=asdb;awc;asdbc;asdbe
+Name3=Makefiles
+Directory3=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension3=mak
+Name4=Memory
+Directory4=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension5=dll
+Name6=PDF
+Directory6=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension6=pdf
+Name7=HTML
+Directory7=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension7=htm;html
+Name8=ALINT-PRO Workspaces
+Directory8=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\filter_bank\
+Extension8=alintws
+[SpecTracer]
+WindowVisible=0
+[SYNTHESIS]
+SYNTH_DONT_RUN_SYNTHESIS=0
+[HierarchyViewer]
+HierarchyInformation=
+ShowHide=ShowTopLevel
+Selected=

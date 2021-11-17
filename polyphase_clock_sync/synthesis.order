@@ -1,0 +1,6 @@
+i<>.\src\polyphase_clock_sync.bde
+i<>.\src\dual_mux.vhd
+i<>.\src\array_type_pkg.vhd
+i<>.\src\loop_filter.vhd
+i<>.\src\modulo_sps_counter.vhd
+i<>.\src\index_selector.vhd
