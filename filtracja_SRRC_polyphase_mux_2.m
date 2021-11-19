@@ -46,16 +46,16 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 6;
+p = 16;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
-
+return;
 
 % RECEIVER
 % dekompozycja polifazowa filtru (jego odp. impulsowej) uprzednio zinterpolowanego
 
-y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
+% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
 % sygna³u nadajnika
 
 rec_filtered = [];
