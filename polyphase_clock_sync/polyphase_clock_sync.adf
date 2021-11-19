@@ -28,7 +28,7 @@ ON_SERVERFARM_SIM=0
 DVM_DISPLAY=NO
 REFRESH_FLOW=1
 RUN_MODE_SYNTH=1
-fileopenfolder=C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile
+fileopenfolder=C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src
 AddGeneratedFilesToDesignBrowser=0
 DesignStatusPath=$dsn\src\DESIGN_STATUS
 DesignActivationScript=$dsn\design.do
@@ -136,34 +136,42 @@ GenerateToCustomFolder=0
 Synchronize=0
 
 [HierarchyViewer]
-HierarchyInformation=
+HierarchyInformation=polyphase_clock_sync|polyphase_clock_sync|0 polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1 
 ShowHide=ShowTopLevel
 Selected=
 
+[Files.Data]
+.\src\fir_filter.vhd=VHDL Source Code
+.\src\filters_bank.vhd=VHDL Source Code
+.\src\dual_mux.vhd=VHDL Source Code
+.\src\array_type_pkg.vhd=VHDL Source Code
+.\src\TED.vhd=VHDL Source Code
+.\src\polyphase_clock_sync.bde=Block Diagram
+.\src\polyphase_clock_sync_2.vhd=VHDL Source Code
+.\src\not_used\loop_filter.vhd=VHDL Source Code
+.\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
+.\src\not_used\index_selector.vhd=VHDL Source Code
+.\src\TestBench\polyphase_clock_sync_TB.vhd=VHDL Test Bench
+.\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
+
+[file_out:/polyphase_clock_sync.bde]
+/..\compile\polyphase_clock_sync.vhd=-1
+
 [Groups]
-not_used=1
+TestBench=1
+not_used=0
 
 [Files]
-/polyphase_clock_sync.bde=-1
-/filter_bank.vhd=-1
 /fir_filter.vhd=-1
+/filters_bank.vhd=-1
 /dual_mux.vhd=-1
 /array_type_pkg.vhd=-1
 /TED.vhd=-1
+/polyphase_clock_sync.bde=-1
+/polyphase_clock_sync_2.vhd=-1
+TestBench/polyphase_clock_sync_TB.vhd=-1
+TestBench/polyphase_clock_sync_TB_runtest.do=-1
 not_used/loop_filter.vhd=-1
 not_used/modulo_sps_counter.vhd=-1
 not_used/index_selector.vhd=-1
 
-[Files.Data]
-.\src\polyphase_clock_sync.bde=Block Diagram
-.\src\filter_bank.vhd=VHDL Source Code
-.\src\fir_filter.vhd=VHDL Source Code
-.\src\dual_mux.vhd=VHDL Source Code
-.\src\array_type_pkg.vhd=VHDL Source Code
-.\src\TED.vhd=VHDL Source Code
-.\src\not_used\loop_filter.vhd=VHDL Source Code
-.\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
-.\src\not_used\index_selector.vhd=VHDL Source Code
-
-[file_out:/polyphase_clock_sync.bde]
-/..\compile\polyphase_clock_sync.vhd=-1

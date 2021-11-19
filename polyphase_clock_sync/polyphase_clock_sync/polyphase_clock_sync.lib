@@ -1,110 +1,128 @@
-timestamp=1637165914033
+timestamp=1637258803473
 
 [~A]
-ModifyID=177
+ModifyID=307
 Version=74
 
-[~MFT]
-0=8|0polyphase_clock_sync.mgf|37758|15796
-1=2|1polyphase_clock_sync.mgf|43071|21305
-2=12|2polyphase_clock_sync.mgf|44068|27465
-3=2|3polyphase_clock_sync.mgf|14595|6272
-
 [array_type_pkg]
-E=1*32408
-I=0*28164
-M=3|2|ve8|1637165055883|../src/array_type_pkg.vhd|0*27823*0x9d429656da2e10720d9ad04b1887cddef9035869|0*28071*0xd986fd7175c8cf28cd774bcadde79966
+E=1*363174
+I=0*206952
+M=3|0|ve1|1637257771801|../src/array_type_pkg.vhd|0*206611*0x093eb84ac0fc6b5a9a6e33dfadd623de4ae2d6b5|0*206859*0xd986fd7175c8cf28cd774bcadde79966
 R=../src/array_type_pkg.vhd|5
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|98b5245867b377188bb78dec661f8418c412c601f88da9ae1d468f928190e50446bf0d32d98beb8b50f8125b059a1dad
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|98b5245867b377188bb78dec661f8418c412c601f88da9ae1d468f928190e5044243ed0efadd3a555c10dcbfbd810aad
 
 [dual_mux]
-A/dual_mux=A/dual_MUX 21|../src/dual_mux.vhd|50|1*43071
-BinW64/dual_mux=3*14595
-I=0*29436
-I/dual_mux=I/dual_MUX 0*37758
-M=11|2|ve8|1637165057819|../src/dual_mux.vhd|0*26323*0x6d9a1be5da5e7c429e25b0ec60ef5d5c59fc4fcd|0*27002*0xd986fd7175c8cf28cd774bcadde79966
-M/dual_mux=M/dual_MUX 21|2|ve8|1637165321793|../src/dual_mux.vhd|0*37059*0xffebae59e199eade344e5d6c770d695988ff2226|0*37665*0xb966535deb9617f745ced53ae4cc1a7f
+A/dual_mux=A/dual_MUX 21|../src/dual_mux.vhd|50|1*373016
+BinI32/dual_mux=3*89257
+I=0*216617
+I/dual_mux=I/dual_MUX 0*217635
+M=11|0|ve1|1637257772005|../src/dual_mux.vhd|0*215857*0xe2282f85c539e2fa1a48a896df5a1a15365ecc53|0*216536*0xd986fd7175c8cf28cd774bcadde79966
+M/dual_mux=M/dual_MUX 21|0|ve1|1637257772009|../src/dual_mux.vhd|0*216936*0x82a1642b47ba10f3fbc904f469ed58724c219230|0*217542*0xb966535deb9617f745ced53ae4cc1a7f
 NSymbols/dual_mux=NSymbols/dual_MUX 40|0|2*44068
 R=../src/dual_mux.vhd|29
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|a0f5e7c84f5b955d046ca81bb229d8059d8b4e8ef1374421143aa6249ef854701d82a4fc69e5f38fb94e1b99aa3364a7
-Version/dual_mux=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|a0f5e7c84f5b955d046ca81bb229d8059d8b4e8ef1374421143aa6249ef85470c9c59bfe6ea93fead751c3c06c18e3ea
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|a0f5e7c84f5b955d046ca81bb229d8059d8b4e8ef1374421143aa6249ef8547080e94545ccd1c8c05ad51bf02c365f36
+Version/dual_mux=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|a0f5e7c84f5b955d046ca81bb229d8059d8b4e8ef1374421143aa6249ef8547080e94545ccd1c8c05ad51bf02c365f36
 
 [filter_bank]
-A/filter_bank_arch=21|../src/filter_bank.vhd|44|1*39298
-BinW64/filter_bank_arch=3*14069
-I=0*34975
-I/filter_bank_arch=0*36722
-M=11|2|ve8|1637165295560|../src/filter_bank.vhd|0*34405*0xed3b48dea44c41b85aba40f322f82ec835336c6a|0*34888*0xd986fd7175c8cf28cd774bcadde79966
-M/filter_bank_arch=21|2|ve8|1637165295562|../src/filter_bank.vhd|0*35261*0x5565abd308430252a87441ec75ffc30e9c971ba9|0*36615*0xb966535deb9617f745ced53ae4cc1a7f
+A/filter_bank_a=*21|../src/filter_bank.vhd|44|
+A/filter_bank_arch=*21|../src/filters_bank.vhd|44|
 NSymbols/filter_bank=40|0|2*6476
-R=../src/filter_bank.vhd|28
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|c52d94e88e5ba174f6d94110d66c660060beaa89584e6d9a6d975c1124ceeb3bb1417d22b79fca4af1adfb4f8dc7fcf9
-Version/filter_bank_arch=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|65eb9b4a3a8171f096f258b15736b679c75e321e18d6dbc0a84f38a882b6d0ac7c7f98cc1601fdf67c4acbebec3776a8
+
+[filters_bank]
+A/filters_bank_arch=21|../src/filters_bank.vhd|44|1*391882
+BinI32/filters_bank_arch=3*93474
+I=0*224535
+I/filters_bank_arch=0*226292
+M=11|0|ve1|1637257873402|../src/filters_bank.vhd|0*223959*0xa187d79405bac7343e3c52b782cffec2c2a8941f|0*224446*0xd986fd7175c8cf28cd774bcadde79966
+M/filters_bank_arch=21|0|ve1|1637257873405|../src/filters_bank.vhd|0*224822*0x7c554daa2ed39418c261b4e046063778b6af4f0d|0*226182*0xb966535deb9617f745ced53ae4cc1a7f
+NSymbols/filters_bank=40|0|2*120468
+R=../src/filters_bank.vhd|28
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|2f6fc8fb132c9cd2b2012d0428adc680e004668022287577330b0c2b99e30d80a159d9cb2a59ebaa5c3edfe5a9957b81
+Version/filters_bank_arch=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|633a6652ed48bf3b4e4e584f6b0c5851851780fa5c9f3fcb43334b740b6093bdca0fc5ef9de69430015378db07da8512
 
 [fir_filter]
-A/fir_arch=21|../src/fir_filter.vhd|39|1*35319
-BinW64/fir_arch=3*10979
-I=0*31335
-I/fir_arch=0*33844
-M=11|2|ve8|1637165148744|../src/fir_filter.vhd|0*30400*0xbc8eea9c2b2c0e6e460288d2df61984fe6b0ee55|0*31250*0xd986fd7175c8cf28cd774bcadde79966
-M/fir_arch=21|2|ve8|1637165226764|../src/fir_filter.vhd|0*31576*0x3c7b74c1d216d5fa4fe1cb17f8bec902e04b0fef|0*33747*0xb966535deb9617f745ced53ae4cc1a7f
+A/fir_arch=21|../src/fir_filter.vhd|39|1*387903
+BinI32/fir_arch=3*90914
+I=0*203457
+I/fir_arch=0*223380
+M=11|0|ve1|1637257771695|../src/fir_filter.vhd|0*202522*0x92eeaaa495d8f8e63107879a6a37bc37fb3e21ef|0*203372*0xd986fd7175c8cf28cd774bcadde79966
+M/fir_arch=21|0|ve1|1637257835706|../src/fir_filter.vhd|0*203699*0xee61c7352b0d334fea748d5a54328803c4c8e957|0*205870*0xb966535deb9617f745ced53ae4cc1a7f
 R=../src/fir_filter.vhd|6
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|e39368081c09ca76362885f4262bc33d27eea3f559576a263c8244486cb3ed83dbbc962f83e98d8b7987569820014681
-Version/fir_arch=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|f2d3a233edbace746c2747de7bfd71892818afb70cf1f2f39ae611a8b8430690a86c6ddbbd6583e54e97727f27ad184b
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|e39368081c09ca76362885f4262bc33d27eea3f559576a263c8244486cb3ed83d83d106c4303afd18848f859c1ebfe87
+Version/fir_arch=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|f2d3a233edbace746c2747de7bfd71892818afb70cf1f2f39ae611a8b8430690f6b932de334043328806bc5cc63804bd
 
 [index_selector]
-A/index_selector_arch=21|../src/index_selector.vhd|42|1*10545
-BinW64/index_selector_arch=3*4988
-I=0*18950
-I/index_selector_arch=0*19231
-M=11|2|ve8|1637150248771|../src/index_selector.vhd|0*4531*0x99971343ca60755c8a5179f0bcff6e6e60384273|0*5116*0xd986fd7175c8cf28cd774bcadde79966
-M/index_selector_arch=21|2|ve8|1637152182853|../src/index_selector.vhd|0*5209*0xa48cc834fa39afb8fda17b473e418d6d20beffae|0*5643*0xb966535deb9617f745ced53ae4cc1a7f
+A/index_selector_arch=*21|../src/index_selector.vhd|42|
 NSymbols/index_selector=40|0|2*11022
-R=../src/index_selector.vhd|25
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|750517971884820efc5262d64f9ff241fa24be45604dbf87474fb83c4a7ada2d1646620bea3c11ff21a555962c888de3
-Version/index_selector_arch=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|750517971884820efc5262d64f9ff24108585a3e22796bada78ff301620bf8237aed27f447f816c520d8d12db2813058
 
 [loop_filter]
-A/loop_filter_arch=21|../src/loop_filter.vhd|41|1*12286
-BinW64/loop_filter_arch=3*6118
-I=0*19819
-I/loop_filter_arch=0*20097
-M=11|2|ve8|1637150248711|../src/loop_filter.vhd|0*2649*0x618e450c802fcb4cb8a75abf8e4f56649e581f03|0*3148*0xd986fd7175c8cf28cd774bcadde79966
-M/loop_filter_arch=21|2|ve8|1637152182793|../src/loop_filter.vhd|0*3235*0x052677b48daa2eb5a32e5a032320f99182438e59|0*3771*0xb966535deb9617f745ced53ae4cc1a7f
+A/loop_filter_arch=*21|../src/loop_filter.vhd|41|
 NSymbols/loop_filter=40|0|2*14052
-R=../src/loop_filter.vhd|26
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|7c2345f0ff569064fcc2e889b7216361e8f7f1da59e3b6373224c3eaffbcef882a0b776494fc620bb2ac2868e9fef557
-Version/loop_filter_arch=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|e97d484ba96a7b9f6343eab1f1de947fceaf26370df5263bcf3918854db7777df4b8e710427ba116399e25ce1fa5830b
 
 [modulo_sps_counter]
-A/modulo_sps_counter_arch=21|../src/modulo_sps_counter.vhd|42|1*13964
-BinW64/modulo_sps_counter_arch=3*7255
-I=0*20695
-I/modulo_sps_counter_arch=0*20980
-M=11|2|ve8|1637150248752|../src/modulo_sps_counter.vhd|0*3878*0x724a31c793480d667e17e7fa4a296473260bf1db|0*4430*0xd986fd7175c8cf28cd774bcadde79966
-M/modulo_sps_counter_arch=21|2|ve8|1637152182823|../src/modulo_sps_counter.vhd|0*5759*0x6988393a2a86ee90ab250dd42c01b822b5960b44|0*6385*0xb966535deb9617f745ced53ae4cc1a7f
+A/modulo_sps_counter_arch=*21|../src/modulo_sps_counter.vhd|42|
 NSymbols/modulo_sps_counter=40|0|2*18522
-R=../src/modulo_sps_counter.vhd|26
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|b1c211d3a8f48c013c16a6f00a5a110c3feda8f1913c876cfcf2fa19956ef64f1c475aa1024d50df6d564c77f6bb1a63
-Version/modulo_sps_counter_arch=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|b1c211d3a8f48c013c16a6f00a5a110c58ea945d2997209c7b1342a1e946a5f926527262ddaa47cb266f3a3c4d9b973a5343df6e92cc1454747cd29bb11570cd
 
 [polyphase_clock_sync]
-A/polyphase_clock_sync=24|../src/polyphase_clock_sync.bde|10000|1*24017
-BinW64/polyphase_clock_sync=3*8346
-I=0*21580
-I/polyphase_clock_sync=0*25814
-M=11|2|ve8|1637152182880|../compile/polyphase_clock_sync.vhd|0*10737*0xb5a00cd16a84936eb835eed836c19fd7939c6735|0*11356*0xd986fd7175c8cf28cd774bcadde79966
-M/polyphase_clock_sync=21|2|ve8|1637152285119|../compile/polyphase_clock_sync.vhd|0*22128*0x36856f4abb839bbb4e3f3af4dc0505fdd0cc1c2c|0*25681*0xb966535deb9617f745ced53ae4cc1a7f
-R=../compile/polyphase_clock_sync.vhd|32
-Version=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|c53e898f9e0605912e201e0c280affabc819cb48dde90ab4037a1b2b9f12595f5e0f5caf8b2453bfe446cf73f9eae72b
-Version/polyphase_clock_sync=12.0.118.7745 (Windows64)|00000009789cd3f53756d0353230b00000090c01c7|c53e898f9e0605912e201e0c280affabc819cb48dde90ab4037a1b2b9f12595f0d5efefb7d3762f705fecec1e4348186
+A/polyphase_clock_sync=24|../src/polyphase_clock_sync.bde|10000|1*437650
+BinI32/polyphase_clock_sync=3*97923
+I=0*227711
+I/polyphase_clock_sync=0*252107
+M=11|0|ve1|1637258040782|../src/polyphase_clock_sync_2.vhd|0*226966*0x2faab1f60ce7422fe01eb26c06ac0647e6c11ed4|0*227604*0xd986fd7175c8cf28cd774bcadde79966
+M/polyphase_clock_sync=21|0|ve1|1637258803118|../src/polyphase_clock_sync_2.vhd|0*249682*0x77741681b15d8bfceac080d25ea5a1b81fb0fb07|0*251976*0xb966535deb9617f745ced53ae4cc1a7f
+NSymbols/polyphase_clock_sync=40|0|2*103496
+R=../src/polyphase_clock_sync_2.vhd|29
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|c53e898f9e0605912e201e0c280affabc819cb48dde90ab4037a1b2b9f12595f533c3d54677e00ee6675c5393b23bed5
+Version/polyphase_clock_sync=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|c53e898f9e0605912e201e0c280affabc819cb48dde90ab4037a1b2b9f12595f8b03dd9300e68ebb064640bbef0be69c
+
+[polyphase_clock_sync_tb]
+A/tb_architecture=A/TB_ARCHITECTURE 21|../src/TestBench/polyphase_clock_sync_TB.vhd|22|1*443719
+BinI32/tb_architecture=3*98691
+I=0*235603
+I/tb_architecture=I/TB_ARCHITECTURE 0*252556
+M=11|0|ve1|1637258264302|../src/TestBench/polyphase_clock_sync_TB.vhd|0*234933*0xf57230415cf2e7c2045fc9bf250e797ee2638846|0*235482*0xd986fd7175c8cf28cd774bcadde79966
+M/tb_architecture=M/TB_ARCHITECTURE 21|0|ve1|1637258803440|../src/TestBench/polyphase_clock_sync_TB.vhd|0*247795*0x185e713c82e59cd1fa5604c766c0a73c15036b6a|0*248959*0xb966535deb9617f745ced53ae4cc1a7f
+R=../src/TestBench/polyphase_clock_sync_TB.vhd|11
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|c53e898f9e0605912e201e0c280affabd435252e4b90720a5abd7496761345cc26527262ddaa47cb266f3a3c4d9b973a97690e42eed80682b7b83f4e60c3bfe9
+Version/tb_architecture=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|da2d76821309f33ed1264ca4678a936a8f84fef0fc5d0f10f1a8cfc2ad534beaa6602cf1e60a8556ecdfa2e8ffbbbb0a
+
+[ted]
+A/ted_arch=A/TED_arch 21|../src/ted.vhd|55|1*363716
+BinI32/ted_arch=3*86967
+I=0*208254
+I/ted_arch=I/TED_arch 0*209915
+M=11|0|ve1|1637257771843|../src/ted.vhd|0*207545*0x3c9457323d36801a127d63d8b8d4ccca0166ee9e|0*208183*0xd986fd7175c8cf28cd774bcadde79966
+M/ted_arch=M/TED_arch 21|0|ve1|1637257771851|../src/ted.vhd|0*208568*0x58befd8b85aa0168e4d47bc113a04c14718b9564|0*209832*0xb966535deb9617f745ced53ae4cc1a7f
+NSymbols/ted=NSymbols/TED 40|0|2*122791
+R=../src/ted.vhd|29
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|a1c03ae5f9da94ea1414977225db79c1eeb68a106e56624d1f4bb1123df2de1f
+Version/ted_arch=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|4e8e35b331e0ab9ef3a70cc6809a6adf6b143096d3c51d0a9c6fa1cf847b2f86e27c3936d9734fb44e641dc631ef4565
+
+[testbench_for_polyphase_clock_sync]
+Configures=polyphase_clock_sync_tb.TB_ARCHITECTURE
+E=1*446710
+I=0*252951
+M=2|0|ve1|1637258803447|../src/TestBench/polyphase_clock_sync_TB.vhd|0*241712*0x34c079f017a827c005fbbb12d74ffc078e36d53d|0*242112*0xb966535deb9617f745ced53ae4cc1a7f
+R=../src/TestBench/polyphase_clock_sync_TB.vhd|82
+Version=10.5a.12.6914 (Windows)|00000009789cd3f53756d0353230b00000090c01c7|5efd636a07bb57613e35fadc81a5c3e576a39df8e109a0241429354fccb666cc767bc54f247e5eb27fce0b08ae83fad7e6d2b5f6930ac3e902591c199e4acb7b
+
+[~MFT]
+0=4|0polyphase_clock_sync.mgf|252951|31170
+1=4|1polyphase_clock_sync.mgf|446710|64813
+2=0|2polyphase_clock_sync.mgf|122791|8426
+3=2|3polyphase_clock_sync.mgf|98691|7985
 
 [~U]
-array_type_pkg=3|0*27402|0*27599
-dual_mux=dual_MUX 11|0*25963||0x3
-filter_bank=11|0*34094||0x3
-fir_filter=11|0*30041|
+array_type_pkg=3|0*206218|0*206418
+dual_mux=dual_MUX 11|0*215492||0x3
+filter_bank=11|0*196128||0x3
+filters_bank=11|0*223631||0x3
+fir_filter=11|0*202153|
 index_selector=11|0*18607||0x3
 loop_filter=11|0*19532||0x3
 modulo_sps_counter=11|0*20392||0x3
-polyphase_clock_sync=11|0*21289|
+polyphase_clock_sync=11|0*226631||0x3
+polyphase_clock_sync_tb=11|0*234669|
+ted=TED 11|0*207198||0x3
+testbench_for_polyphase_clock_sync=TESTBENCH_FOR_polyphase_clock_sync 2||
+

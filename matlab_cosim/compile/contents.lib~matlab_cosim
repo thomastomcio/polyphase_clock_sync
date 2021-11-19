@@ -1,11 +1,11 @@
-92
-~E 1 "../src/filter_bank_test.vhd" 7 filter_bank_test
-~A 1 "../src/filter_bank_test.vhd" 10 COSIMULATION
-~E 1 "../src/fir_filter_component_test.vhd" 8 fir_filter_component_test
-~A 1 "../src/fir_filter_component_test.vhd" 11 COSIMULATION
-~E 1 "../src/fir_filter_test_proj.vhd" 7 fir_filter_test_proj
-~A 1 "../src/fir_filter_test_proj.vhd" 10 COSIMULATION
-~E 1 "../src/piopru_fir_test.vhd" 8 piopru_fir_test
-~A 1 "../src/piopru_fir_test.vhd" 11 COSIMULATION
-~E 1 "../src/untitled.vhd" 7 untitled
-~A 1 "../src/untitled.vhd" 10 COSIMULATION
+93
+~E 0 "" 0 filter_bank_test
+~A 0 "" 0 cosimulation
+~E 0 "" 0 fir_filter_component_test
+~A 0 "" 0 cosimulation
+~E 0 "" 0 fir_filter_test_proj
+~A 0 "" 0 cosimulation
+~E 0 "" 0 piopru_fir_test
+~A 0 "" 0 cosimulation
+~E 0 "" 0 untitled
+~A 0 "" 0 cosimulation

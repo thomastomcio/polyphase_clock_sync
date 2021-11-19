@@ -29,4 +29,4 @@ Structure_DiagramInconsistency=Warning
 DoubleNames_NetAndInstanceVerilog=Error
 DoubleNames_NetAndInstanceVhdl=Error
 Vhd_TreatBuffersAsOutputs=true
-Gen_Output2Console=false
+Gen_Output2Console=true

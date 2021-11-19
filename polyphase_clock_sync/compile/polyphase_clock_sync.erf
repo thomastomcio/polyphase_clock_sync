@@ -1,13 +1,6 @@
 WARNING DAGGEN_0523: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
-MESSAGE "File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 
-MESSAGE "Compile Entity "TED"" 
-ERROR COMP96_0077: "Undefined type of expression. Expected type 'REAL'." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 58 32
-MESSAGE "Compile Architecture "TED_arch" of Entity "TED"" 
-ERROR COMP96_0015: "';' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 114 7
-ERROR COMP96_0019: "Keyword 'end' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 114 7
-ERROR COMP96_0015: "';' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 115 7
-ERROR COMP96_0019: "Keyword 'end' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 115 7
-ERROR COMP96_0015: "';' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 116 6
-ERROR COMP96_0019: "Keyword 'end' expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 116 6
-ERROR COMP96_0016: "Design unit declaration expected." "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" 116 8
-FAILURE "Compile failure 8 Errors 0 Warnings  Analysis time :  31.0 [ms]" 
+MESSAGE "File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd" 
+MESSAGE "Compile Entity "polyphase_clock_sync_tb"" 
+MESSAGE "Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"" 
+MESSAGE "Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"" 
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]" 

@@ -100,7 +100,7 @@ begin
       elsif rising_edge(aclk)  then 
             if aclken = '1' then         -- clock enable             
                   if (s_axis_data_tvalid = '1') then
-                        data<=s_axis_data_tdata;            -- assign input data to variable         
+                        data<= s_axis_data_tdata;            -- assign input data to variable         
                         --DINS <= DINS(N-2 downto 0) & data;
                         for i in  num_of_coef - 1 downto 0  loop-- loop that make convolution
                               --mult(i) <=  to_signed((coefs(num_of_coef - 1 -i)),coef_size)*signed(data);  -- multiplicate data with coeficients

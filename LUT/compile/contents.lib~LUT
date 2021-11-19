@@ -1,3 +1,3 @@
-2
-~E 1 "../src/LUT.vhd" 13 LUT
-~A 1 "../src/LUT.vhd" 31 LUT_arch
+3
+~E 0 "" 0 LUT
+~A 0 "" 0 lut_arch

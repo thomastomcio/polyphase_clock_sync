@@ -1,30 +1,47 @@
-Active-HDL 10.5a.12.6914 2021-11-07 16:19:19
+Active-HDL 10.5a.12.6914 2021-11-18 19:06:44
 
 Elaboration top modules:
-Architecture                  filter_bank_arch(filter_bank)
+VHDL Configuration            testbench_for_polyphase_clock_sync
 
 
--------------------------------------------------------------------------------------------------------------
-Entity      | Architecture     | Library              | Info | Compiler Version        | Compilation Options
--------------------------------------------------------------------------------------------------------------
-filter_bank | filter_bank_arch | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
-fir_filter  | fir_arch         | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
--------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+Entity                  | Architecture         | Library              | Info | Compiler Version        | Compilation Options
+-----------------------------------------------------------------------------------------------------------------------------
+polyphase_clock_sync_tb | TB_ARCHITECTURE      | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+polyphase_clock_sync    | polyphase_clock_sync | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+dual_MUX                | dual_MUX             | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+TED                     | TED_arch             | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+filters_bank            | filters_bank_arch    | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+fir_filter              | fir_arch             | polyphase_clock_sync |      | 10.5a.12.6914 (Windows) | -O3 -2008
+-----------------------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------------------------
-VHDL Package                   | Library              | Info | Compiler Version        | Compilation Options
--------------------------------------------------------------------------------------------------------------
-standard                       | std                  |      |                         | <unavailable>
-TEXTIO                         | std                  |      |                         | <unavailable>
-std_logic_1164                 | ieee                 |      |                         | <unavailable>
-NUMERIC_STD                    | ieee                 |      |                         | <unavailable>
-array_type_pkg                 | polyphase_clock_sync |      |                         | <unavailable>
--------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+VHDL Configuration                             | Library              | Info | Compiler Version        | Compilation Options
+-----------------------------------------------------------------------------------------------------------------------------
+testbench_for_polyphase_clock_sync             | polyphase_clock_sync |      |                         | <unavailable>
+-----------------------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------------------------
-Library                        | Comment
--------------------------------------------------------------------------------------------------------------
-ieee                           | Standard IEEE packages library
-polyphase_clock_sync           | None
-std                            | Standard VHDL library
--------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+VHDL Package                                   | Library              | Info | Compiler Version        | Compilation Options
+-----------------------------------------------------------------------------------------------------------------------------
+standard                                       | std                  |      |                         | <unavailable>
+TEXTIO                                         | std                  |      |                         | <unavailable>
+std_logic_1164                                 | ieee                 |      |                         | <unavailable>
+NUMERIC_STD                                    | ieee                 |      |                         | <unavailable>
+array_type_pkg                                 | polyphase_clock_sync |      |                         | <unavailable>
+MATH_REAL                                      | ieee                 |      |                         | <unavailable>
+-----------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------
+Library                                        | Comment
+-----------------------------------------------------------------------------------------------------------------------------
+ieee                                           | Standard IEEE packages library
+polyphase_clock_sync                           | None
+std                                            | Standard VHDL library
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Simulation Options: asim +access +r TESTBENCH_FOR_polyphase_clock_sync
+
+
+The performance of simulation is reduced. Version EDU Edition

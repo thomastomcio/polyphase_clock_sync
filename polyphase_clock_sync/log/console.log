@@ -1,505 +1,944 @@
-# Warning: Diagram structure inconsistencies encountered when opening "C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde".
-# Warning: Inconsistencies have been removed during loading and file has been marked as modified.
-# Design: Design "polyphase_clock_sync" has been set as active.
-# DRC: Checking file 'C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde'.
-# DRC: polyphase_clock_sync.bde - 0 error(s), 0 warning(s)
-# DRC: DRC process completed in 2 second(s).
-# DRC: The results have been written to the log file. Double click on this line to view the log.
-# Generating C:\Users\student_1\Desktop\Soko這wski_praca_dyplomowa\My_design\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde ...
-# Generation successful
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/filter_bank.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/loop_filter.vhd $dsn/src/modulo_sps_counter.vhd $dsn/src/index_selector.vhd $dsn/src/polyphase_clock_sync.bde
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd
-# Compile Entity "fir_filter"
-# Compile Architecture "fir_arch" of Entity "fir_filter"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
 # Compile Entity "filter_bank"
-# Error: VLM_0030: filter_bank.vhd : (22, 10): Package "polyphase_clock_sync.array_type_pkg" must be recompiled because package "ieee.NUMERIC_STD" has changed.
-# Error: COMP96_0078: filter_bank.vhd : (39, 15): Unknown identifier "dout_array_t".
-# Error: COMP96_0064: filter_bank.vhd : (39, 15): Unknown type.
 # Compile Architecture "filter_bank_arch" of Entity "filter_bank"
-# Error: VLM_0009: filter_bank.vhd : (44, 1): Entity "polyphase_clock_sync.filter_bank" must be recompiled because package "ieee.NUMERIC_STD" has changed.
-# Error: COMP96_0056: filter_bank.vhd : (44, 1): Cannot find referenced entity declaration "filter_bank".
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Error: VLM_0030: dual_mux.vhd : (22, 10): Package "polyphase_clock_sync.array_type_pkg" must be recompiled because package "ieee.NUMERIC_STD" has changed.
-# Error: COMP96_0078: dual_mux.vhd : (39, 19): Unknown identifier "dout_array_t".
-# Error: COMP96_0064: dual_mux.vhd : (39, 19): Unknown type.
-# Error: COMP96_0078: dual_mux.vhd : (40, 20): Unknown identifier "dout_array_t".
-# Error: COMP96_0064: dual_mux.vhd : (40, 20): Unknown type.
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Error: VLM_0009: dual_mux.vhd : (46, 1): Entity "polyphase_clock_sync.dual_MUX" must be recompiled because package "ieee.MATH_REAL" has changed.
-# Error: COMP96_0056: dual_mux.vhd : (46, 1): Cannot find referenced entity declaration "dual_MUX".
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd
-# Compile Package "array_type_pkg"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/loop_filter.vhd
-# Compile Entity "loop_filter"
-# Compile Architecture "loop_filter_arch" of Entity "loop_filter"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/modulo_sps_counter.vhd
-# Compile Entity "modulo_sps_counter"
-# Compile Architecture "modulo_sps_counter_arch" of Entity "modulo_sps_counter"
-# Error: COMP96_0049: modulo_sps_counter.vhd : (57, 3): Syntax error in expression.
-# Error: COMP96_0015: modulo_sps_counter.vhd : (57, 3): ')' expected.
-# Error: COMP96_0019: modulo_sps_counter.vhd : (57, 7): Keyword 'then' expected.
-# Error: COMP96_0036: modulo_sps_counter.vhd : (57, 9): Boolean expression expected.
-# Error: COMP96_0019: modulo_sps_counter.vhd : (58, 6): Keyword 'if' expected.
-# Error: COMP96_0015: modulo_sps_counter.vhd : (58, 6): ';' expected.
-# Error: COMP96_0019: modulo_sps_counter.vhd : (61, 5): Keyword 'process' expected.
-# Error: COMP96_0019: modulo_sps_counter.vhd : (62, 0): Keyword 'end' expected.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/index_selector.vhd
-# Compile Entity "index_selector"
-# Compile Architecture "index_selector_arch" of Entity "index_selector"
-# File: ./../compile/polyphase_clock_sync.vhd
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
 # Compile Entity "polyphase_clock_sync"
 # Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
-# Compile failure 20 Errors 0 Warnings  Analysis time :  0.6 [s]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
+# Warning: ELAB1_0026: polyphase_clock_sync_2.vhd : (129, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# Compile success 0 Errors 1 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd
-# Compile Package "array_type_pkg"
-# Compile success 0 Errors 0 Warnings  Analysis time :  0.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/modulo_sps_counter.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/modulo_sps_counter.vhd
-# Compile Entity "modulo_sps_counter"
-# Compile Architecture "modulo_sps_counter_arch" of Entity "modulo_sps_counter"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
 # Compile success 0 Errors 0 Warnings  Analysis time :  63.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Compile success 0 Errors 0 Warnings  Analysis time :  31.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Compile success 0 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd
-# Compile Package "array_type_pkg"
-# Compile success 0 Errors 0 Warnings  Analysis time :  15.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
-# Compile Entity "filter_bank"
-# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
-# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/compile/polyphase_clock_sync.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/compile/polyphase_clock_sync.vhd
-# Compile Entity "polyphase_clock_sync"
-# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
-# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
-# Replacing AXIS_IQ_TDATA_WIDTH with AXIS_DATA_WIDTH
-# 
-# C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd: replaced 6 occurrences
-# C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd: replaced 3 occurrences
-# C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/compile/polyphase_clock_sync.vhd: replaced 6 occurrences
-# 15 occurrence(s) were replaced
-# 
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/filter_bank.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/loop_filter.vhd $dsn/src/modulo_sps_counter.vhd $dsn/src/index_selector.vhd $dsn/src/polyphase_clock_sync.bde
-# DRC: Checking file 'C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde'.
-# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 2 warning(s)
-# DRC: DRC process completed in 1 second(s).
+# Clearing workspace libraries...
+# Library Manager: Library "lut" contents cleared.
+# Library Manager: Library "matched_filter" contents cleared.
+# Library Manager: Library "matlab_cosim" contents cleared.
+# Library Manager: Library "piopru_rrc_filter" contents cleared.
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/polyphase_clock_sync.bde $dsn/src/ted.vhd $dsn/src/polyphase_clock_sync_2.vhd $dsn/src/filter_bank.vhd
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 4 warning(s)
+# DRC: DRC process completed in 4 second(s).
 # DRC: The results have been written to the log file. Double click on this line to view the log.
-# Generating C:\Users\student_1\Desktop\Soko這wski_praca_dyplomowa\My_design\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from C:\Users\student_1\Desktop\Soko這wski_praca_dyplomowa\My_design\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
 # Generation successful
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
 # Compile Entity "fir_filter"
 # Compile Architecture "fir_arch" of Entity "fir_filter"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
-# Compile Entity "filter_bank"
-# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
 # Compile Entity "dual_MUX"
 # Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
 # Compile Package "array_type_pkg"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/loop_filter.vhd
-# Compile Entity "loop_filter"
-# Compile Architecture "loop_filter_arch" of Entity "loop_filter"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/modulo_sps_counter.vhd
-# Compile Entity "modulo_sps_counter"
-# Compile Architecture "modulo_sps_counter_arch" of Entity "modulo_sps_counter"
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/index_selector.vhd
-# Compile Entity "index_selector"
-# Compile Architecture "index_selector_arch" of Entity "index_selector"
-# File: ./../compile/polyphase_clock_sync.vhd
+# File: .\..\compile\polyphase_clock_sync.vhd
 # Compile Entity "polyphase_clock_sync"
 # Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
-# Warning: ELAB1_0026: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (166, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
-# Compile success 0 Errors 1 Warnings  Analysis time :  0.2 [s]
-# DRC: Checking file 'C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde'.
-# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 3 warning(s)
-# DRC: DRC process completed in 1 second(s).
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\ted.vhd
+# Compile Entity "TED"
+# Compile Architecture "TED_arch" of Entity "TED"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (30, 1): Multiple entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (47, 1): Multiple architecture "polyphase_clock_sync" of entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Warning: COMP96_0993: Automatically determined compilation order may be incorrect because duplicate secondary design units were found.
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Top-level unit(s) detected:
+# Entity => polyphase_clock_sync
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: ELAB1_0026: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (132, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# Compile failure 2 Errors 4 Warnings  Analysis time :  3.0 [s]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  79.0 [ms]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.3 [s].
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: ELAB1_0026: polyphase_clock_sync_2.vhd : (129, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# Compile success 0 Errors 1 Warnings  Analysis time :  63.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  63.0 [ms]
+# Updating diagrams...
+# Updating diagram c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde...
+# ...No symbols to update found on the diagram.
+# ...Updating diagrams done.
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: ELAB1_0026: polyphase_clock_sync_2.vhd : (129, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# Compile success 0 Errors 1 Warnings  Analysis time :  0.1 [s]
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/polyphase_clock_sync.bde $dsn/src/ted.vhd $dsn/src/polyphase_clock_sync_2.vhd $dsn/src/filter_bank.vhd
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 5 warning(s)
+# DRC: DRC process completed in 3 second(s).
 # DRC: The results have been written to the log file. Double click on this line to view the log.
-# Conversion Functions added: 0
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync.bde
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generation successful
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: ./../compile/polyphase_clock_sync.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# File: .\..\compile\polyphase_clock_sync.vhd
 # Compile Entity "polyphase_clock_sync"
 # Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
-# Warning: ELAB1_0026: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (166, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
-# Compile success 0 Errors 1 Warnings  Analysis time :  47.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\ted.vhd
 # Compile Entity "TED"
-# Error: COMP96_0018: TED.vhd : (61, 3): Identifier expected.
-# Error: COMP96_0018: TED.vhd : (72, 3): Identifier expected.
 # Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0020: TED.vhd : (91, 2): Variable can be declared only in a process or subprogram.
-# Error: COMP96_0015: TED.vhd : (91, 25): ';' expected.
-# Error: COMP96_0015: TED.vhd : (111, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (111, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (112, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (112, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (113, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (113, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (113, 8): Design unit declaration expected.
-# Compile failure 11 Errors 0 Warnings  Analysis time :  47.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0020: TED.vhd : (91, 2): Variable can be declared only in a process or subprogram.
-# Error: COMP96_0015: TED.vhd : (91, 25): ';' expected.
-# Error: COMP96_0015: TED.vhd : (111, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (111, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (112, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (112, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (113, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (113, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (113, 8): Design unit declaration expected.
-# Compile failure 10 Errors 0 Warnings  Analysis time :  31.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0020: TED.vhd : (91, 2): Variable can be declared only in a process or subprogram.
-# Error: COMP96_0015: TED.vhd : (91, 25): ';' expected.
-# Error: COMP96_0015: TED.vhd : (111, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (111, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (112, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (112, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (113, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (113, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (113, 8): Design unit declaration expected.
-# Compile failure 10 Errors 0 Warnings  Analysis time :  0.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0020: TED.vhd : (91, 2): Variable can be declared only in a process or subprogram.
-# Error: COMP96_0015: TED.vhd : (91, 25): ';' expected.
-# Error: COMP96_0015: TED.vhd : (111, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (111, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (112, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (112, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (113, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (113, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (113, 8): Design unit declaration expected.
-# Compile failure 10 Errors 0 Warnings  Analysis time :  15.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 26): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0019: TED.vhd : (95, 3): Keyword 'end' expected.
-# Error: COMP96_0329: TED.vhd : (97, 3): Generate statement must have a label.
-# Error: COMP96_0019: TED.vhd : (97, 21): Keyword 'generate' expected.
-# Error: COMP96_0019: TED.vhd : (100, 3): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (100, 9): Design unit declaration expected.
-# Compile failure 6 Errors 0 Warnings  Analysis time :  31.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 26): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 38): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 38): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  78.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 38): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 38): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (93, 38): ';' expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  0.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 8 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0027: TED.vhd : (93, 35): Discrete range expected.
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 9 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 8 Errors 0 Warnings  Analysis time :  15.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
-# Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
-# Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 8 Errors 0 Warnings  Analysis time :  15.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Error: COMP96_0019: dual_mux.vhd : (52, 1): Keyword 'begin' expected.
-# Error: COMP96_0016: dual_mux.vhd : (52, 17): Design unit declaration expected.
-# Compile failure 2 Errors 0 Warnings  Analysis time :  78.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Error: COMP96_0019: dual_mux.vhd : (52, 1): Keyword 'begin' expected.
-# Error: COMP96_0016: dual_mux.vhd : (52, 17): Design unit declaration expected.
-# Compile failure 2 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Error: COMP96_0617: dual_mux.vhd : (72, 20): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
-# Error: COMP96_0617: dual_mux.vhd : (73, 21): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
-# Compile failure 2 Errors 0 Warnings  Analysis time :  31.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Error: COMP96_0617: dual_mux.vhd : (72, 20): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
-# Error: COMP96_0617: dual_mux.vhd : (73, 21): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
-# Compile failure 2 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd
-# Compile Package "array_type_pkg"
-# Compile success 0 Errors 0 Warnings  Analysis time :  16.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
-# Compile Entity "dual_MUX"
-# Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (30, 1): Multiple entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (47, 1): Multiple architecture "polyphase_clock_sync" of entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
 # Compile Entity "filter_bank"
 # Compile Architecture "filter_bank_arch" of Entity "filter_bank"
-# Error: COMP96_0100: filter_bank.vhd : (106, 3): Actual parameter type in port map does not match the type of the formal port 'm_axis_data_tdata'.
-# Compile failure 1 Errors 0 Warnings  Analysis time :  31.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd
-# Compile Entity "fir_filter"
-# Compile Architecture "fir_arch" of Entity "fir_filter"
-# Error: COMP96_0617: fir_filter.vhd : (103, 31): Assignment target incompatible with right side. Cannot convert 'UNRESOLVED_SIGNED' to 'STD_ULOGIC_VECTOR'.
-# Error: COMP96_0077: fir_filter.vhd : (114, 46): Undefined type of expression. Expected type 'UNRESOLVED_SIGNED'.
-# Compile failure 2 Errors 0 Warnings  Analysis time :  32.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd
-# Compile Entity "fir_filter"
-# Compile Architecture "fir_arch" of Entity "fir_filter"
-# Error: COMP96_0077: fir_filter.vhd : (114, 46): Undefined type of expression. Expected type 'UNRESOLVED_SIGNED'.
-# Compile failure 1 Errors 0 Warnings  Analysis time :  0.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd
-# Compile Entity "fir_filter"
-# Compile Architecture "fir_arch" of Entity "fir_filter"
-# Compile success 0 Errors 0 Warnings  Analysis time :  31.0 [ms]
+# Warning: COMP96_0993: Automatically determined compilation order may be incorrect because duplicate secondary design units were found.
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Top-level unit(s) detected:
+# Entity => polyphase_clock_sync
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: ELAB1_0026: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (132, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# Compile failure 2 Errors 4 Warnings  Analysis time :  0.7 [s]
 acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
 # Compile Entity "filter_bank"
 # Compile Architecture "filter_bank_arch" of Entity "filter_bank"
 # Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "s_axis_data_tdata".
 # Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "m_axis_data_tdata".
-# Error: COMP96_0100: filter_bank.vhd : (106, 3): Actual parameter type in port map does not match the type of the formal port 'm_axis_data_tdata'.
-# Compile failure 3 Errors 0 Warnings  Analysis time :  0.0 [ms]
+# Error: COMP96_0078: filter_bank.vhd : (104, 39): Unknown identifier "s_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (104, 39): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (104, 56): Illegal prefix for attribute 'length.
+# Error: COMP96_0078: filter_bank.vhd : (106, 43): Unknown identifier "m_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (106, 43): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (106, 60): Illegal prefix for attribute 'length.
+# Compile failure 8 Errors 0 Warnings  Analysis time :  62.0 [ms]
 acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "s_axis_data_tdata".
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "m_axis_data_tdata".
+# Error: COMP96_0078: filter_bank.vhd : (106, 43): Unknown identifier "m_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (106, 43): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (106, 60): Illegal prefix for attribute 'length.
+# Compile failure 5 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "s_axis_data_tdata".
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "m_axis_data_tdata".
+# Error: COMP96_0152: filter_bank.vhd : (106, 24): Formal "m_axis_data_tdata" of class signal must be associated with a signal.
+# Compile failure 3 Errors 0 Warnings  Analysis time :  46.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "s_axis_data_tdata".
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "m_axis_data_tdata".
+# Error: COMP96_0152: filter_bank.vhd : (106, 24): Formal "m_axis_data_tdata" of class signal must be associated with a signal.
+# Compile failure 3 Errors 0 Warnings  Analysis time :  31.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: COMP96_0078: filter_bank.vhd : (104, 39): Unknown identifier "s_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (104, 39): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (104, 56): Illegal prefix for attribute 'length.
+# Error: COMP96_0078: filter_bank.vhd : (106, 43): Unknown identifier "m_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (106, 43): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (106, 60): Illegal prefix for attribute 'length.
+# Compile failure 6 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: COMP96_0078: filter_bank.vhd : (104, 39): Unknown identifier "s_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (104, 39): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (104, 56): Illegal prefix for attribute 'length.
+# Error: COMP96_0078: filter_bank.vhd : (106, 43): Unknown identifier "m_axis_data_tdata".
+# Error: COMP96_0133: filter_bank.vhd : (106, 43): Cannot find object declaration.
+# Error: COMP96_0124: filter_bank.vhd : (106, 60): Illegal prefix for attribute 'length.
+# Compile failure 6 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
 # Compile Entity "filter_bank"
 # Compile Architecture "filter_bank_arch" of Entity "filter_bank"
 # Error: COMP96_0100: filter_bank.vhd : (104, 3): Actual parameter type in port map does not match the type of the formal port 's_axis_data_tdata'.
-# Compile failure 1 Errors 0 Warnings  Analysis time :  16.0 [ms]
+# Error: COMP96_0100: filter_bank.vhd : (106, 3): Actual parameter type in port map does not match the type of the formal port 'm_axis_data_tdata'.
+# Compile failure 2 Errors 0 Warnings  Analysis time :  31.0 [ms]
 acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filter_bank.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
 # Compile Entity "filter_bank"
 # Compile Architecture "filter_bank_arch" of Entity "filter_bank"
-# Compile success 0 Errors 0 Warnings  Analysis time :  32.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/dual_mux.vhd
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "s_axis_data_tdata".
+# Error: ELAB1_0021: filter_bank.vhd : (87, 0): Types do not match for port "m_axis_data_tdata".
+# Compile failure 2 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
 # Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Error: COMP96_0617: fir_filter.vhd : (103, 31): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
+# Error: COMP96_0617: fir_filter.vhd : (114, 28): Assignment target incompatible with right side. Cannot convert 'UNRESOLVED_SIGNED' to 'STD_ULOGIC_VECTOR'.
+# Compile failure 2 Errors 0 Warnings  Analysis time :  63.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  62.0 [ms]
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: COMP96_0055: filter_bank.vhd : (22, 10): Cannot find context item "work.array_type_pkg".
+# Error: COMP96_0078: filter_bank.vhd : (39, 15): Unknown identifier "dout_array_t".
+# Error: COMP96_0064: filter_bank.vhd : (39, 15): Unknown type.
+# Error: VLM_0029: filter_bank.vhd : (44, 1): Entity "filter_bank" not found.
+# Error: COMP96_0056: filter_bank.vhd : (44, 1): Cannot find referenced entity declaration "filter_bank".
+# Compile failure 5 Errors 0 Warnings  Analysis time :  0.1 [s]
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Top-level unit(s) detected:
+# Entity => filter_bank
+# Warning: ELAB1_0026: filter_bank.vhd : (87, 0): There is no default binding for component "fir_filter". (No entity named "fir_filter" was found).
+# Compile success 0 Errors 1 Warnings  Analysis time :  0.1 [s]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.3 [s].
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  62.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_a" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/polyphase_clock_sync.bde $dsn/src/ted.vhd $dsn/src/polyphase_clock_sync_2.vhd $dsn/src/filter_bank.vhd $dsn/src/polyphase_clock_sync_3.bde
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 6 warning(s)
+# DRC: DRC process completed in 3 second(s).
+# DRC: The results have been written to the log file. Double click on this line to view the log.
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generation successful
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_3.bde'.
+# DRC: polyphase_clock_sync_3.bde - 0 error(s), 0 warning(s)
+# DRC: DRC process completed in 1 second(s).
+# DRC: The results have been written to the log file. Double click on this line to view the log.
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync_3.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_3.bde ...
+# Generation successful
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
 # Compile Entity "dual_MUX"
 # Compile Architecture "dual_MUX" of Entity "dual_MUX"
-# Compile success 0 Errors 0 Warnings  Analysis time :  47.0 [ms]
-acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TED.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd
+# Error: COMP96_0617: dual_mux.vhd : (56, 21): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
+# Error: COMP96_0617: dual_mux.vhd : (57, 22): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Error: VLM_0029: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (50, 1): Entity "polyphase_clock_sync" not found.
+# Error: COMP96_0056: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (50, 1): Cannot find referenced entity declaration "polyphase_clock_sync".
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\ted.vhd
 # Compile Entity "TED"
-# Error: COMP96_0077: TED.vhd : (58, 32): Undefined type of expression. Expected type 'REAL'.
 # Compile Architecture "TED_arch" of Entity "TED"
-# Error: COMP96_0015: TED.vhd : (114, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (114, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (115, 7): ';' expected.
-# Error: COMP96_0019: TED.vhd : (115, 7): Keyword 'end' expected.
-# Error: COMP96_0015: TED.vhd : (116, 6): ';' expected.
-# Error: COMP96_0019: TED.vhd : (116, 6): Keyword 'end' expected.
-# Error: COMP96_0016: TED.vhd : (116, 8): Design unit declaration expected.
-# Compile failure 8 Errors 0 Warnings  Analysis time :  31.0 [ms]
-# DRC: Checking file 'C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde'.
-# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 10 warning(s)
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (30, 1): Multiple entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (47, 1): Multiple architecture "polyphase_clock_sync" of entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Warning: ELAB1_0026: polyphase_clock_sync_2.vhd : (129, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_a" of Entity "filter_bank"
+# File: .\..\compile\polyphase_clock_sync_3.vhd
+# Compile Entity "polyphase_clock_sync_3"
+# Compile Architecture "polyphase_clock_sync_3" of Entity "polyphase_clock_sync_3"
+# Compile failure 6 Errors 3 Warnings  Analysis time :  0.4 [s]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+# Updating diagrams...
+# Updating diagram c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde...
+# ...No symbols to update found on the diagram.
+# ...Updating diagrams done.
+# Getting symbols for update...
+# Updating symbols...
+# The 'dual_MUX' symbol from the 'polyphase_clock_sync' library was successfully updated.
+# The 'TED' symbol from the 'polyphase_clock_sync' library was successfully updated.
+# ...Updating symbols done
+# Error: You do not have valid license to run Riviera-PRO or ALINT-PRO. Contact Aldec for ordering information - sales@aldec.com.
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filter_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  62.0 [ms]
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/polyphase_clock_sync.bde $dsn/src/ted.vhd $dsn/src/polyphase_clock_sync_2.vhd $dsn/src/filter_bank.vhd
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: Symbols with contents differences:
+# DRC: Warning: 	Symbol 'TED' from library 'polyphase_clock_sync'.
+# DRC: Warning: 	Symbol 'dual_MUX' from library 'polyphase_clock_sync'.
+# DRC: Warning: Nets without source:
+# DRC: Warning: 	'ARAY160' array signal.
+# DRC: Warning: 	'ARRAY2770' array signal.
+# DRC: Warning: Nets without load:
+# DRC: Warning: 	'DIN' input bus terminal.
+# DRC: Warning: Unconnected terminals:
+# DRC: Warning: 	'DIN' input bus terminal.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 6 warning(s)
 # DRC: DRC process completed in 2 second(s).
-# DRC: The results have been written to the log file. Double click on this line to view the log.
-# Conversion Functions added: 0
-# polyphase_clock_sync: Updating instances of symbol 'dual_MUX' from library 'polyphase_clock_sync' (mux_and_mul)
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generation successful
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\ted.vhd
+# Compile Entity "TED"
+# Compile Architecture "TED_arch" of Entity "TED"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (30, 1): Multiple entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (47, 1): Multiple architecture "polyphase_clock_sync" of entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filter_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Warning: COMP96_0993: Automatically determined compilation order may be incorrect because duplicate secondary design units were found.
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Top-level unit(s) detected:
+# Entity => polyphase_clock_sync
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# Error: COMP96_0617: dual_mux.vhd : (56, 21): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
+# Error: COMP96_0617: dual_mux.vhd : (57, 22): Assignment target incompatible with right side. Cannot convert 'STD_ULOGIC_VECTOR' to 'UNRESOLVED_SIGNED'.
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile failure 4 Errors 3 Warnings  Analysis time :  0.5 [s]
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Error: COMP96_0055: filters_bank.vhd : (22, 10): Cannot find context item "work.array_type_pkg".
+# Error: COMP96_0078: filters_bank.vhd : (39, 15): Unknown identifier "dout_array_t".
+# Error: COMP96_0064: filters_bank.vhd : (39, 15): Unknown type.
+# Error: VLM_0029: filters_bank.vhd : (44, 1): Entity "filter_bank" not found.
+# Error: COMP96_0056: filters_bank.vhd : (44, 1): Cannot find referenced entity declaration "filter_bank".
+# Compile failure 5 Errors 0 Warnings  Analysis time :  0.1 [s]
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/array_type_pkg.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# Compile success 0 Errors 0 Warnings  Analysis time :  31.0 [ms]
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Top-level unit(s) detected:
+# Entity => fir_filter
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filter_bank"
+# Compile Architecture "filter_bank_arch" of Entity "filter_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  79.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filters_bank"
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+# Library Manager: Library "polyphase_clock_sync" contents cleared.
+acom -reorder -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd $dsn/src/dual_mux.vhd $dsn/src/array_type_pkg.vhd $dsn/src/polyphase_clock_sync.bde $dsn/src/ted.vhd $dsn/src/polyphase_clock_sync_2.vhd $dsn/src/filters_bank.vhd
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: Symbols with contents differences:
+# DRC: Warning: 	Symbol 'TED' from library 'polyphase_clock_sync'.
+# DRC: Warning: 	Symbol 'dual_MUX' from library 'polyphase_clock_sync'.
+# DRC: Warning: Nets without source:
+# DRC: Warning: 	'ARRAY2770' array signal.
+# DRC: Warning: Unconnected symbol output pins:
+# DRC: Warning: 	In instance 'U2': 'DOUT'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 4 warning(s)
+# DRC: DRC process completed in 2 second(s).
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generation successful
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\array_type_pkg.vhd
+# Compile Package "array_type_pkg"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\ted.vhd
+# Compile Entity "TED"
+# Compile Architecture "TED_arch" of Entity "TED"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (30, 1): Multiple entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Warning: COMP96_0994: polyphase_clock_sync_2.vhd : (47, 1): Multiple architecture "polyphase_clock_sync" of entity "polyphase_clock_sync" found in "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd", ".\..\compile\polyphase_clock_sync.vhd".
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filters_bank"
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Warning: COMP96_0993: Automatically determined compilation order may be incorrect because duplicate secondary design units were found.
+# Incorrect order of units detected.
+# Automatic reorder and incremental recompilation of required units in progress.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\dual_mux.vhd
+# Compile Entity "dual_MUX"
+# Compile Architecture "dual_MUX" of Entity "dual_MUX"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Top-level unit(s) detected:
+# Entity => polyphase_clock_sync
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Error: COMP96_0100: filters_bank.vhd : (104, 3): Actual parameter type in port map does not match the type of the formal port 's_axis_data_tdata'.
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile failure 3 Errors 3 Warnings  Analysis time :  0.5 [s]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filters_bank"
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Error: COMP96_0100: filters_bank.vhd : (104, 3): Actual parameter type in port map does not match the type of the formal port 's_axis_data_tdata'.
+# Compile failure 1 Errors 0 Warnings  Analysis time :  31.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/fir_filter.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\fir_filter.vhd
+# Compile Entity "fir_filter"
+# Compile Architecture "fir_arch" of Entity "fir_filter"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filters_bank"
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Error: COMP96_0100: filters_bank.vhd : (104, 3): Actual parameter type in port map does not match the type of the formal port 's_axis_data_tdata'.
+# Compile failure 1 Errors 0 Warnings  Analysis time :  32.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/filters_bank.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\filters_bank.vhd
+# Compile Entity "filters_bank"
+# Compile Architecture "filters_bank_arch" of Entity "filters_bank"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync.bde
+# DRC: Checking file 'c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde'.
+# DRC: Warning: Diagram structure inconsistencies were encountered when loading "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde".
+# DRC: Warning: The file has been repaired and the backup copy has been saved to "c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde.old".
+# DRC: Warning: Symbols with contents differences:
+# DRC: Warning: 	Symbol 'TED' from library 'polyphase_clock_sync'.
+# DRC: Warning: 	Symbol 'dual_MUX' from library 'polyphase_clock_sync'.
+# DRC: Warning: 	Symbol 'filters_bank' from library 'polyphase_clock_sync'.
+# DRC: Warning: Nets without source:
+# DRC: Warning: 	'ARRAY2770' array signal.
+# DRC: Warning: Unconnected symbol output pins:
+# DRC: Warning: 	In instance 'U2': 'DOUT'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 6 warning(s)
+# DRC: DRC process completed in 3 second(s).
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync.bde ...
+# Generation successful
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: .\..\compile\polyphase_clock_sync.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Error: ELAB1_0021: polyphase_clock_sync.bde(polyphase_clock_sync.vhd) : (132, 0): Types do not match for port "DIN".
+# Compile failure 3 Errors 0 Warnings  Analysis time :  47.0 [ms]
+# polyphase_clock_sync.bde: Updating instances of symbol 'filters_bank' from library 'polyphase_clock_sync' (U2, U3)
+# polyphase_clock_sync.bde: Updating instances of symbol 'TED' from library 'polyphase_clock_sync' (U1)
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync_2.vhd : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync_2.vhd : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Error: ELAB1_0021: polyphase_clock_sync_2.vhd : (132, 0): Types do not match for port "DIN".
+# Compile failure 3 Errors 0 Warnings  Analysis time :  78.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Error: ELAB1_0021: polyphase_clock_sync_2.vhd : (129, 0): Types do not match for port "DIN".
+# Compile failure 1 Errors 0 Warnings  Analysis time :  47.0 [ms]
+# DRC: Checking file 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/polyphase_clock_sync.bde'.
+# DRC: Warning: Symbols with contents differences:
+# DRC: Warning: 	Symbol 'dual_MUX' from library 'polyphase_clock_sync'.
+# DRC: Warning: Nets without source:
+# DRC: Warning: 	'ARRAY2770' array signal.
+# DRC: Warning: Unconnected symbol output pins:
+# DRC: Warning: 	In instance 'U2': 'DOUT'.
+# DRC: Warning: polyphase_clock_sync.bde - 0 error(s), 3 warning(s)
+# DRC: DRC process completed in 2 second(s).
+# Generating c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd from c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/polyphase_clock_sync.bde ...
+# Generation successful
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Error: COMP96_0272: polyphase_clock_sync_2.vhd : (45, 17): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync_2.vhd : (45, 17): Unknown type.
+# Error: COMP96_0272: polyphase_clock_sync_2.vhd : (46, 19): Ambiguous reference to type "SIGNED".
+# Error: COMP96_0064: polyphase_clock_sync_2.vhd : (46, 19): Unknown type.
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Error: COMP96_0100: polyphase_clock_sync_2.vhd : (136, 8): Actual parameter type in port map does not match the type of the formal port 'DIN'.
+# Error: COMP96_0100: polyphase_clock_sync_2.vhd : (143, 8): Actual parameter type in port map does not match the type of the formal port 'DIN'.
+# Compile failure 6 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/polyphase_clock_sync_2.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+# Warning: ELAB1_0026: polyphase_clock_sync_2.vhd : (129, 0): There is no default binding for component "filter_bank". (Generic "AXIS_IQ_TDATA_WIDTH" is not on the entity).
+SetActiveLib -work
+comp -include "$dsn\src\polyphase_clock_sync_2.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (30, 15): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (30, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (31, 12): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (31, 12): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (32, 12): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (32, 12): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (33, 14): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (33, 14): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (37, 18): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (37, 18): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (38, 15): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (38, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (39, 15): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (39, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (41, 16): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (41, 16): Unknown type.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (59, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (60, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (61, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (62, 4): Formal must be locally static name.
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Error: COMP96_0209: TestBench/polyphase_clock_sync_TB.vhd : (70, 6): Unknown architecture name used in configuration declaration.
+# Compile failure 21 Errors 0 Warnings  Analysis time :  62.0 [ms]
+# Error: DO_001 in file c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB_runtest.do line 3
+# Error: Cannot run c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB_runtest.do
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (30, 15): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (30, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (31, 12): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (31, 12): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (32, 12): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (32, 12): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (33, 14): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (33, 14): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (37, 18): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (37, 18): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (38, 15): Unknown identifier "STD_LOGIC".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (38, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (39, 15): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (39, 15): Unknown type.
+# Error: COMP96_0078: TestBench/polyphase_clock_sync_TB.vhd : (41, 16): Unknown identifier "SIGNED".
+# Error: COMP96_0064: TestBench/polyphase_clock_sync_TB.vhd : (41, 16): Unknown type.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (59, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (60, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (61, 4): Formal must be locally static name.
+# Error: COMP96_0333: TestBench/polyphase_clock_sync_TB.vhd : (62, 4): Formal must be locally static name.
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Error: COMP96_0209: TestBench/polyphase_clock_sync_TB.vhd : (70, 6): Unknown architecture name used in configuration declaration.
+# Compile failure 21 Errors 0 Warnings  Analysis time :  0.2 [s]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+SetActiveLib -work
+comp -include "$dsn\src\polyphase_clock_sync_2.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  62.0 [ms]
+asim +access +r TESTBENCH_FOR_polyphase_clock_sync 
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.3 [s].
+# KERNEL: Warning: You are using the Active-HDL EDU Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 37651 kB (elbread=1281 elab2=36211 kernel=158 sdf=0)
+# KERNEL: ASDB file was created in location c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\wave.asdb
+#  18:58, czwartek, 18 listopada 2021
+#  Simulation has been initialized
+wave 
+wave -noreg ARESTN
+wave -noreg CLK
+wave -noreg DIN
+wave -noreg DOUT
+# # The following lines can be used for timing simulation
+# # acom <backannotated_vhdl_file_name>
+# # comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB_tim_cfg.vhd" 
+# # asim +access +r TIMING_FOR_polyphase_clock_sync 
+# 4 signal(s) traced.
+# Waveform file 'untitled.awc' connected to 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/wave.asdb'.
+run 100 ns
+# KERNEL: stopped at time: 100 ns
+# KERNEL: Simulation has finished. There are no more test vectors to simulate.
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Error: COMP96_0019: TestBench/polyphase_clock_sync_TB.vhd : (75, 5): Keyword 'process' expected.
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile failure 1 Errors 0 Warnings  Analysis time :  62.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Error: COMP96_0122: TestBench/polyphase_clock_sync_TB.vhd : (69, 1): Symbol "CLK" has already been declared in this scope.
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile failure 1 Errors 0 Warnings  Analysis time :  47.0 [ms]
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+SetActiveLib -work
+comp -include "$dsn\src\polyphase_clock_sync_2.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+asim +access +r TESTBENCH_FOR_polyphase_clock_sync 
+# VSIM: Simulation has finished.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.2 [s].
+# KERNEL: Warning: You are using the Active-HDL EDU Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 37652 kB (elbread=1281 elab2=36212 kernel=158 sdf=0)
+# KERNEL: ASDB file was created in location c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\wave.asdb
+#  19:03, czwartek, 18 listopada 2021
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/wave.asdb'.
+wave 
+wave -noreg ARESTN
+wave -noreg CLK
+wave -noreg DIN
+wave -noreg DOUT
+# # The following lines can be used for timing simulation
+# # acom <backannotated_vhdl_file_name>
+# # comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB_tim_cfg.vhd" 
+# # asim +access +r TIMING_FOR_polyphase_clock_sync 
+# 4 signal(s) traced.
+# Waveform file 'untitled.awc' connected to 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/wave.asdb'.
+run 100 ns
+# KERNEL: stopped at time: 100 ns
+run 100 ns
+# KERNEL: stopped at time: 200 ns
+acom -O3 -e 100 -work polyphase_clock_sync -2008  $dsn/src/TestBench/polyphase_clock_sync_TB.vhd
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+SetActiveLib -work
+comp -include "$dsn\src\polyphase_clock_sync_2.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\polyphase_clock_sync_2.vhd
+# Compile Entity "polyphase_clock_sync"
+# Compile Architecture "polyphase_clock_sync" of Entity "polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
+# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\polyphase_clock_sync_TB.vhd
+# Compile Entity "polyphase_clock_sync_tb"
+# Compile Architecture "TB_ARCHITECTURE" of Entity "polyphase_clock_sync_tb"
+# Compile Configuration "TESTBENCH_FOR_polyphase_clock_sync"
+# Compile success 0 Errors 0 Warnings  Analysis time :  78.0 [ms]
+asim +access +r TESTBENCH_FOR_polyphase_clock_sync 
+# VSIM: Simulation has finished.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.2 [s].
+# KERNEL: Warning: You are using the Active-HDL EDU Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 37651 kB (elbread=1281 elab2=36212 kernel=158 sdf=0)
+# KERNEL: ASDB file was created in location c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\wave.asdb
+#  19:06, czwartek, 18 listopada 2021
+#  Simulation has been initialized
+wave 
+wave -noreg ARESTN
+wave -noreg CLK
+wave -noreg DIN
+wave -noreg DOUT
+# # The following lines can be used for timing simulation
+# # acom <backannotated_vhdl_file_name>
+# # comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB_tim_cfg.vhd" 
+# # asim +access +r TIMING_FOR_polyphase_clock_sync 
+# 4 signal(s) traced.
+# Waveform file 'untitled.awc' connected to 'c:/My_Designs/2_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/wave.asdb'.
+run 100 ns
+# KERNEL: stopped at time: 100 ns
+# 14 signal(s) traced.
+run 100 ns
+# KERNEL: stopped at time: 200 ns
+simulinkgenmod -f -o "C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\Simulink\polyphase_clock_sync.m" polyphase_clock_sync polyphase_clock_sync
+# Generating block description file: 'C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\Simulink\polyphase_clock_sync.m'...
+# Generation of block description file for "polyphase_clock_sync (polyphase_clock_sync)" completed successfully.
+open -txt {C:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync.wsp}

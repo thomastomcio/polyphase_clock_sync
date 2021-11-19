@@ -1,24 +1,41 @@
-timestamp=1635335461458
+timestamp=1637239559721
 
 [~A]
-ModifyID=2
+ModifyID=3
 Version=74
 
-[~MFT]
-0=3|0LUT.mgf|1615|0
-1=1|1LUT.mgf|0|0
-3=1|3LUT.mgf|0|0
-
 [lut]
-A/lut_arch=A/LUT_arch 21|../src/LUT.vhd|31|1*0
-BinW64/lut_arch=3*0
-I=0*981
-I/lut_arch=I/LUT_arch 0*1615
-M=11|2|ve8|1635335133578|../src/LUT.vhd|0*296*0x4ba8e680b3e312222a2355cd262296bfdd4c6632|0*910*0x23b75c12e3e89f2ef000564498faa8c2
-M/lut_arch=M/LUT_arch 21|2|ve8|1635335461273|../src/LUT.vhd|0*1251*0x38b834b8e4617d79163866fca2a789595e39c20e|0*1532*0x20116f55b147878295aeff36dce7fc50
-R=../src/LUT.vhd|13
-Version=12.0.118.7745 (Windows64)|00000003789cd3f5370600015b00b0|a4043a10fa8954902e9228d84fd89ef940335256ec24906eec3686af1850cdb7
-Version/lut_arch=12.0.118.7745 (Windows64)|00000003789cd3f5370600015b00b0|da5acd83a800e9457ac395ed495c826d4a07c75f2fa40568c09e9134eae7466ba58093e6322f4a10ea8dea69e7bf8931
+A/lut_arch=*21|../src/LUT.vhd|31|
+
+[~MFT]
+0=0|0LUT.mgf|0|0
 
 [~U]
 lut=LUT 11|0*0|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

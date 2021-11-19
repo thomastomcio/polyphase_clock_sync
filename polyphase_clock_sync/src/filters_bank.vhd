@@ -25,7 +25,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity filter_bank is	
+entity filters_bank is	
 	generic
 	(
 		CHANNELS : integer := 32; 
@@ -35,13 +35,13 @@ entity filter_bank is
 	port(
 		CLK : in std_logic;
 		ARESTN : in std_logic;
-		DIN : in std_logic_vector(AXIS_DATA_WIDTH-1 downto 0);
+		DIN : in signed(AXIS_DATA_WIDTH-1 downto 0);
 		DOUT : out 	dout_array_t(CHANNELS-1 downto 0)
 	);
 	
-end filter_bank;
+end filters_bank;
 
-architecture filter_bank_arch of filter_bank is
+architecture filters_bank_arch of filters_bank is
 
 --	component LUT -- przechowuje wsp. odpowiedzi impulsowej filtra
 --	port(
@@ -63,12 +63,12 @@ architecture filter_bank_arch of filter_bank is
             aresetn      : in std_logic; 
             aclken      : in std_logic; 
             -- Ports of Axi Slave Bus Interface s_axis   
-            s_axis_data_tdata      : in std_logic_vector(AXIS_DATA_WIDTH -1 downto 0);
+            s_axis_data_tdata      : in signed(AXIS_DATA_WIDTH -1 downto 0);
             s_axis_data_tready      : out std_logic;
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out std_logic_vector(AXIS_DATA_WIDTH -1 downto 0);
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);
             m_axis_data_tvalid      : out std_logic;
             m_axis_data_tready      : in std_logic
             );
@@ -117,4 +117,4 @@ begin
 --end process CTRL;
 --	
    
-end filter_bank_arch;
+end filters_bank_arch;

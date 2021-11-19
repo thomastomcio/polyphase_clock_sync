@@ -26,10 +26,6 @@ use IEEE.math_real.all;
 library work;
 use work.array_type_pkg.all;
 
--- Included from components --
-use IEEE.std_logic_arith.all;
-use IEEE.std_logic_signed.all;
-
 entity polyphase_clock_sync is
   generic(
        CHANNELS :integer:=32;

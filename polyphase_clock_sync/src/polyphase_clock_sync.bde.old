@@ -2,7 +2,7 @@ SCHM0106
 
 HEADER
 {
- FREEID 4125
+ FREEID 4108
  VARIABLES
  {
   #ARCHITECTURE="polyphase_clock_sync"
@@ -178,7 +178,7 @@ HEADER
       #DIRECTION="IN"
       #DOWNTO="1"
       #LENGTH="20"
-      #MDA_BASE_TYPE="SIGNED"
+      #MDA_BASE_TYPE="STD_LOGIC_VECTOR"
       #MDA_KIND="UNCONSTR"
       #MDA_RECORD_TOKEN="MDA"
       #NAME="filter_array_din"
@@ -199,7 +199,7 @@ HEADER
       #DIRECTION="IN"
       #DOWNTO="1"
       #LENGTH="20"
-      #MDA_BASE_TYPE="SIGNED"
+      #MDA_BASE_TYPE="STD_LOGIC_VECTOR"
       #MDA_KIND="UNCONSTR"
       #MDA_RECORD_TOKEN="MDA"
       #NAME="dfilter_array_din"
@@ -255,15 +255,14 @@ HEADER
    VARIABLES
    {
     #CUSTOM_NAME=""
-    #DESCRIPTION=""
     #GENERIC0="CHANNELS : INTEGER := 32"
     #GENERIC1="OVERSAMPLING_RATE : INTEGER := 1"
     #GENERIC2="AXIS_DATA_WIDTH : INTEGER := 32"
     #HDL_ENTRIES=
 "library IEEE,WORK;\n"+
-"use ieee.std_logic_1164.all,ieee.NUMERIC_STD.all,work.array_type_pkg.all;"
+"use ieee.std_logic_1164.all,work.array_type_pkg.all;"
     #LANGUAGE="VHDL"
-    #MODIFIED="1637257942"
+    #MODIFIED="1637257452"
     #NAME="filters_bank"
     #PRAGMED_GENERICS="CHANNELS;OVERSAMPLING_RATE;AXIS_DATA_WIDTH"
     #SYMBOL_GLOBALLY_UNIQUE_IDENTIFIER="fc381ba5-06a3-4b07-b70d-85cdbf23195f"
@@ -330,7 +329,7 @@ HEADER
       #SIDE="left"
       #VHDL_TYPE="STD_LOGIC"
      }
-     LINE  2, 0, 0
+     LINE  1, 0, 0
      {
       POINTS ( (0,0), (20,0) )
      }
@@ -346,7 +345,7 @@ HEADER
       #SIDE="left"
       #VHDL_TYPE="STD_LOGIC"
      }
-     LINE  2, 0, 0
+     LINE  1, 0, 0
      {
       POINTS ( (0,0), (20,0) )
      }
@@ -361,9 +360,9 @@ HEADER
       #LENGTH="20"
       #NAME="DIN(AXIS_DATA_WIDTH-1:0)"
       #SIDE="left"
-      #VHDL_TYPE="SIGNED"
+      #VHDL_TYPE="STD_LOGIC_VECTOR"
      }
-     LINE  2, 0, 0
+     LINE  1, 0, 0
      {
       POINTS ( (0,0), (20,0) )
      }
@@ -377,14 +376,14 @@ HEADER
       #DIRECTION="OUT"
       #DOWNTO="1"
       #LENGTH="20"
-      #MDA_BASE_TYPE="SIGNED"
+      #MDA_BASE_TYPE="STD_LOGIC_VECTOR"
       #MDA_KIND="UNCONSTR"
       #MDA_RECORD_TOKEN="MDA"
       #NAME="DOUT"
       #SIDE="right"
       #VHDL_TYPE="dout_array_t"
      }
-     LINE  2, 0, 0
+     LINE  1, 0, 0
      {
       POINTS ( (0,0), (-20,0) )
      }
@@ -708,7 +707,7 @@ PAGE ""
    {
     #DECLARATION="(CHANNELS-1:0)"
     #DOWNTO="1"
-    #MDA_BASE_TYPE="SIGNED"
+    #MDA_BASE_TYPE="STD_LOGIC_VECTOR"
     #MDA_KIND="UNCONSTR"
     #MDA_RECORD_TOKEN="MDA"
     #NAME="ARAY160"
@@ -789,7 +788,7 @@ PAGE ""
    {
     #DECLARATION="(CHANNELS-1:0)"
     #DOWNTO="1"
-    #MDA_BASE_TYPE="SIGNED"
+    #MDA_BASE_TYPE="STD_LOGIC_VECTOR"
     #MDA_KIND="UNCONSTR"
     #MDA_RECORD_TOKEN="MDA"
     #NAME="ARRAY2770"
@@ -1289,7 +1288,7 @@ PAGE ""
  
  BODY
  {
-  TEXT  4108, 0, 0
+  TEXT  4091, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1300,7 +1299,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  4109, 0, 0
+  TEXT  4092, 0, 0
   {
    PAGEALIGN 10
    TEXT "$CREATIONDATE"
@@ -1311,7 +1310,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  4110, 0, 0
+  TEXT  4093, 0, 0
   {
    PAGEALIGN 10
    TEXT "Title:"
@@ -1321,7 +1320,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  4111, 0, 0
+  TEXT  4094, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1333,7 +1332,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  4112, 0, 0
+  TEXT  4095, 0, 0
   {
    PAGEALIGN 10
    TEXT 
@@ -1346,7 +1345,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    MULTILINE
   }
-  TEXT  4113, 0, 0
+  TEXT  4096, 0, 0
   {
    PAGEALIGN 10
    TEXT "Page:"
@@ -1356,7 +1355,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  4114, 0, 0
+  TEXT  4097, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1368,7 +1367,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  4115, 0, 0
+  TEXT  4098, 0, 0
   {
    PAGEALIGN 10
    TEXT "Revision:"
@@ -1378,7 +1377,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  4116, 0, 0
+  TEXT  4099, 0, 0
   {
    PAGEALIGN 10
    TEXT "$Revision"
@@ -1389,7 +1388,7 @@ PAGE ""
    FONT (12,0,0,700,0,204,0,"Arial")
    UPDATE 0
   }
-  GROUP  4117, 0, 0
+  GROUP  4100, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1758,3108,2139)
@@ -1401,7 +1400,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  4118, 0, 0
+  GROUP  4101, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1958,3108,1959)
@@ -1413,7 +1412,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  4119, 0, 0
+  GROUP  4102, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1898,3108,1899)
@@ -1425,7 +1424,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  4120, 0, 0
+  GROUP  4103, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,2018,3108,2019)
@@ -1437,7 +1436,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  4121, 0, 0
+  GROUP  4104, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,2078,3108,2079)
@@ -1449,7 +1448,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  4122, 0, 0
+  GROUP  4105, 0, 0
   {
    PAGEALIGN 10
    RECT (2407,1758,2408,1899)
@@ -1460,7 +1459,7 @@ PAGE ""
     POINTS ( (0,0), (0,140) )
    }
   }
-  GROUP  4123, 0, 0
+  GROUP  4106, 0, 0
   {
    PAGEALIGN 10
    RECT (2407,1898,2408,2139)
@@ -1471,7 +1470,7 @@ PAGE ""
     POINTS ( (0,0), (0,240) )
    }
   }
-  BMPPICT  4124, 0, 0
+  BMPPICT  4107, 0, 0
   {
    PAGEALIGN 10
    RECT (2247,1818,2386,1863)

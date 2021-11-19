@@ -1,9 +1,8 @@
-.\src\fir_filter.vhd
-.\src\filter_bank.vhd
-.\src\dual_mux.vhd
 .\src\array_type_pkg.vhd
+.\src\fir_filter.vhd
+.\src\filters_bank.vhd
+.\src\dual_mux.vhd
+.\src\TED.vhd
 .\src\polyphase_clock_sync.bde
-.\src\ted.vhd
-.\src\not_used\loop_filter.vhd
-.\src\not_used\modulo_sps_counter.vhd
-.\src\not_used\index_selector.vhd
+.\src\polyphase_clock_sync_2.vhd
+.\src\testbench\polyphase_clock_sync_tb.vhd
