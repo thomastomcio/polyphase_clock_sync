@@ -1,1 +1,2 @@
-polyphase_clock_sync ENTITY
+TESTBENCH_FOR_polyphase_clock_sync CONFIGURATION
+d_filters_bank ENTITY

@@ -1,7 +1,7 @@
--------------------------------------------------------------------------------
+									-------------------------------------------------------------------------------
 --
--- Title       : filters_bank
--- Design      : filters_bank
+-- Title       : d_filters_bank
+-- Design      : d_filters_bank
 -- Author      : thomas
 -- Company     : Aldec
 --
@@ -25,7 +25,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity filters_bank is	
+entity d_filters_bank is	
 	generic
 	(
 		CHANNELS : integer := 32; 
@@ -39,9 +39,9 @@ entity filters_bank is
 		DOUT : out 	dout_array_t(CHANNELS-1 downto 0)
 	);
 	
-end filters_bank;
+end d_filters_bank;
 
-architecture filters_bank_arch of filters_bank is
+architecture d_filters_bank_arch of d_filters_bank is
 
 --	component LUT -- przechowuje wsp. odpowiedzi impulsowej filtra
 --	port(
@@ -49,7 +49,7 @@ architecture filters_bank_arch of filters_bank is
 --	);
 --	end component LUT;
 
-	component fir_filter  
+	component d_fir_filter  
 		  generic(
 		  	AXIS_DATA_WIDTH : integer;
 			FILTER_INDEX : integer;
@@ -72,7 +72,7 @@ architecture filters_bank_arch of filters_bank is
             m_axis_data_tvalid      : out std_logic;
             m_axis_data_tready      : in std_logic
             );
-	end component fir_filter;				   
+	end component d_fir_filter;				   
 	
 	-- sygnaly i typy , inne komponenty	   
 signal ACKLEN : std_logic := '1';
@@ -84,7 +84,7 @@ signal M_AXIS_TREADY : std_logic := '1';
   
 begin
    GEN_FILTER_BANK: for I in 0 to CHANNELS-1 generate
-      FIR : fir_filter
+      D_FIR : d_fir_filter
 	  generic map
 	  (	
 		AXIS_DATA_WIDTH => 32,
@@ -117,4 +117,4 @@ begin
 --end process CTRL;
 --	
    
-end filters_bank_arch;
+end d_filters_bank_arch;

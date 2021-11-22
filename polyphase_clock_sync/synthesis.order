@@ -1,4 +1,3 @@
-i<>.\src\polyphase_clock_sync.bde
 i<>.\src\dual_mux.vhd
 i<>.\src\array_type_pkg.vhd
 i<>.\src\loop_filter.vhd
@@ -8,3 +7,5 @@ i<>.\src\TED.vhd
 i<>.\src\polyphase_clock_sync_2.vhd
 i<>.\src\filters_bank.vhd
 i<>.\src\TestBench\polyphase_clock_sync_TB.vhd
+i<>.\src\d_fir_filter.vhd
+i<>.\src\d_filters_bank.vhd

@@ -1,6 +1,10 @@
-307
+349
+~E 1 "../src/d_filters_bank.vhd" 28 d_filters_bank
+~A 1 "../src/d_filters_bank.vhd" 44 d_filters_bank_arch
+~E 1 "../src/d_fir_filter.vhd" 6 d_fir_filter
+~A 1 "../src/d_fir_filter.vhd" 39 d_fir_arch
 ~E 1 "../src/dual_mux.vhd" 29 dual_MUX
-~A 1 "../src/dual_mux.vhd" 50 dual_MUX
+~A 1 "../src/dual_mux.vhd" 51 dual_MUX
 ~E 0 "" 0 filter_bank
 ~A 0 "" 0 filter_bank_a
 ~A 0 "" 0 filter_bank_arch
@@ -18,6 +22,6 @@
 ~A 1 "../src/polyphase_clock_sync_2.vhd" 46 polyphase_clock_sync
 ~E 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 11 polyphase_clock_sync_tb
 ~A 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 22 TB_ARCHITECTURE
-~E 1 "../src/ted.vhd" 29 TED
-~A 1 "../src/ted.vhd" 55 TED_arch
-~C 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 82 testbench_for_polyphase_clock_sync
+~E 1 "../src/TED.vhd" 29 TED
+~A 1 "../src/TED.vhd" 56 TED_arch
+~C 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 86 testbench_for_polyphase_clock_sync

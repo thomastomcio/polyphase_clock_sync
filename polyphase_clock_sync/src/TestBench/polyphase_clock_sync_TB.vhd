@@ -77,8 +77,8 @@ end process clock;
 ARESTN <= '0', '1' after T_reset;
 
 -- DATA, read from file
-data: process
-DIN <= 
+--data: process
+--DIN <= 
 
 
 end TB_ARCHITECTURE;
