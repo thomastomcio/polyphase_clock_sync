@@ -46,11 +46,11 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 16;
+p = 14;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
-return;
+% return;
 
 % RECEIVER
 % dekompozycja polifazowa filtru (jego odp. impulsowej) uprzednio zinterpolowanego
@@ -113,9 +113,9 @@ underflow = 1;
 vi = 0;
 
 % na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
-Kp = 1;
+Kp = 2;
 damping_factor = 0.707;
-loop_bw = 0.0628;
+loop_bw = 0.0628/5.8;
 
 denom = Kp*(1 + 2*damping_factor*loop_bw + loop_bw*loop_bw);
 K1= (4*damping_factor*loop_bw)/denom;
