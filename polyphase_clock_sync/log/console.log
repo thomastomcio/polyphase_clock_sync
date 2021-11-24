@@ -1,0 +1,7 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+simulinkgenmod -f -o "C:\Users\student_1\Desktop\Soko³owski_praca_dyplomowa\My_design\Simulink\polyphase_clock_sync.m" polyphase_clock_sync polyphase_clock_sync
+# Generating block description file: 'C:\Users\student_1\Desktop\Soko³owski_praca_dyplomowa\My_design\Simulink\polyphase_clock_sync.m'...
+# Generation of block description file for "polyphase_clock_sync (polyphase_clock_sync)" completed successfully.
+# design activate matlab_cosim
+# Design: Design "matlab_cosim" has been set as active.

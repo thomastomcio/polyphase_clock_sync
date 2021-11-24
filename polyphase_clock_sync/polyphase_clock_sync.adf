@@ -136,10 +136,9 @@ GenerateToCustomFolder=0
 Synchronize=0
 
 [HierarchyViewer]
-HierarchyInformation=polyphase_clock_sync|polyphase_clock_sync|0 polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1
+HierarchyInformation=
 ShowHide=ShowTopLevel
 Selected=
-
 
 [Groups]
 TestBench=1
@@ -181,3 +180,4 @@ not_used/index_selector.vhd=-1
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
+

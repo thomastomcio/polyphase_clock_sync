@@ -1,10 +1,2 @@
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/array_type_pkg.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/d_fir_filter.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/fir_filter.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/filters_bank.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/d_filters_bank.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TED.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/dual_mux.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync_2.vhd" VHDL polyphase_clock_sync 0 0 0 -02 -08
-"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/src/TestBench/polyphase_clock_sync_TB.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
+"C:/Users/student_1/Desktop/Soko這wski_praca_dyplomowa/My_design/polyphase_clock_sync/compile/polyphase_clock_sync.vhd" VHDL polyphase_clock_sync 1 0 0 -02 -08
 . . 0 0 0

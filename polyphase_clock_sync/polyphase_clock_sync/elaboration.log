@@ -1,9 +1,36 @@
-Active-HDL 12.0.118.7745 2021-11-19 16:55:04
+Active-HDL 12.0.118.7745 2021-11-24 16:03:35
 
 Elaboration top modules:
+Architecture                  polyphase_clock_sync(polyphase_clock_sync)
 
 
-----------------------------------------------------------------------------------
-Library                 | Comment
-----------------------------------------------------------------------------------
-----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+Entity               | Architecture         | Library              | Info | Compiler Version          | Compilation Options
+----------------------------------------------------------------------------------------------------------------------------
+polyphase_clock_sync | polyphase_clock_sync | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+dual_MUX             | dual_MUX             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+TED                  | TED_arch             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+filters_bank         | filters_bank_arch    | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+d_filters_bank       | d_filters_bank_arch  | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+fir_filter           | fir_arch             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+d_fir_filter         | d_fir_arch           | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------
+VHDL Package                                | Library              | Info | Compiler Version          | Compilation Options
+----------------------------------------------------------------------------------------------------------------------------
+standard                                    | std                  |      |                           | <unavailable>
+TEXTIO                                      | std                  |      |                           | <unavailable>
+std_logic_1164                              | ieee                 |      |                           | <unavailable>
+NUMERIC_STD                                 | ieee                 |      |                           | <unavailable>
+array_type_pkg                              | polyphase_clock_sync |      |                           | <unavailable>
+MATH_REAL                                   | ieee                 |      |                           | <unavailable>
+----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------
+Library                                     | Comment
+----------------------------------------------------------------------------------------------------------------------------
+ieee                                        | Standard IEEE packages library
+polyphase_clock_sync                        | None
+std                                         | Standard VHDL library
+----------------------------------------------------------------------------------------------------------------------------

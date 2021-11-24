@@ -1,32 +1,42 @@
-Active-HDL 10.5a.12.6914 2021-11-06 14:08:47
+Active-HDL 12.0.118.7745 2021-11-24 17:02:39
 
 Elaboration top modules:
-Architecture                  COSIMULATION(fir_filter_component_test)
+Architecture                  COSIMULATION(polyphase_clock_sync_HDL)
 
 
----------------------------------------------------------------------------------------------------------------
-Entity                    | Architecture | Library      | Info | Compiler Version        | Compilation Options
----------------------------------------------------------------------------------------------------------------
-fir_filter_component_test | COSIMULATION | matlab_cosim |      | 10.5a.12.6914 (Windows) | -dbg -2008
-fir                       | fir_arch     | fir_filter   |      | 10.5a.12.6914 (Windows) | -O3
----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+Entity                   | Architecture         | Library              | Info | Compiler Version          | Compilation Options
+--------------------------------------------------------------------------------------------------------------------------------
+polyphase_clock_sync_HDL | COSIMULATION         | matlab_cosim         |      | 12.0.118.7745 (Windows64) | -dbg -2008
+polyphase_clock_sync     | polyphase_clock_sync | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+dual_MUX                 | dual_MUX             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+TED                      | TED_arch             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+filters_bank             | filters_bank_arch    | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+d_filters_bank           | d_filters_bank_arch  | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+fir_filter               | fir_arch             | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+d_fir_filter             | d_fir_arch           | polyphase_clock_sync |      | 12.0.118.7745 (Windows64) | -O3 -2008
+--------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------------------------
-VHDL Package                             | Library      | Info | Compiler Version        | Compilation Options
----------------------------------------------------------------------------------------------------------------
-standard                                 | std          |      |                         | <unavailable>
-TEXTIO                                   | std          |      |                         | <unavailable>
-std_logic_1164                           | ieee         |      |                         | <unavailable>
-NUMERIC_STD                              | ieee         |      |                         | <unavailable>
-std_logic_arith                          | ieee         |      |                         | <unavailable>
-STD_LOGIC_SIGNED                         | ieee         |      |                         | <unavailable>
----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+VHDL Package                                    | Library              | Info | Compiler Version          | Compilation Options
+--------------------------------------------------------------------------------------------------------------------------------
+standard                                        | std                  |      |                           | <unavailable>
+TEXTIO                                          | std                  |      |                           | <unavailable>
+std_logic_1164                                  | ieee                 |      |                           | <unavailable>
+MATH_REAL                                       | ieee                 |      |                           | <unavailable>
+NUMERIC_STD                                     | ieee                 |      |                           | <unavailable>
+array_type_pkg                                  | polyphase_clock_sync |      |                           | <unavailable>
+--------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------------------------
-Library                                  | Comment
----------------------------------------------------------------------------------------------------------------
-fir_filter                               | None
-ieee                                     | Standard IEEE packages library
-matlab_cosim                             | None
-std                                      | Standard VHDL library
----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+Library                                         | Comment
+--------------------------------------------------------------------------------------------------------------------------------
+ieee                                            | Standard IEEE packages library
+matlab_cosim                                    | None
+polyphase_clock_sync                            | None
+std                                             | Standard VHDL library
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Simulation Options: asim +access +w -t 100ns polyphase_clock_sync_HDL -loadvhpi C:\Aldec\Active-HDL-12-x64\Mathworks\R2021a\aldec_simulink_pipe.dll:direct_link
+

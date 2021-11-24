@@ -58,7 +58,7 @@ Extension8=alintws
 WindowVisible=0
 
 [HierarchyViewer]
-HierarchyInformation=filter_bank_test|COSIMULATION|0 fir_filter_component_test|COSIMULATION|0
+HierarchyInformation=polyphase_clock_sync_hdl|COSIMULATION|0 
 ShowHide=ShowTopLevel
 Selected=
 
@@ -71,14 +71,13 @@ impulse_response=1
 /fir_filter_test_proj.awc=-1
 /fir_filter_component_test.vhd=-1
 /fir_filter_impulse_response.asdb=-1
-/fir_filter_impulse_response.awc=-1
 /piopru_fir_test.vhd=-1
 /fir_filter_component_test.asdb=-1
 /fir_filter_component_test.awc=-1
-/untitled.vhd=-1
 /filter_bank_test.vhd=-1
 /filter_bank_test.asdb=-1
 /filter_bank_test.awc=-1
+/polyphase_clock_sync_HDL.vhd=-1
 impulse_response/impulse_response.asdb=-1
 impulse_response/impulse_response.awc=-1
 
@@ -88,14 +87,13 @@ impulse_response/impulse_response.awc=-1
 .\src\fir_filter_test_proj.awc=Accelerated Waveform Configuration
 .\src\fir_filter_component_test.vhd=VHDL Source Code
 .\src\fir_filter_impulse_response.asdb=Accelerated Waveform File
-.\src\fir_filter_impulse_response.awc=Accelerated Waveform Configuration
 .\src\piopru_fir_test.vhd=VHDL Source Code
 .\src\fir_filter_component_test.asdb=Accelerated Waveform File
 .\src\fir_filter_component_test.awc=Accelerated Waveform Configuration
-.\src\untitled.vhd=VHDL Source Code
 .\src\filter_bank_test.vhd=VHDL Source Code
 .\src\filter_bank_test.asdb=Accelerated Waveform File
 .\src\filter_bank_test.awc=Accelerated Waveform Configuration
+.\src\polyphase_clock_sync_HDL.vhd=VHDL Source Code
 .\src\impulse_response\impulse_response.asdb=Accelerated Waveform File
 .\src\impulse_response\impulse_response.awc=Accelerated Waveform Configuration
 

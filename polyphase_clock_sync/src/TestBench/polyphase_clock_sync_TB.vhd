@@ -1,10 +1,7 @@
 library polyphase_clock_sync;
 use polyphase_clock_sync.array_type_pkg.all;
-
-library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
-use IEEE.math_real.all;
+library ieee;
+use ieee.MATH_REAL.all;
 
 	-- Add your library and packages declaration here ...
 
@@ -30,22 +27,21 @@ architecture TB_ARCHITECTURE of polyphase_clock_sync_tb is
 		SAMPLES_PER_SYMBOL : INTEGER := 2;
 		OVERSAMPLING_RATE : INTEGER := 32 );
 	port(
-		ARESTN : in STD_LOGIC;
 		CLK : in STD_LOGIC;
+		ARESTN : in STD_LOGIC;
 		DIN : in SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 		DOUT : out SIGNED(AXIS_DATA_WIDTH-1 downto 0) );
 	end component;
 
 	-- Stimulus signals - signals mapped to the input and inout ports of tested entity
-	signal ARESTN : STD_LOGIC := '0';
-	signal CLK : STD_LOGIC := '0';
+	signal CLK : STD_LOGIC;
+	signal ARESTN : STD_LOGIC;
 	signal DIN : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 	-- Observed signals - signals mapped to the output ports of tested entity
 	signal DOUT : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 
 	-- Add your code here ...
-	constant T_reset : time := 20 ns;
-	
+
 begin
 
 	-- Unit Under Test port map
@@ -60,26 +56,13 @@ begin
 		)
 
 		port map (
-			ARESTN => ARESTN,
 			CLK => CLK,
+			ARESTN => ARESTN,
 			DIN => DIN,
 			DOUT => DOUT
 		);
 
--- CLK
-clock : process
-begin
-	CLK <=  not CLK; 
-	wait for 2.5ns; 
-end process clock;	
-
--- AREATN
-ARESTN <= '0', '1' after T_reset;
-
--- DATA, read from file
---data: process
---DIN <= 
-
+	-- Add your stimulus here ...
 
 end TB_ARCHITECTURE;
 

@@ -1,4 +1,4 @@
-349
+390
 ~E 1 "../src/d_filters_bank.vhd" 28 d_filters_bank
 ~A 1 "../src/d_filters_bank.vhd" 44 d_filters_bank_arch
 ~E 1 "../src/d_fir_filter.vhd" 6 d_fir_filter
@@ -18,10 +18,10 @@
 ~A 0 "" 0 loop_filter_arch
 ~E 0 "" 0 modulo_sps_counter
 ~A 0 "" 0 modulo_sps_counter_arch
-~E 1 "../src/polyphase_clock_sync_2.vhd" 29 polyphase_clock_sync
-~A 1 "../src/polyphase_clock_sync_2.vhd" 46 polyphase_clock_sync
-~E 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 11 polyphase_clock_sync_tb
-~A 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 22 TB_ARCHITECTURE
+~E 1 "../compile/polyphase_clock_sync.vhd" 29 polyphase_clock_sync
+~A 1 "../compile/polyphase_clock_sync.vhd" 46 polyphase_clock_sync
+~E 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 8 polyphase_clock_sync_tb
+~A 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 22 tb_architecture
 ~E 1 "../src/TED.vhd" 29 TED
 ~A 1 "../src/TED.vhd" 56 TED_arch
 ~C 1 "../src/TestBench/polyphase_clock_sync_TB.vhd" 86 testbench_for_polyphase_clock_sync

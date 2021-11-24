@@ -17,8 +17,8 @@ matched_filter=0
 lut=0
 filter_bank=0
 fir_filter=0
-matlab_cosim=0
+matlab_cosim=1
 piopru_rrc_filter=0
 polyphase_clock_sync=1
 [Settings]
-Active=polyphase_clock_sync
+Active=matlab_cosim

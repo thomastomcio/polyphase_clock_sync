@@ -33,11 +33,9 @@ INCREMENT NETS
 0
 ##########
 LIBRARIES
-library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.std_logic_arith.all;
-use IEEE.std_logic_signed.all;
-use IEEE.std_logic_unsigned.all;
+
+
+
 ##########
 PAGE_DEFAULT_HEIGHT
 1700

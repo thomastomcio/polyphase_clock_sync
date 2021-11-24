@@ -18,8 +18,8 @@
 --
 -------------------------------------------------------------------------------
 																			   	 
-library work;
-use work.array_type_pkg.all;
+library polyphase_clock_sync;
+use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -91,7 +91,7 @@ begin
 		FILTER_INDEX => I,
 		OVERSAMPLING_RATE => OVERSAMPLING_RATE,
 		number_of_filters => CHANNELS,
-		num_of_coef => 51,
+		num_of_coef => 543,
 		coef_size => 12
 		)
 	  port map

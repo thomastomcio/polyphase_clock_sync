@@ -1,4 +1,4 @@
-MESSAGE "File: fir_filter_component_test.vhd" 
-MESSAGE "Compile Entity "fir_filter_component_test"" 
-MESSAGE "Compile Architecture "COSIMULATION" of Entity "fir_filter_component_test"" 
-SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  63.0 [ms]" 
+MESSAGE "File: C:/Users/student_1/Desktop/Soko³owski_praca_dyplomowa/My_design/matlab_cosim/src/polyphase_clock_sync_HDL.vhd " 
+MESSAGE "Compile Entity "polyphase_clock_sync_HDL"" 
+MESSAGE "Compile Architecture "COSIMULATION" of Entity "polyphase_clock_sync_HDL"" 
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  32.0 [ms]" 
