@@ -5,8 +5,8 @@
 
 clear; close all; clc;
 
-rolloff = 0.9;
-symbols = 10; % szerokoœæ odpowiedzi impulsowych
+rolloff = 0.4;
+symbols = 8; % szerokoœæ odpowiedzi impulsowych
 N1 = 2; % probek na symbol w odp. impulsowej tranmitera
 N2 =32; % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
 sps = N1*N2; % probek na symbol w odp. impulsowej odbiornika
@@ -21,7 +21,6 @@ data = data';
 
 A = rcosdesign(rolloff, symbols, N1, 'sqrt'); % nadajnik, filter enery is one
 B = rcosdesign(rolloff, symbols,  sps, 'sqrt'); % odbiornik, filter enery is one
-
 
 % TRANSMITER
 y_transmit = upfirdn(data, A, N1);  % shaped interpolated transmit data
@@ -46,7 +45,7 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 34;
+p = 35;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
@@ -55,7 +54,7 @@ y_transmit = y_transmit(1 : N2 : end);   % rate = N1
 % RECEIVER
 % dekompozycja polifazowa filtru (jego odp. impulsowej) uprzednio zinterpolowanego
 
-% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
+y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
 % sygna³u nadajnika
 
 rec_filtered = [];
@@ -66,6 +65,7 @@ taps_per_filter = ceil(length(B)/N2);
 B = [B, zeros(1, N2*taps_per_filter-length(B))];
 
 difftaps = licz_diff(B, N2);
+% return;
 difftaps = [difftaps, zeros(1, N2*taps_per_filter-length(difftaps))];
 
 for n=0:N2-1
@@ -113,9 +113,9 @@ underflow = 1;
 vi = 0;
 
 % na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
-Kp = 1.5;
+Kp = 1.6;
 damping_factor = 0.707;
-loop_bw = 0.0628/5.3;
+loop_bw = 0.0628/10;
 
 denom = Kp*(1 + 2*damping_factor*loop_bw + loop_bw*loop_bw);
 K1= (4*damping_factor*loop_bw)/denom;
