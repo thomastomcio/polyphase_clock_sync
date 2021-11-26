@@ -1,6 +1,0 @@
-Repaired file: C:/Users/student_1/Desktop/Soko³owski_praca_dyplomowa/My_design/polyphase_clock_sync/src/polyphase_clock_sync.bde:
-
-____________________________________________________________________________________________________
-Removed superfluous range resolution statements:
-	
-

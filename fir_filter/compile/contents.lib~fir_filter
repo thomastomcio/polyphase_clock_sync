@@ -1,5 +1,0 @@
-5
-~E 1 "../src/fir_filter.vhd" 8 fir
-~A 1 "../src/fir_filter.vhd" 41 fir_arch
-~E 1 "../src/fir_filter.vhd" 8 fir_filter
-~A 1 "../src/fir_filter.vhd" 41 fir_arch

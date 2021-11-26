@@ -181,7 +181,7 @@ not_used/index_selector.vhd=-1
 .\src\not_used\loop_filter.vhd=VHDL Source Code
 .\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
 .\src\not_used\index_selector.vhd=VHDL Source Code
+.\compile\polyphase_clock_sync.vhd=VHDL Source Code
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
-

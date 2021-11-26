@@ -1,7 +1,0 @@
-acom -O3 -e 100 -work fir_filter -2002  $dsn/src/fir_filter.vhd
-# Warning: DAGGEN_0523: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
-# File: c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\fir_filter\src\fir_filter.vhd
-# Compile Entity "fir_filter"
-# Compile Architecture "fir_arch" of Entity "fir_filter"
-# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
-# Design: Design "filter_bank" has been set as active.

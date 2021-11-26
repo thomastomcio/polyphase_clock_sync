@@ -1,10 +1,10 @@
-.\src\array_type_pkg.vhd
 .\src\d_fir_filter.vhd
 .\src\fir_filter.vhd
-.\src\filters_bank.vhd
+.\src\array_type_pkg.vhd
 .\src\d_filters_bank.vhd
-.\src\TED.vhd
 .\src\dual_mux.vhd
-.\src\TestBench\polyphase_clock_sync_TB.vhd
+.\src\filters_bank.vhd
+.\src\ted.vhd
 .\src\polyphase_clock_sync.bde
+.\src\testbench\polyphase_clock_sync_tb.vhd
 .\src\testbench\filters_bank_tb.vhd

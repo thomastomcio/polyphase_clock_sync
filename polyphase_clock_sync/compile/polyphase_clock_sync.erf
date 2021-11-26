@@ -1,6 +1,0 @@
-WARNING DAGGEN_0523: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
-MESSAGE "File: C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench\filters_bank_TB.vhd" 
-MESSAGE "Compile Entity "filters_bank_tb"" 
-MESSAGE "Compile Architecture "TB_ARCHITECTURE" of Entity "filters_bank_tb"" 
-MESSAGE "Compile Configuration "TESTBENCH_FOR_filters_bank"" 
-SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  93.0 [ms]" 
