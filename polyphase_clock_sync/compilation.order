@@ -7,3 +7,4 @@
 .\src\dual_mux.vhd
 .\src\TestBench\polyphase_clock_sync_TB.vhd
 .\src\polyphase_clock_sync.bde
+.\src\testbench\filters_bank_tb.vhd
