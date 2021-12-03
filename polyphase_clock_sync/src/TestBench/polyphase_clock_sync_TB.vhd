@@ -78,7 +78,7 @@ end process RESET;
 DATA: process begin
 	DIN <= (others=>'0'); wait for 8 ns; DIN <= x"00000001"; wait for 5ns; DIN <= (others=>'0');
 	wait;
-end process DATA;
+end process DATA;	 
 
 
 end TB_ARCHITECTURE;

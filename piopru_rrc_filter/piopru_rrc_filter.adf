@@ -1,0 +1,91 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=4
+Current Config=compile
+
+[Configurations]
+compile=piopru_rrc_filter
+
+[Library]
+piopru_rrc_filter=.\piopru_rrc_filter\piopru_rrc_filter.lib
+
+[$LibMap$]
+piopru_rrc_filter=.
+Active_lib=
+
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+FLOWTOOLS=ONLY_IMPL
+ON_SERVERFARM_SYNTH=0
+ON_SERVERFARM_IMPL=0
+ON_SERVERFARM_SIM=0
+REFRESH_FLOW=1
+RUN_MODE_SYNTH=1
+
+[IMPLEMENTATION]
+UCF=
+IMPL_DONT_RUN_LOGIC_OPTIMIZATION=0
+IMPL_DONT_RUN_POWER_OPTIMIZATION=1
+IMPL_DONT_RUN_PLACE=0
+IMPL_DONT_RUN_POST_PLACE_POWER_OPTIMIZATION=0
+IMPL_DONT_RUN_PLACED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_ROUTE=0
+IMPL_DONT_RUN_ROUTED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_BITSTREAM=0
+FLOW_STEPS_RESET=0
+
+[Groups]
+TestBench=1
+
+[Folders]
+Name0=Event Lists
+Directory0=c:\My_Designs\polyphase_clock_sync\piopru_rrc_filter\
+Extension0=lst
+Name1=Logs
+Directory1=c:\My_Designs\polyphase_clock_sync\piopru_rrc_filter\
+Extension1=log;htm;xml;txt
+Name2=Waveforms
+Directory2=c:\My_Designs\polyphase_clock_sync\piopru_rrc_filter\
+Extension2=asdb;awc;asdbc;asdbe
+Name3=Makefiles
+Directory3=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension3=mak
+Name4=Memory
+Directory4=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension5=dll
+Name6=PDF
+Directory6=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension6=pdf
+Name7=HTML
+Directory7=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension7=htm;html
+Name8=ALINT-PRO Workspaces
+Directory8=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\piopru_rrc_filter\
+Extension8=alintws
+
+[SpecTracer]
+WindowVisible=0
+
+[Files]
+/piopru_fir_filter.vhd=-1
+/QAM_const_mod.v=-1
+TestBench/QAM_const_mod_TB.vhd=-1
+TestBench/QAM_const_mod_TB_runtest.do=-1
+TestBench/fir_TB.vhd=-1
+TestBench/fir_TB_runtest.do=-1
+
+[Files.Data]
+.\src\piopru_fir_filter.vhd=VHDL Source Code
+.\src\QAM_const_mod.v=Verilog Source Code
+.\src\TestBench\QAM_const_mod_TB.vhd=VHDL Source Code
+.\src\TestBench\QAM_const_mod_TB_runtest.do=Macro
+.\src\TestBench\fir_TB.vhd=VHDL Test Bench
+.\src\TestBench\fir_TB_runtest.do=Macro
+
+[SYNTHESIS]
+SYNTH_DONT_RUN_SYNTHESIS=0

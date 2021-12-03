@@ -5,6 +5,7 @@
 .\src\dual_mux.vhd
 .\src\filters_bank.vhd
 .\src\ted.vhd
-.\src\polyphase_clock_sync.bde
 .\src\testbench\polyphase_clock_sync_tb.vhd
 .\src\testbench\filters_bank_tb.vhd
+.\src\testbench\fir_filter_tb.vhd
+.\src\polyphase_clock_sync_2.vhd

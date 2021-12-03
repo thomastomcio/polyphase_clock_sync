@@ -81,22 +81,22 @@ SYNTH_DONT_RUN_SYNTHESIS=0
 
 [Folders]
 Name3=Makefiles
-Directory3=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory3=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension3=mak
 Name4=Memory
-Directory4=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory4=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension4=mem;mif;hex
 Name5=Dll Libraries
-Directory5=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory5=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension5=dll
 Name6=PDF
-Directory6=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory6=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension6=pdf
 Name7=HTML
-Directory7=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory7=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension7=htm;html
 Name8=ALINT-PRO Workspaces
-Directory8=c:\My_Designs\2_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory8=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\
 Extension8=alintws
 
 [SpecTracer]
@@ -142,6 +142,7 @@ Selected=
 
 [Groups]
 TestBench=1
+TestBench\sim_data=1
 not_used=0
 
 [Files]
@@ -158,6 +159,14 @@ TestBench/polyphase_clock_sync_TB.vhd=-1
 TestBench/polyphase_clock_sync_TB_runtest.do=-1
 TestBench/filters_bank_TB.vhd=-1
 TestBench/filters_bank_TB_runtest.do=-1
+TestBench/fir_filter_TB.vhd=-1
+TestBench/fir_filter_TB_runtest.do=-1
+TestBench\sim_data/filters_bank.asdb=-1
+TestBench\sim_data/filters_bank.awc=-1
+TestBench\sim_data/fir_filter.asdb=-1
+TestBench\sim_data/fir_filter.awc=-1
+TestBench\sim_data/psc(index0).asdb=-1
+TestBench\sim_data/psc(index0).awc=-1
 not_used/filter_bank.vhd=-1
 not_used/loop_filter.vhd=-1
 not_used/modulo_sps_counter.vhd=-1
@@ -177,11 +186,18 @@ not_used/index_selector.vhd=-1
 .\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
 .\src\TestBench\filters_bank_TB.vhd=VHDL Test Bench
 .\src\TestBench\filters_bank_TB_runtest.do=Macro
+.\src\TestBench\fir_filter_TB.vhd=VHDL Test Bench
+.\src\TestBench\fir_filter_TB_runtest.do=Macro
+.\src\TestBench\sim_data\filters_bank.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\filters_bank.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\fir_filter.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\fir_filter.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\psc(index0).asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\psc(index0).awc=Accelerated Waveform Configuration
 .\src\not_used\filter_bank.vhd=VHDL Source Code
 .\src\not_used\loop_filter.vhd=VHDL Source Code
 .\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
 .\src\not_used\index_selector.vhd=VHDL Source Code
-.\compile\polyphase_clock_sync.vhd=VHDL Source Code
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1

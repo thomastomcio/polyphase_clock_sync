@@ -33,7 +33,7 @@ entity dual_MUX is
 		AXIS_DATA_WIDTH : integer := 32
 		);
 	port(
-		clk : in std_logic; 
+		--clk : in std_logic; 
 		arestn : in std_logic;
 		
 		f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	 -- synthesizable
@@ -51,36 +51,38 @@ end dual_MUX;
 architecture dual_MUX of dual_MUX is 
 
 signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
-signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
+--signal filter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+--signal dfilter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
 
 -- TODO: sprawdziæ czy nie jest potrzebny clk
 begin												
 
-process(clk, arestn)
+process(arestn, underflow)	-- mo¿e clk
 	variable next_symbol : std_logic := '0';
 begin
 	if(arestn = '0') then	
 		filter_dout <= (others => '0');	
 		dfilter_dout <= (others => '0');
 		valid <= '0';
-	elsif (rising_edge(clk)) then	
-		if(underflow = '1' and next_symbol = '1') then
-			filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
-			dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
-			next_symbol := '0';
-			valid <= '1';
-		elsif(underflow = '1' and next_symbol = '0') then
-			filter_dout <= f_prev_sample;
-			dfilter_dout <= df_prev_sample;
-			valid <= '1';				
-		else				
-			f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-			df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));	
-			next_symbol := '1';
-			valid <= '0';
-		end if;				
+	--elsif (rising_edge(clk)) then	
+	elsif(underflow = '1' and next_symbol = '1') then
+		filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
+		dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
+		next_symbol := '0';
+		valid <= '1';
+	elsif(underflow = '1' and next_symbol = '0') then
+		filter_dout <= f_prev_sample;
+		dfilter_dout <= df_prev_sample;
+		valid <= '1';				
+	else				
+		f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+		df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));	
+		next_symbol := '1';
+		valid <= '0';
+	--	end if;				
 	end if;	
-end process;   
+end process;   														 
 
 end dual_MUX;
 

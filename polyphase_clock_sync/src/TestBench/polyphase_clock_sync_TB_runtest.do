@@ -1,5 +1,6 @@
 SetActiveLib -work
-comp -include "$dsn\compile\polyphase_clock_sync.vhd" 
+comp -include "$dsn\compile\polyphase_clock_sync_2.vhd" 
+# uwaga, nalezy zaminiæ na 	"$dsn\compile\polyphase_clock_sync.vhd" 
 comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
 asim +access +r TESTBENCH_FOR_polyphase_clock_sync 
 wave 

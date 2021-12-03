@@ -4,7 +4,7 @@ Version=12.0
 matched_filter=.\matched_filter\matched_filter.adf
 lut=.\LUT\LUT.adf
 matlab_cosim=.\matlab_cosim\matlab_cosim.adf
-piopru_rrc_filter=.\..\..\..\Users\thomas\Desktop\filter_bank\polyphase_clock_sync-20211101T153345Z-001\polyphase_clock_sync\piopru_rrc_filter\piopru_rrc_filter.adf
+piopru_rrc_filter=.\piopru_rrc_filter\piopru_rrc_filter.adf
 polyphase_clock_sync=.\polyphase_clock_sync\polyphase_clock_sync.adf
 [Browser]
 sort=order
