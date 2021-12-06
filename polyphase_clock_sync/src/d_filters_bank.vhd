@@ -36,7 +36,15 @@ entity d_filters_bank is
 		CLK : in std_logic;
 		ARESTN : in std_logic;
 		DIN : in signed(AXIS_DATA_WIDTH-1 downto 0);
-		DOUT : out 	dout_array_t(CHANNELS-1 downto 0)
+		DOUT : out 	dout_array_t(CHANNELS-1 downto 0);
+		
+	    -- Ports of Axi Slave Bus Interface s_axis   
+        s_axis_tready      : out std_logic;
+        s_axis_tvalid      : in std_logic;
+        
+        -- Ports of Axi Master Bus Interface s_axis   
+        m_axis_tvalid      : out std_logic;
+        m_axis_tready      : in std_logic
 	);
 	
 end d_filters_bank;
@@ -76,10 +84,10 @@ architecture d_filters_bank_arch of d_filters_bank is
 	
 	-- sygnaly i typy , inne komponenty	   
 signal ACKLEN : std_logic := '1';
-signal S_AXIS_TVALID : std_logic := '1';
-signal S_AXIS_TREADY : std_logic; 
---signal M_AXIS_TVALID : std_logic;
-signal M_AXIS_TREADY : std_logic := '1';
+--signal S_AXIS_TVALID : std_logic := '1';
+--signal S_AXIS_TREADY : std_logic; 
+----signal M_AXIS_TVALID : std_logic;
+--signal M_AXIS_TREADY : std_logic := '1';
 
   
 begin
@@ -91,7 +99,7 @@ begin
 		FILTER_INDEX => I,
 		OVERSAMPLING_RATE => OVERSAMPLING_RATE,
 		number_of_filters => CHANNELS,
-		num_of_coef => 543,
+		num_of_coef => 544,
 		coef_size => 12
 		)
 	  port map
@@ -99,10 +107,11 @@ begin
 		aclk => CLK, 
 		aresetn => ARESTN,
 		aclken => ACKLEN,
-		s_axis_data_tvalid => S_AXIS_TVALID,
-		s_axis_data_tready => S_AXIS_TREADY,
+		s_axis_data_tvalid => s_axis_tvalid,
+		s_axis_data_tready => s_axis_tready,
 		s_axis_data_tdata => DIN,
-		m_axis_data_tready => M_AXIS_TREADY,
+		m_axis_data_tready => m_axis_tready, 
+		m_axis_data_tvalid => m_axis_tvalid,
 		m_axis_data_tdata => DOUT(I)
 	   );
    end generate GEN_FILTER_BANK;  

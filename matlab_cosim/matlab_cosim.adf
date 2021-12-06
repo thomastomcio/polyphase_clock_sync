@@ -78,7 +78,6 @@ impulse_response=1
 /filter_bank_test.asdb=-1
 /filter_bank_test.awc=-1
 /polyphase_clock_sync_HDL.vhd=-1
-/polyphase_clock_sync_HDL_2019.vhd=-1
 impulse_response/impulse_response.asdb=-1
 impulse_response/impulse_response.awc=-1
 
@@ -95,8 +94,6 @@ impulse_response/impulse_response.awc=-1
 .\src\filter_bank_test.asdb=Accelerated Waveform File
 .\src\filter_bank_test.awc=Accelerated Waveform Configuration
 .\src\polyphase_clock_sync_HDL.vhd=VHDL Source Code
-.\src\polyphase_clock_sync_HDL_2019.vhd=VHDL Source Code
 .\src\impulse_response\impulse_response.asdb=Accelerated Waveform File
 .\src\impulse_response\impulse_response.awc=Accelerated Waveform Configuration
 
-c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\matlab_cosim.adf

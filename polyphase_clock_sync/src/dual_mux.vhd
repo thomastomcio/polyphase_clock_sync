@@ -44,7 +44,17 @@ entity dual_MUX is
 		
 		valid	: out std_logic;
 		filter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);
-		dfilter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0) 
+		dfilter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);
+		
+	            -- Ports of Axi Slave Bus Interface s_axis   
+        s_axis_tready      : out std_logic;
+        s_axis_tvalid      : in std_logic;
+        
+        -- Ports of Axi Master Bus Interface s_axis   
+        m_axis_tvalid      : out std_logic;
+        m_axis_tready      : in std_logic
+		
+		
 		);
 end dual_MUX;
 
@@ -55,30 +65,32 @@ signal state : state_type;
 
 signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
 signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
-				--signal filter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
-				--signal dfilter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
 
--- TODO: sprawdziæ czy nie jest potrzebny clk
 begin												
---
---process(arestn, clk)	-- mo¿e clk
---	variable next_symbol : std_logic := '0';
---begin
---	if(arestn = '0') then	 
---		state <= IDLE;
---	elsif (rising_edge(clk)) then	
---		if(underflow = '1' and next_symbol = '1') then
---			next_symbol := '0';
---			state <= NEXT_SAMPLE;
---		elsif(underflow = '1' and next_symbol = '0') then
---			next_symbol := '0';
---			state <= PREV_SAMPLE;
---		else				
---			next_symbol := '1';	 
---			state <= SAVE_SAMPLE;
---		end if;				
---	end if;	
---end process;
+	
+-- state machine for AXIS control
+process(arestn, clk)
+begin
+	if(arestn = '0') then
+		m_axis_tvalid <= '0';
+		s_axis_tready <= '0';
+	elsif(rising_edge(clk)) then 
+		case state is
+			when IDLE =>
+				m_axis_tvalid <= '0';
+				s_axis_tready <= '1';
+			when SECOND_SAMPLE =>
+				m_axis_tvalid <= '1';
+				s_axis_tready <= '0';
+			when PREV_SAMPLE =>		 
+				m_axis_tvalid <= '0';
+				s_axis_tready <= '1';
+			when NEXT_SAMPLE =>
+				m_axis_tvalid <= '1';
+				s_axis_tready <= '0';				
+		end case;
+	end if;	
+end process;
 
 process (arestn, underflow)
 begin		 
@@ -87,46 +99,29 @@ begin
 	else --(rising_edge(clk)) then	
 		case state is
 			when IDLE =>
-				filter_dout <= (others => '0');	
-				dfilter_dout <= (others => '0');
-				valid <= '0';  
-				state <= SECOND_SAMPLE;
-			when SECOND_SAMPLE =>		
+--				filter_dout <= (others => '0');	
+--				dfilter_dout <= (others => '0');  
 				if(underflow = '1') then
-					filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
-					dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
-					valid <= '1'; 
+					state <= SECOND_SAMPLE;
 				else
-					valid <= '0';
+					state <= PREV_SAMPLE;
 				end if;
-				state <= PREV_SAMPLE;
+			when SECOND_SAMPLE =>		
+				filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
+				dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
+				state <= IDLE;
 			when PREV_SAMPLE => 
 				f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-				df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));	
-				valid <= '0';	  													
-				
-				if(underflow = '1') then
+				df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));		
+				if(underflow = '1') then 
 					state <= NEXT_SAMPLE;
-				else
-					state <= SECOND_SAMPLE;
+				else 
+					state <= IDLE;
 				end if;
 			when NEXT_SAMPLE =>	
 				filter_dout <= f_prev_sample;
-				dfilter_dout <= df_prev_sample;										
-				valid <= '1';					
-				state <= PREV_SAMPLE;
---			when SAVE_SAMPLE =>	
---				f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
---				df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));	
---				filter_dout <= (others => '0');	
---				dfilter_dout <= (others => '0');   
---			  	valid <= '0';					   
---				if(underflow = '1') then
---					--next_symbol := '0';
---					state <= NEXT_SAMPLE;  
---				else 
---					state <= SAVE_SAMPLE;
---				end if;		  
+				dfilter_dout <= df_prev_sample;
+				state <= IDLE;
 		end case;	   
 	end if;
 end process;

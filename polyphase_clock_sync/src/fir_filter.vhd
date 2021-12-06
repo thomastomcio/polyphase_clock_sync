@@ -80,6 +80,8 @@ constant zero : std_logic_vector (((coef_size)+(s_axis_data_tdata'length))+6 -1 
 signal mult : mult_table := (others => (others => '0'));       
 signal add : add_table := (others => (others => '0')); 
 signal data : signed(s_axis_data_tdata'range):= (others => '0'); -- by³o std_logic_vector
+
+signal tready : std_logic := '0';
 --type DINS_TYPE is array(N-1 downto 0) of std_logic_vector(s_axis_data_tdata'range);
 --signal DINS : DINS_TYPE;
 --attribute syn_multstyle : string;
@@ -100,7 +102,7 @@ begin
             m_axis_data_tdata <= (others => '0');
       elsif rising_edge(aclk)  then 
             if aclken = '1' then         -- clock enable             
-                  if (s_axis_data_tvalid = '1') then
+                  if (s_axis_data_tvalid = '1' and  m_axis_data_tready ='1') then
                         data<= s_axis_data_tdata;            -- assign input data to variable         
                         --DINS <= DINS(N-2 downto 0) & data;
                         for i in  sub_num_of_coeffs - 1 downto 0  loop-- loop that make convolution
@@ -121,6 +123,6 @@ begin
 end process;  
 
 s_axis_data_tready <= m_axis_data_tready;
-m_axis_data_tvalid <= s_axis_data_tvalid;
+m_axis_data_tvalid <= s_axis_data_tvalid and m_axis_data_tready;
 
 end fir_arch;

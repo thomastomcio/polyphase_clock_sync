@@ -81,10 +81,9 @@ end process RESET;
 --	wait;
 --end process DATA;	 
 
-<<<<<<< HEAD
 READ_FILE : process(CLK)
 
-file QPSK_data_file : text open read_mode is "./Testbench/data.txt";
+file QPSK_data_file : text open read_mode is "./Testbench/QPSK_data.txt";
 variable row : line;
 variable data_read : integer;
 
@@ -99,27 +98,7 @@ begin
 		DIN <= to_signed(data_read, DIN'length);
 	end if;
 end process READ_FILE;
-=======
-FILE_READ : process(clk)
 
-type t_integer_array is array(integer range <>) of integer; -- na póŸniej
-file QPSK_data : text open read_mode is "./Testbench/QPSK_data.txt";
-variable row : line;  													 
-variable data_read : integer;											 
-
-begin 
-	if(falling_edge(clk)) then
-		if(not endfile(QPSK_data)) then
-			readline(QPSK_data, row);
-		end if;
-		
-		read(row, data_read);
-		DIN <= to_signed(data_read, DIN'length);	
-		
-	end if;
-end process FILE_READ;
-
->>>>>>> f480595 (Added data read from file in PCSync testbench)
 
 
 end TB_ARCHITECTURE;

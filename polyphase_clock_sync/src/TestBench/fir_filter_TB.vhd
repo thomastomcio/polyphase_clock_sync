@@ -1,7 +1,7 @@
 library ieee;
 use ieee.NUMERIC_STD.all;
 use ieee.std_logic_1164.all;
-
+use std.textio.all;
 	-- Add your library and packages declaration here ...
 
 entity fir_filter_tb is
@@ -87,16 +87,48 @@ RESET : process begin
 	wait;
 end process RESET;
 
-DATA: process begin
-	s_axis_data_tdata <= (others=>'0');
-	wait for 8 ns;
-	s_axis_data_tdata <= x"00000001";
-	wait for 5ns;
-	s_axis_data_tdata <= (others=>'0');
-	wait;
-end process DATA;				  
+--DATA: process begin
+--	s_axis_data_tdata <= (others=>'0');
+--	wait for 8 ns;
+--	s_axis_data_tdata <= x"00000001";
+--	wait for 5ns;
+--	s_axis_data_tdata <= (others=>'0');
+--	wait;
+--end process DATA;				  
+--
+--s_axis_data_tvalid <= '1';
+--
 
-s_axis_data_tvalid <= '1';
+READ_FILE : process(aclk)
+
+file QPSK_data_file : text open read_mode is "./Testbench/QPSK_data.txt";
+variable row : line;
+variable data_read : integer;
+
+begin
+	if(falling_edge(aclk)) then
+		if(not endfile(QPSK_data_file)) then
+			readline(QPSK_data_file, row);
+		end if;
+		
+		read(row, data_read);
+		
+		s_axis_data_tdata <= to_signed(data_read, s_axis_data_tdata'length);
+	end if;
+end process READ_FILE;
+
+
+CONTROL: process begin	
+	m_axis_data_tready <= '1';
+	wait for 30 ns;
+	s_axis_data_tvalid <= '1';
+	wait for 30 ns;
+	m_axis_data_tready <= '0';
+	wait for 30 ns;			  
+	s_axis_data_tvalid <= '0';
+	
+end process CONTROL;
+
 	
 
 end TB_ARCHITECTURE;
