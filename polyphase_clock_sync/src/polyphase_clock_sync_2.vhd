@@ -8,7 +8,7 @@
 -------------------------------------------------------------------------------
 --
 -- File        : c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\compile\polyphase_clock_sync.vhd
--- Generated   : Sat Nov 27 16:11:19 2021
+-- Generated   : Sun Dec  5 21:15:59 2021
 -- From        : c:/My_Designs/2_polyphase_clock_sync/temp_polyphase_clock_sync/polyphase_clock_sync/polyphase_clock_sync/src/polyphase_clock_sync.bde
 -- By          : Bde2Vhdl ver. 2.6
 --
@@ -28,6 +28,7 @@ use polyphase_clock_sync.array_type_pkg.all;
 
 -- Included from components --
 --use IEEE.std_logic_arith.all;
+--use IEEE.std_logic_signed.all;
 
 entity polyphase_clock_sync is
   generic(
@@ -57,8 +58,9 @@ component dual_MUX
   );
   port (
        arestn : in STD_LOGIC;
+       clk : in STD_LOGIC;
        dfilter_array_din : in dout_array_t(CHANNELS-1 downto 0);
-       f_index : in STD_LOGIC_VECTOR(integer(ceil(log2(real(CHANNELS))))-1 downto 0);
+       f_index : in STD_LOGIC_VECTOR;
        filter_array_din : in dout_array_t(CHANNELS-1 downto 0);
        underflow : in STD_LOGIC;
        dfilter_dout : out SIGNED(AXIS_DATA_WIDTH-1 downto 0);
@@ -127,9 +129,10 @@ begin
 MUX : dual_MUX
   port map(
        arestn => ARESTN,
+       clk => CLK,
        dfilter_array_din => ARRAY2770,
        dfilter_dout => d_filter_net(AXIS_DATA_WIDTH-1 downto 0),
-       f_index => f_index(integer(ceil(log2(real(CHANNELS))))-1 downto 0),
+       f_index => f_index,
        filter_array_din => ARAY160,
        filter_dout => filter_net(AXIS_DATA_WIDTH-1 downto 0),
        underflow => underflow,

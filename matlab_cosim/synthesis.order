@@ -3,3 +3,4 @@ i<>.\src\fir_filter_component_test.vhd
 i<>.\src\piopru_fir_test.vhd
 i<>.\src\filter_bank_test.vhd
 i<>.\src\polyphase_clock_sync_HDL.vhd
+i<>.\src\polyphase_clock_sync_HDL_2019.vhd

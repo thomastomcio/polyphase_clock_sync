@@ -43,11 +43,11 @@ architecture d_fir_arch of d_fir_filter is
 --constant coef_size       : integer :=13;             --- set number of coefficient bits -- 13 because range is -4096 to 4095
 
 type coefs_table is array (integer range <>) of integer range -1024 to 1023;           
-
+constant sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number_of_filters; -- ceil(num_of_coef/number_of_filters)	
 
 function decimate_and_shift(base_coeffs : coefs_table; number_of_filters : integer; shift : integer)
 return coefs_table is
-	variable sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number_of_filters;	
+	--variable sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number_of_filters;	
 	variable rv : coefs_table(sub_num_of_coeffs-1 downto 0) := (others=>0);			
 	variable step : integer := number_of_filters;
 begin
@@ -69,7 +69,7 @@ constant coefs_const : coefs_table(num_of_coef - 1 downto 0) := (0,8,9,9,9,9,9,9
 --(0,51,74,82,70,35,-16,-74,-132,-167,-175,-136,-43,101,284,486,688,859,976,1019,968,828,603,315,0,-315,-603,-828,-968,-1019,-976,-859,-688,-486,-284,-101,43,136,175,167,132,74,16,-35,-70,-82,-74,-51,-19,0);
 
 -- table of sub coefficients		
-constant coefs : coefs_table := decimate_and_shift(coefs_const, number_of_filters, FILTER_INDEX);
+constant coefs : coefs_table(sub_num_of_coeffs - 1 downto 0) := decimate_and_shift(coefs_const, number_of_filters, FILTER_INDEX);
 
 
 type mult_table is array (num_of_coef - 1 downto 0) of signed (((coef_size)+(s_axis_data_tdata'length))-1 downto 0); 
@@ -105,16 +105,16 @@ begin
                   if (s_axis_data_tvalid = '1') then
                         data<= s_axis_data_tdata;            -- assign input data to variable         
                         --DINS <= DINS(N-2 downto 0) & data;
-                        for i in  num_of_coef - 1 downto 0  loop-- loop that make convolution
+                        for i in  sub_num_of_coeffs - 1 downto 0  loop-- loop that make convolution
                               --mult(i) <=  to_signed((coefs(num_of_coef - 1 -i)),coef_size)*signed(data);  -- multiplicate data with coeficients
-                              mult(i) <= to_signed((coefs(num_of_coef - 1 -i)),coef_size) * signed(data);
+                              mult(i) <= to_signed((coefs(sub_num_of_coeffs - 1 -i)),coef_size) * signed(data);
                               if i = 0 then
                                     add(i) <= signed(zero) + mult(0);                                                                                      -- add vector is shift register
                               else
                                     add(i) <= mult(i) + add(i-1);
                               end if;
                         end loop;
-						m_axis_data_tdata <= add(num_of_coef-1)(31 downto 0);--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
+						m_axis_data_tdata <= add(sub_num_of_coeffs-1)(31 downto 0);--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
                         -- by³o to: m_axis_data_tdata <= std_logic_vector(add(num_of_coef-1)(31 downto 0));--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
                         --full_out :=  std_logic_vector(add(num_of_coef-1));
                   end if;       
