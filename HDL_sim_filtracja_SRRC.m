@@ -45,7 +45,7 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 10;
+p = 15;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
@@ -76,11 +76,12 @@ diff_rec_filtered = [];
 
 taps_per_filter = ceil(length(B)/N2);
 
-B = round(1024*B); % scale by 1024
+B1 = B;
+B = round(1024*B);% scale by 1024
 B = [B, zeros(1, N2*taps_per_filter-length(B))];
 
 % wyliczenie pochodnej wraz z normalizacj¹ do mocy równej 1 na symbol
-difftaps = round(1024*licz_diff(B, N2)); % scale by 1024
+difftaps = round(1024*licz_diff(B1, N2)); % scale by 1024
 % return;
 difftaps = [difftaps, zeros(1, N2*taps_per_filter-length(difftaps))];
 
