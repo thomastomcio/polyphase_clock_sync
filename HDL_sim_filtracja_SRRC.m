@@ -45,18 +45,30 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 25;
+p = 10;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
 
+% scale data and write to file
+y_transmit_1024 = round(1024*y_transmit);
+
+% scale data and write to file
+y_transmit_1024 = round(1024*y_transmit);
+fid = fopen(getenv("QPSK_DATA_FILE"), 'wt');
+fprintf(fid, "%d\n", y_transmit_1024); 
+disp("ok");
+
+y_transmit = y_transmit_1024;
+
 % signal transmited
 % plot(y_transmit);
+
 
 % RECEIVER
 % dekompozycja polifazowa filtru (jego odp. impulsowej) uprzednio zinterpolowanego
 
-y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
+% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do
 % sygna³u nadajnika
 
 rec_filtered = [];
@@ -64,10 +76,11 @@ diff_rec_filtered = [];
 
 taps_per_filter = ceil(length(B)/N2);
 
+B = round(1024*B); % scale by 1024
 B = [B, zeros(1, N2*taps_per_filter-length(B))];
 
 % wyliczenie pochodnej wraz z normalizacj¹ do mocy równej 1 na symbol
-difftaps = licz_diff(B, N2);
+difftaps = round(1024*licz_diff(B, N2)); % scale by 1024
 % return;
 difftaps = [difftaps, zeros(1, N2*taps_per_filter-length(difftaps))];
 
@@ -133,7 +146,7 @@ prev_e = 0;
 for n=1:num_of_samples
     CNT = CNT_next;
     if underflow == 1
-        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n);
+        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n)/power(1024,2);
         prev_e = e;
     else
         e = prev_e;
