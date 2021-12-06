@@ -10,3 +10,4 @@ i<>.\src\d_fir_filter.vhd
 i<>.\src\d_filters_bank.vhd
 i<>.\src\TestBench\filters_bank_TB.vhd
 i<>.\src\TestBench\fir_filter_TB.vhd
+i<>.\src\TestBench\d_fir_filter_TB.vhd

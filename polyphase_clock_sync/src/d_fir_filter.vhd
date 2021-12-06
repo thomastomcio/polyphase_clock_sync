@@ -47,7 +47,11 @@ constant sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number
 
 function decimate_and_shift(base_coeffs : coefs_table; number_of_filters : integer; shift : integer)
 return coefs_table is
+<<<<<<< HEAD
 	--variable sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number_of_filters;	
+=======
+--	variable sub_num_of_coeffs : integer := (num_of_coef+number_of_filters-1)/number_of_filters;	
+>>>>>>> f480595 (Added data read from file in PCSync testbench)
 	variable rv : coefs_table(sub_num_of_coeffs-1 downto 0) := (others=>0);			
 	variable step : integer := number_of_filters;
 begin
