@@ -3,3 +3,4 @@
 .\src\piopru_fir_test.vhd
 .\src\filter_bank_test.vhd
 .\src\polyphase_clock_sync_HDL.vhd
+.\src\polyphase_clock_sync_HDL_2019.vhd

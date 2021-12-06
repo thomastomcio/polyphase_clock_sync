@@ -77,7 +77,7 @@ architecture d_filters_bank_arch of d_filters_bank is
 	-- sygnaly i typy , inne komponenty	   
 signal ACKLEN : std_logic := '1';
 signal S_AXIS_TVALID : std_logic := '1';
-signal S_AXIS_TREADY : std_logic := '1'; 
+signal S_AXIS_TREADY : std_logic; 
 --signal M_AXIS_TVALID : std_logic;
 signal M_AXIS_TREADY : std_logic := '1';
 

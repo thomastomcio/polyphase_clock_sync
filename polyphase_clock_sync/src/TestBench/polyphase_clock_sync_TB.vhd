@@ -3,7 +3,8 @@ use polyphase_clock_sync.array_type_pkg.all;
 library ieee;
 use ieee.MATH_REAL.all;
 use ieee.NUMERIC_STD.all;
-use ieee.std_logic_1164.all;
+use ieee.std_logic_1164.all;  
+use std.textio.all;
 
 	-- Add your library and packages declaration here ...
 
@@ -37,7 +38,7 @@ architecture TB_ARCHITECTURE of polyphase_clock_sync_tb is
 
 	-- Stimulus signals - signals mapped to the input and inout ports of tested entity
 	signal CLK : STD_LOGIC := '0';
-	signal ARESTN : STD_LOGIC;
+	signal ARESTN : STD_LOGIC := '0';
 	signal DIN : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 	-- Observed signals - signals mapped to the output ports of tested entity
 	signal DOUT : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
@@ -75,10 +76,28 @@ RESET : process begin
 	wait;
 end process RESET;
 
-DATA: process begin
-	DIN <= (others=>'0'); wait for 8 ns; DIN <= x"00000001"; wait for 5ns; DIN <= (others=>'0');
-	wait;
-end process DATA;	 
+--DATA: process begin
+--	DIN <= (others=>'0'); wait for 8 ns; DIN <= x"00000001"; wait for 5ns; DIN <= (others=>'0');
+--	wait;
+--end process DATA;	 
+
+READ_FILE : process(CLK)
+
+file QPSK_data_file : text open read_mode is "./Testbench/data.txt";
+variable row : line;
+variable data_read : integer;
+
+begin
+	if(falling_edge(CLK)) then
+		if(not endfile(QPSK_data_file)) then
+			readline(QPSK_data_file, row);
+		end if;
+		
+		read(row, data_read);
+		
+		DIN <= to_signed(data_read, DIN'length);
+	end if;
+end process READ_FILE;
 
 
 end TB_ARCHITECTURE;

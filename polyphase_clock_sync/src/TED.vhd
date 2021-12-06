@@ -58,19 +58,19 @@ architecture TED_arch of TED is
 --  constant DENOM : real := PHASE_DETECOR_GAIN*(1 + 2*DAMPING_FACTOR*LOOP_BW + LOOP_BW*LOOP_BW); -- TODO: ustawiæ odpowiednie typy
 --	constant K1 : real := (4*DAMPING_FACTOR*LOOP_BW)/DENOM; -- alpha
 --	constant K2 : real := (4*LOOP_BW*LOOP_BW)/DENOM;		-- beta	
-	constant K1 : real := 0.162525308786227;	   
-	constant K2 : real := 0.014436477216089;
+	constant K1 : real := 0.0110017712591052; --0.162525308786227;	   
+	constant K2 : real := 9.77243613962953e-05; --0.014436477216089;
 	
-	signal error : real := 0.0; -- signed(dfilter_din'range) := (others => '0');
+	--signal error : real := 0.0; -- signed(dfilter_din'range) := (others => '0');
 	--signal f_index_sig : std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0) := (others => '0');	-- TODO: ustaliæ typy
 	signal f_index_sig : integer := 0;	-- TODO: ustaliæ typy
 	--signal underflow_sig : std_logic := '0';
 	
-	signal vp : real := 0.0;
-	signal vi : real := 0.0;
-	signal v : real := 0.0;
-	signal W : real := 0.0;	
-	signal CNT : real := 1.0; 	--modulo 1 counter 
+--	signal vp : real := 0.0;
+--	signal vi : real := 0.0;
+--	signal v : real := 0.0;
+	signal W : real := 0.0;	 
+--	signal CNT : real := 1.0; 	--modulo 1 counter 
 	
 	signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
 	signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
@@ -80,52 +80,64 @@ begin
 		variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
 		variable temp : real := 0.0;
 		variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
-		variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+		variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
+		variable error : real := 0.0;
+		variable prev_error : real := 0.0;
+		variable vp : real := 0.0;
+		variable  vi : real := 0.0;
+		variable  v : real := 0.0;
+--		variable  W : real := 0.0;	
+		variable  CNT : real := 1.0; 	--modulo 1 counter 
 	begin
 		if (arestn = '0') then	
-			f_index <= (others => '0');
+			f_index_sig <= 0; -- (others => '0');
 			underflow <= '0';
 		elsif (rising_edge(clk)) then
 			if (in_valid = '1') then
-				f_prev_sample <= filter_din;
-				df_prev_sample <= dfilter_din; 
+--				f_prev_sample <= filter_din;
+--				df_prev_sample <= dfilter_din; 
 				
 				actual_f := filter_din;
 				actual_df := dfilter_din; 
-			else					
-				actual_f := f_prev_sample;
-				actual_df := df_prev_sample;
-			end if;
+--			else					
+--				actual_f := f_prev_sample;
+--				actual_df := df_prev_sample;
+--			end if;
 			
-			if actual_f(actual_f'left) = '1' then 	-- determine sign of matched filter output
-				sign := -1.0;
-			else
-				sign := 1.0;
-			end if;
+				if actual_f(actual_f'left) = '1' then 	-- determine sign of matched filter output
+					sign := -1.0;
+				else
+					sign := 1.0;
+				end if;
+				
+				-- error 
+					error := sign * real(to_integer(actual_df))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
+					prev_error := error;
+				
+				-- loop filter;
+				vp := K1*error;
+				vi := vi + K2*error;
+				v := vp + vi;
+				W <= 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
+				
+			else -- in_valid = '0'	
+				vp := K1*prev_error;
+				vi := vi + K2*prev_error;
+				v := vp + vi;
+				W <= 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
+			end if;	
 			
-			-- error 
---				if (underflow_sig = '1') then
-				error <= sign * real(to_integer(actual_df));  -- integer(unsigned(f_index)))
---				else 
---					error <= 0.0;--(others => '0');
---				end if;
+			-- counter														   
+			CNT := CNT - W;
 			
-			-- loop filter;
-			vp <= K1*error;
-			vi <= vi + K2*error;
-			v <= vp + vi;
-			W <= 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
-			
-			-- counter
-			CNT <= CNT - W;
-			temp := real((integer(SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE*integer(abs(CNT))) rem OVERSAMPLING_RATE) + 1);
-			if (CNT < 0.0) then
-				f_index_sig <= integer(floor(temp));
-				CNT <= 1.0 + CNT;
-				underflow <= '1';
-			else
-				underflow <= '0';
-			end	if;
+			temp := real(SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE)*abs(CNT) mod real(OVERSAMPLING_RATE) + 1.0;
+				if (CNT < 0.0) then
+					f_index_sig <= integer(floor(temp));
+					CNT := 1.0 + CNT;
+					underflow <= '1';
+				else
+					underflow <= '0';
+				end	if;				 
 				
 		end if;		
 	end process;  	 
