@@ -73,13 +73,13 @@ architecture filters_bank_arch of filters_bank is
             aclken      : in std_logic; 
             -- Ports of Axi Slave Bus Interface s_axis   
             s_axis_data_tdata      : in signed(AXIS_DATA_WIDTH -1 downto 0);
-            s_axis_data_tready      : out std_logic;
+            --s_axis_data_tready      : out std_logic;
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);
-            m_axis_data_tvalid      : out std_logic;
-            m_axis_data_tready      : in std_logic
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0)
+            --m_axis_data_tvalid      : out std_logic;
+            --m_axis_data_tready      : in std_logic
             );
 	end component fir_filter;				   
 	
@@ -109,22 +109,15 @@ begin
 		aresetn => ARESTN,
 		aclken => ACKLEN,
 		s_axis_data_tvalid => s_axis_tvalid,
-		s_axis_data_tready => s_axis_tready,
+		--s_axis_data_tready => s_axis_tready,
 		s_axis_data_tdata => DIN,
-		m_axis_data_tready => m_axis_tready,	
-		m_axis_data_tvalid => m_axis_tvalid,
+		--m_axis_data_tready => m_axis_tready,	
+		--m_axis_data_tvalid => m_axis_tvalid,
 		m_axis_data_tdata => DOUT(I)
 	   );
    end generate GEN_FILTER_BANK;  
 
---CTRL : process (ARESTN, CLK)
---begin
---	if (ARESTN = '0') then
---		DOUT <= (others => (others=>'0'));		
---	elsif (rising_edge(CLK)) then
---		-- dzialaj na narastajace zbocze zegarowe	
---	end if;
---end process CTRL;
---	
+s_axis_tready <= m_axis_tready;
+m_axis_tvalid <= s_axis_tvalid and m_axis_tready;
    
 end filters_bank_arch;

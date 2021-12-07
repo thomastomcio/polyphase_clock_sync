@@ -26,15 +26,23 @@ architecture TB_ARCHITECTURE of filters_bank_tb is
 		CLK : in STD_LOGIC;
 		ARESTN : in STD_LOGIC;
 		DIN : in SIGNED(AXIS_DATA_WIDTH-1 downto 0);
-		DOUT : out dout_array_t(CHANNELS-1 downto 0) );
+		DOUT : out dout_array_t(CHANNELS-1 downto 0);
+		s_axis_tready : out STD_LOGIC;
+		s_axis_tvalid : in STD_LOGIC;
+		m_axis_tvalid : out STD_LOGIC;
+		m_axis_tready : in STD_LOGIC );
 	end component;
 
 	-- Stimulus signals - signals mapped to the input and inout ports of tested entity
 	signal CLK : STD_LOGIC := '0';
 	signal ARESTN : STD_LOGIC;
 	signal DIN : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
+	signal s_axis_tvalid : STD_LOGIC;
+	signal m_axis_tready : STD_LOGIC;
 	-- Observed signals - signals mapped to the output ports of tested entity
 	signal DOUT : dout_array_t(CHANNELS-1 downto 0);
+	signal s_axis_tready : STD_LOGIC;
+	signal m_axis_tvalid : STD_LOGIC;
 
 	-- Add your code here ...
 
@@ -52,7 +60,11 @@ begin
 			CLK => CLK,
 			ARESTN => ARESTN,
 			DIN => DIN,
-			DOUT => DOUT
+			DOUT => DOUT,
+			s_axis_tready => s_axis_tready,
+			s_axis_tvalid => s_axis_tvalid,
+			m_axis_tvalid => m_axis_tvalid,
+			m_axis_tready => m_axis_tready
 		);
 
 	-- Add your stimulus here ...

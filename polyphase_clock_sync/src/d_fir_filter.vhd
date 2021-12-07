@@ -22,13 +22,13 @@ entity d_fir_filter is
             aclken      : in std_logic; 
             -- Ports of Axi Slave Bus Interface s_axis   
             s_axis_data_tdata      : in signed(AXIS_DATA_WIDTH -1 downto 0);	-- by³o std_logic_vector
-            s_axis_data_tready      : out std_logic;
+           -- s_axis_data_tready      : out std_logic;
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);	-- by³o std_logic_vector
-            m_axis_data_tvalid      : out std_logic;
-            m_axis_data_tready      : in std_logic
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0)	-- by³o std_logic_vector
+           -- m_axis_data_tvalid      : out std_logic;
+           -- m_axis_data_tready      : in std_logic
             );                                                               
             
 attribute syn_useioff : boolean;
@@ -101,7 +101,7 @@ begin
             m_axis_data_tdata <= (others => '0');
       elsif rising_edge(aclk)  then 
             if aclken = '1' then         -- clock enable             
-                  if (s_axis_data_tvalid = '1' and  m_axis_data_tready ='1') then
+                  if (s_axis_data_tvalid = '1') then
                         data<= s_axis_data_tdata;            -- assign input data to variable         
                         --DINS <= DINS(N-2 downto 0) & data;
                         for i in  sub_num_of_coeffs - 1 downto 0  loop-- loop that make convolution
@@ -120,8 +120,5 @@ begin
             end if;
       end if;         
 end process;  
-
-s_axis_data_tready <= m_axis_data_tready;
-m_axis_data_tvalid <= s_axis_data_tvalid and m_axis_data_tready;
 
 end d_fir_arch;

@@ -1,7 +1,8 @@
 library ieee;
 use ieee.NUMERIC_STD.all;
-use ieee.std_logic_1164.all;
+use ieee.std_logic_1164.all; 
 use std.textio.all;
+
 	-- Add your library and packages declaration here ...
 
 entity fir_filter_tb is
@@ -30,11 +31,8 @@ architecture TB_ARCHITECTURE of fir_filter_tb is
 		aresetn : in STD_LOGIC;
 		aclken : in STD_LOGIC;
 		s_axis_data_tdata : in SIGNED(AXIS_DATA_WIDTH-1 downto 0);
-		s_axis_data_tready : out STD_LOGIC;
 		s_axis_data_tvalid : in STD_LOGIC;
-		m_axis_data_tdata : out SIGNED(AXIS_DATA_WIDTH-1 downto 0);
-		m_axis_data_tvalid : out STD_LOGIC;
-		m_axis_data_tready : in STD_LOGIC );
+		m_axis_data_tdata : out SIGNED(AXIS_DATA_WIDTH-1 downto 0) );
 	end component;
 
 	-- Stimulus signals - signals mapped to the input and inout ports of tested entity
@@ -43,11 +41,8 @@ architecture TB_ARCHITECTURE of fir_filter_tb is
 	signal aclken : STD_LOGIC := '1';
 	signal s_axis_data_tdata : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 	signal s_axis_data_tvalid : STD_LOGIC;
-	signal m_axis_data_tready : STD_LOGIC;
 	-- Observed signals - signals mapped to the output ports of tested entity
-	signal s_axis_data_tready : STD_LOGIC;
 	signal m_axis_data_tdata : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
-	signal m_axis_data_tvalid : STD_LOGIC;
 
 	-- Add your code here ...
 
@@ -69,11 +64,8 @@ begin
 			aresetn => aresetn,
 			aclken => aclken,
 			s_axis_data_tdata => s_axis_data_tdata,
-			s_axis_data_tready => s_axis_data_tready,
 			s_axis_data_tvalid => s_axis_data_tvalid,
-			m_axis_data_tdata => m_axis_data_tdata,
-			m_axis_data_tvalid => m_axis_data_tvalid,
-			m_axis_data_tready => m_axis_data_tready
+			m_axis_data_tdata => m_axis_data_tdata
 		);
 
 	-- Add your stimulus here ...
@@ -119,17 +111,11 @@ end process READ_FILE;
 
 
 CONTROL: process begin	
-	m_axis_data_tready <= '1';
-	wait for 30 ns;
 	s_axis_data_tvalid <= '1';
-	wait for 30 ns;
-	m_axis_data_tready <= '0';
-	wait for 30 ns;			  
+	wait for 30 ns;	  
 	s_axis_data_tvalid <= '0';
-	
 end process CONTROL;
 
-	
 
 end TB_ARCHITECTURE;
 

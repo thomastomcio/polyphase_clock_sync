@@ -4,9 +4,13 @@ comp -include "$dsn\compile\polyphase_clock_sync_2.vhd"
 comp -include "$dsn\src\TestBench\polyphase_clock_sync_TB.vhd" 
 asim +access +r TESTBENCH_FOR_polyphase_clock_sync 
 wave 
-wave -noreg CLK
 wave -noreg ARESTN
+wave -noreg CLK
+wave -noreg m_axis_tready
+wave -noreg s_axis_tvalid
 wave -noreg DIN
+wave -noreg m_axis_tvalid
+wave -noreg s_axis_tready
 wave -noreg DOUT	
 wave -noreg /polyphase_clock_sync_tb/UUT/MUX/f_index	  
 run 300ns

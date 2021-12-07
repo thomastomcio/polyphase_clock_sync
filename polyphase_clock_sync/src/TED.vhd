@@ -69,81 +69,70 @@ architecture TED_arch of TED is
 --	signal vp : real := 0.0;
 --	signal vi : real := 0.0;
 --	signal v : real := 0.0;
-	signal W : real := 0.0;	 
+--	signal W : real := 0.0;	 
 --	signal CNT : real := 1.0; 	--modulo 1 counter 
 	
-	signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
-	signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+--	signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+--	signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
 
 begin
-	process(arestn, clk)					  
-		variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
-		variable temp : real := 0.0;
-		variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
-		variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
-		variable error : real := 0.0;
-		variable prev_error : real := 0.0;
-		variable vp : real := 0.0;
-		variable  vi : real := 0.0;
-		variable  v : real := 0.0;
---		variable  W : real := 0.0;	
-		variable  CNT : real := 1.0; 	--modulo 1 counter 
-	begin
-		if (arestn = '0') then	
-			f_index_sig <= 0; -- (others => '0');
-			underflow <= '0';
-		elsif (rising_edge(clk)) then
-			if (in_valid = '1') then
---				f_prev_sample <= filter_din;
---				df_prev_sample <= dfilter_din; 
-				
-				actual_f := filter_din;
-				actual_df := dfilter_din; 
---			else					
---				actual_f := f_prev_sample;
---				actual_df := df_prev_sample;
---			end if;
+process(arestn, clk)					  
+	variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
+	variable temp : real := 0.0;
+	variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
+	variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
+	variable error : real := 0.0;
+	variable prev_error : real := 0.0;
+	variable vp : real := 0.0;
+	variable  vi : real := 0.0;
+	variable  v : real := 0.0;
+	variable  W : real := 0.0;	
+	variable  CNT : real := 1.0; 	--modulo 1 counter 
+begin
+	if (arestn = '0') then	
+		f_index_sig <= 0; -- (others => '0');
+		underflow <= '0';
+	elsif (rising_edge(clk)) then
+		if (in_valid = '1') then
 			
-				if actual_f(actual_f'left) = '1' then 	-- determine sign of matched filter output
-					sign := -1.0;
-				else
-					sign := 1.0;
-				end if;
-				
-				-- error 
-					error := sign * real(to_integer(actual_df))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
-					prev_error := error;
-				
-				-- loop filter;
-				vp := K1*error;
-				vi := vi + K2*error;
-				v := vp + vi;
-				W <= 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
-				
-			else -- in_valid = '0'	
-				vp := K1*prev_error;
-				vi := vi + K2*prev_error;
-				v := vp + vi;
-				W <= 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
-			end if;	
+			actual_f := filter_din;
+			actual_df := dfilter_din; 
+		
+			if actual_f(actual_f'left) = '1' then 	-- determine sign of matched filter output
+				sign := -1.0;
+			else
+				sign := 1.0;
+			end if;
 			
+			-- error 
+			error := sign * real(to_integer(actual_df))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
+			prev_error := error;
+			
+			-- loop filter;
+			vp := K1*error;
+			vi := vi + K2*error;
+			v := vp + vi;
+			W := 1.0/real(SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
+		
 			-- counter														   
 			CNT := CNT - W;
-			
 			temp := real(SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE)*abs(CNT) mod real(OVERSAMPLING_RATE) + 1.0;
-				if (CNT < 0.0) then
-					f_index_sig <= integer(floor(temp));
-					CNT := 1.0 + CNT;
-					underflow <= '1';
-				else
-					underflow <= '0';
-				end	if;				 
-				
+			
+			if (CNT < 0.0) then
+				f_index_sig <= integer(floor(temp));
+				CNT := 1.0 + CNT;
+				underflow <= '1';
+			else
+				underflow <= '0';
+			end	if;
+		else -- in_valid = '0'
+			underflow <= '0';
 		end if;		
-	end process;  	 
+	end if;		
+end process;  	 
 	
---	underflow <= underflow_sig;
-	f_index <= std_logic_vector(to_unsigned(f_index_sig, f_index'length));
-	
+
+f_index <= std_logic_vector(to_unsigned(f_index_sig, f_index'length));
+--	underflow <= underflow_sig;	
 	
 end TED_arch;
