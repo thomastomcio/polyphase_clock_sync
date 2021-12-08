@@ -10,7 +10,7 @@ symbols = 8; % szerokoœæ odpowiedzi impulsowych
 N1 = 2; % probek na symbol w odp. impulsowej tranmitera
 N2 = 32; % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
 sps = N1*N2; % probek na symbol w odp. impulsowej odbiornika
-DataL = 1000; % iloœæ transmitowanych symboli;
+DataL = 2000; % iloœæ transmitowanych symboli;
 snr = 15;
 
 % rxSig = awgn(delayedSig, snr, 'measured');
@@ -89,6 +89,7 @@ for n=0:N2-1
    x = n : N2 : N2*taps_per_filter - 1;   
 
    skladowa = conv(B(x+1), y_transmit);
+   
    % przesuniecie o polowe dlugosci filtra
 %    skladowa = skladowa(floor(taps_per_filter/2) + 1: end); 
    rec_filtered = [rec_filtered; skladowa];   
