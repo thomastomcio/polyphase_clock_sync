@@ -11,7 +11,10 @@ wave -noreg s_axis_tvalid
 wave -noreg DIN
 wave -noreg m_axis_tvalid
 wave -noreg s_axis_tready
-wave -noreg DOUT	
+wave -noreg DOUT									
+wave -noreg /polyphase_clock_sync_tb/UUT/MUX/m_axis_tvalid
+wave -noreg /polyphase_clock_sync_tb/UUT/underflow
+wave -noreg /polyphase_clock_sync_tb/UUT/MUX/state
 wave -noreg /polyphase_clock_sync_tb/UUT/MUX/f_index	  
 run 300ns
 # The following lines can be used for timing simulation

@@ -82,9 +82,9 @@ begin
 				when SECOND_SAMPLE =>
 					s_axis_tready <= '0';
 				when PREV_SAMPLE =>		 
-					s_axis_tready <= '0';
+					s_axis_tready <= '0';  
 				when NEXT_SAMPLE =>
-					s_axis_tready <= '0';	
+					s_axis_tready <= '0';
 				when SHIFT_IDLE => 
 					s_axis_tready <= '1';		
 			end case;					
@@ -116,15 +116,17 @@ begin
 				
 			when SECOND_SAMPLE =>		
 				if (s_axis_tvalid = '1') then
+					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
 					if(underflow = '1') then
 						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
 						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
 						m_axis_tvalid <= '1';
 						state <= IDLE;	
 					else
-						filter_dout <= (others => '0');	
-						dfilter_dout <= (others => '0'); 
-						m_axis_tvalid <= '0';
+						filter_dout <= f_prev_sample;	
+						dfilter_dout <= df_prev_sample; 
+						m_axis_tvalid <= '1';
 						state <= SHIFT_IDLE;
 					end if;	
 				else						 
@@ -135,32 +137,38 @@ begin
 				end if;
 				
 			when PREV_SAMPLE =>	
-				if(s_axis_tvalid = '1') then		
-					filter_dout <= f_prev_sample;
-					dfilter_dout <= df_prev_sample;
+				if(s_axis_tvalid = '1') then 
 					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));		
-					m_axis_tvalid <= '1';
+					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+					if(underflow = '1') then
+						filter_dout <= f_prev_sample;
+						dfilter_dout <= df_prev_sample;	
+						m_axis_tvalid <= '1';
+					else 
+						filter_dout <= (others => '0');	
+						dfilter_dout <= (others => '0'); 
+						m_axis_tvalid <= '0';
+					end if;
 				else  
 					filter_dout <= (others => '0');	
 					dfilter_dout <= (others => '0'); 
 				 	m_axis_tvalid <= '0';
-				end if;
+				end if;					 
 				state <= IDLE;
 				
 			when NEXT_SAMPLE => 	
 				if(s_axis_tvalid = '1') then
 					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));		
+					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
 					if(underflow = '1') then 					
 						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
 						dfilter_dout <=	dfilter_array_din(to_integer(unsigned(f_index)));
 						m_axis_tvalid <= '1';
 						state <= SHIFT_IDLE; 
 					else 					 
-						filter_dout <= (others => '0');	
-						dfilter_dout <= (others => '0'); 
-						m_axis_tvalid <= '0';
+						filter_dout <= f_prev_sample;	
+						dfilter_dout <= df_prev_sample; 
+						m_axis_tvalid <= '1';
 						state <= IDLE;
 					end if;		
 				else

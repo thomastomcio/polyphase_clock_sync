@@ -79,10 +79,10 @@ begin
 process(arestn, clk)					  
 	variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
 	variable temp : real := 0.0;
-	variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
-	variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
+--	variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
+--	variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
 	variable error : real := 0.0;
-	variable prev_error : real := 0.0;
+--	variable prev_error : real := 0.0;
 	variable vp : real := 0.0;
 	variable  vi : real := 0.0;
 	variable  v : real := 0.0;
@@ -92,21 +92,23 @@ begin
 	if (arestn = '0') then	
 		f_index_sig <= 0; -- (others => '0');
 		underflow <= '0';
+		vp := 0.0;
+		vi := 0.0;
+		v := 0.0;
+		W := 0.0;
+		CNT := 1.0;
 	elsif (rising_edge(clk)) then
 		if (in_valid = '1') then
-			
-			actual_f := filter_din;
-			actual_df := dfilter_din; 
 		
-			if actual_f(actual_f'left) = '1' then 	-- determine sign of matched filter output
+			if filter_din(filter_din'left) = '1' then 	-- determine sign of matched filter output
 				sign := -1.0;
 			else
 				sign := 1.0;
 			end if;
 			
 			-- error 
-			error := sign * real(to_integer(actual_df))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
-			prev_error := error;
+			error := sign * real(to_integer(dfilter_din))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
+--			prev_error := error;
 			
 			-- loop filter;
 			vp := K1*error;
@@ -116,7 +118,7 @@ begin
 		
 			-- counter														   
 			CNT := CNT - W;
-			temp := real(SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE)*abs(CNT) mod real(OVERSAMPLING_RATE) + 1.0;
+			temp := real(SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE)*abs(CNT) mod real(OVERSAMPLING_RATE);
 			
 			if (CNT < 0.0) then
 				f_index_sig <= integer(floor(temp));
@@ -131,8 +133,6 @@ begin
 	end if;		
 end process;  	 
 	
-
 f_index <= std_logic_vector(to_unsigned(f_index_sig, f_index'length));
---	underflow <= underflow_sig;	
 	
 end TED_arch;
