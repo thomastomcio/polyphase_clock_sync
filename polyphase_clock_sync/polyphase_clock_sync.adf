@@ -141,41 +141,6 @@ HierarchyInformation=fir_filter_tb|testbench_for_fir_filter|1 polyphase_clock_sy
 ShowHide=ShowTopLevel
 Selected=
 
-[Files.Data]
-.\src\fir_filter.vhd=VHDL Source Code
-.\src\filters_bank.vhd=VHDL Source Code
-.\src\dual_mux.vhd=VHDL Source Code
-.\src\array_type_pkg.vhd=VHDL Source Code
-.\src\TED.vhd=VHDL Source Code
-.\src\polyphase_clock_sync.bde=Block Diagram
-.\src\polyphase_clock_sync_2.vhd=VHDL Source Code
-.\src\d_fir_filter.vhd=VHDL Source Code
-.\src\d_filters_bank.vhd=VHDL Source Code
-.\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
-.\src\TestBench\filters_bank_TB_runtest.do=Macro
-.\src\TestBench\d_filters_bank_TB_runtest.do=Macro
-.\src\TestBench\fir_filter_TB_runtest.do=Macro
-.\src\TestBench\QPSK_data.txt=Text File
-.\src\TestBench\polyphase_clock_sync_TB.vhd=VHDL Source Code
-.\src\TestBench\filters_bank_TB.vhd=VHDL Source Code
-.\src\TestBench\d_filters_bank_TB.vhd=VHDL Test Bench
-.\src\TestBench\fir_filter_TB.vhd=VHDL Source Code
-.\src\TestBench\sim_data\filters_bank.asdb=Accelerated Waveform File
-.\src\TestBench\sim_data\filters_bank.awc=Accelerated Waveform Configuration
-.\src\TestBench\sim_data\fir_filter.asdb=Accelerated Waveform File
-.\src\TestBench\sim_data\fir_filter.awc=Accelerated Waveform Configuration
-.\src\TestBench\sim_data\psc(index0).asdb=Accelerated Waveform File
-.\src\TestBench\sim_data\psc(index0).awc=Accelerated Waveform Configuration
-.\src\TestBench\sim_data\filter_index_track.asdb=Accelerated Waveform File
-.\src\TestBench\sim_data\filter_index_track.awc=Accelerated Waveform Configuration
-.\src\not_used\filter_bank.vhd=VHDL Source Code
-.\src\not_used\loop_filter.vhd=VHDL Source Code
-.\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
-.\src\not_used\index_selector.vhd=VHDL Source Code
-
-[file_out:/polyphase_clock_sync.bde]
-/..\compile\polyphase_clock_sync.vhd=-1
-
 [Groups]
 TestBench=1
 TestBench\sim_data=1
@@ -208,8 +173,47 @@ TestBench\sim_data/psc(index0).asdb=-1
 TestBench\sim_data/psc(index0).awc=-1
 TestBench\sim_data/filter_index_track.asdb=-1
 TestBench\sim_data/filter_index_track.awc=-1
+TestBench\sim_data/successful_f_index_tracking.asdb=-1
+TestBench\sim_data/successful_f_index_tracking.awc=-1
 not_used/filter_bank.vhd=-1
 not_used/loop_filter.vhd=-1
 not_used/modulo_sps_counter.vhd=-1
 not_used/index_selector.vhd=-1
+
+[Files.Data]
+.\src\fir_filter.vhd=VHDL Source Code
+.\src\d_fir_filter.vhd=VHDL Source Code
+.\src\filters_bank.vhd=VHDL Source Code
+.\src\dual_mux.vhd=VHDL Source Code
+.\src\array_type_pkg.vhd=VHDL Source Code
+.\src\TED.vhd=VHDL Source Code
+.\src\polyphase_clock_sync.bde=Block Diagram
+.\src\polyphase_clock_sync_2.vhd=VHDL Source Code
+.\src\d_filters_bank.vhd=VHDL Source Code
+.\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
+.\src\TestBench\filters_bank_TB_runtest.do=Macro
+.\src\TestBench\d_filters_bank_TB_runtest.do=Macro
+.\src\TestBench\fir_filter_TB_runtest.do=Macro
+.\src\TestBench\QPSK_data.txt=Text File
+.\src\TestBench\fir_filter_TB.vhd=VHDL Source Code
+.\src\TestBench\polyphase_clock_sync_TB.vhd=VHDL Source Code
+.\src\TestBench\filters_bank_TB.vhd=VHDL Source Code
+.\src\TestBench\d_filters_bank_TB.vhd=VHDL Test Bench
+.\src\TestBench\sim_data\filters_bank.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\filters_bank.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\fir_filter.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\fir_filter.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\psc(index0).asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\psc(index0).awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\filter_index_track.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\filter_index_track.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\successful_f_index_tracking.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\successful_f_index_tracking.awc=Accelerated Waveform Configuration
+.\src\not_used\filter_bank.vhd=VHDL Source Code
+.\src\not_used\loop_filter.vhd=VHDL Source Code
+.\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
+.\src\not_used\index_selector.vhd=VHDL Source Code
+
+[file_out:/polyphase_clock_sync.bde]
+/..\compile\polyphase_clock_sync.vhd=-1
 

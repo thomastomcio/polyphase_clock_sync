@@ -99,13 +99,13 @@ variable row : line;
 variable data_read : integer;
 begin
 	if(falling_edge(CLK)) then
-		if(not endfile(QPSK_data_file)) then
-			readline(QPSK_data_file, row);
-		end if;
-		
-		read(row, data_read);
-		
 		if(s_axis_tready = '1')	then
+			if(not endfile(QPSK_data_file)) then
+				readline(QPSK_data_file, row);
+			end if;
+			
+			read(row, data_read);
+			
 			DIN <= to_signed(data_read, DIN'length);
 			s_axis_tvalid <= '1';
 		else 

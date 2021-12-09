@@ -60,8 +60,9 @@ end dual_MUX;
 
 architecture dual_MUX of dual_MUX is 		 
 
-type state_type is (IDLE, SECOND_SAMPLE, PREV_SAMPLE, NEXT_SAMPLE, SHIFT_IDLE);
-signal state, prev_state : state_type;
+type state_type is (IDLE, TRANSMIT); --SECOND_SAMPLE, PREV_SAMPLE, NEXT_SAMPLE, SHIFT_IDLE);
+signal state : state_type := IDLE;
+--signal state, prev_state : state_type;
 
 --signal t_ready : std_logic := '0';
 signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
@@ -79,14 +80,16 @@ begin
 			case state is
 				when IDLE =>
 					s_axis_tready <= '1';
-				when SECOND_SAMPLE =>
+				when TRANSMIT =>		 
 					s_axis_tready <= '0';
-				when PREV_SAMPLE =>		 
-					s_axis_tready <= '0';  
-				when NEXT_SAMPLE =>
-					s_axis_tready <= '0';
-				when SHIFT_IDLE => 
-					s_axis_tready <= '1';		
+--				when SECOND_SAMPLE =>
+--					s_axis_tready <= '0';
+--				when PREV_SAMPLE =>		 
+--					s_axis_tready <= '0';  
+--				when NEXT_SAMPLE =>
+--					s_axis_tready <= '0';
+--				when SHIFT_IDLE => 
+--					s_axis_tready <= '1';		
 			end case;					
 		else
 			s_axis_tready <= '0';
@@ -98,102 +101,143 @@ process (arestn, clk)
 begin		 
 	if(arestn = '0') then	    
 		f_prev_sample <= (others => '0');	
-		df_prev_sample <= (others => '0'); 
+		df_prev_sample <= (others => '0');
+		
+		filter_dout <= (others => '0');	
+		dfilter_dout <= (others => '0'); 
 		m_axis_tvalid <= '0';
-		state <= IDLE;
-	elsif (rising_edge(clk)) then
-		prev_state <= state; -- save previous state
+		
+		state <= IDLE;	
+		
+	elsif (rising_edge(clk)) then 
 		case state is
-			when IDLE =>				
-				if(prev_state = SECOND_SAMPLE)then 
-					state <= NEXT_SAMPLE;
-				else -- prev_state == NEXT_SAMPLE or others
-					state <= SECOND_SAMPLE;
-				end if;	
-				filter_dout <= (others => '0');	
-				dfilter_dout <= (others => '0'); 
+			when IDLE =>
+				filter_dout <= (others=>'0');
+				dfilter_dout <= (others=>'0');
 				m_axis_tvalid <= '0';
+				state <= TRANSMIT;	
 				
-			when SECOND_SAMPLE =>		
-				if (s_axis_tvalid = '1') then
-					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+			when TRANSMIT => 
+				if (s_axis_tvalid = '1') then	
 					if(underflow = '1') then
 						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
-						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
+						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index))); 
+						
+						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
 						m_axis_tvalid <= '1';
-						state <= IDLE;	
 					else
 						filter_dout <= f_prev_sample;	
 						dfilter_dout <= df_prev_sample; 
 						m_axis_tvalid <= '1';
-						state <= SHIFT_IDLE;
 					end if;	
 				else						 
 					filter_dout <= (others => '0');	
 					dfilter_dout <= (others => '0'); 
 					m_axis_tvalid <= '0';
-					state <= IDLE;
-				end if;
-				
-			when PREV_SAMPLE =>	
-				if(s_axis_tvalid = '1') then 
-					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
-					if(underflow = '1') then
-						filter_dout <= f_prev_sample;
-						dfilter_dout <= df_prev_sample;	
-						m_axis_tvalid <= '1';
-					else 
-						filter_dout <= (others => '0');	
-						dfilter_dout <= (others => '0'); 
-						m_axis_tvalid <= '0';
-					end if;
-				else  
-					filter_dout <= (others => '0');	
-					dfilter_dout <= (others => '0'); 
-				 	m_axis_tvalid <= '0';
-				end if;					 
-				state <= IDLE;
-				
-			when NEXT_SAMPLE => 	
-				if(s_axis_tvalid = '1') then
-					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
-					if(underflow = '1') then 					
-						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
-						dfilter_dout <=	dfilter_array_din(to_integer(unsigned(f_index)));
-						m_axis_tvalid <= '1';
-						state <= SHIFT_IDLE; 
-					else 					 
-						filter_dout <= f_prev_sample;	
-						dfilter_dout <= df_prev_sample; 
-						m_axis_tvalid <= '1';
-						state <= IDLE;
-					end if;		
-				else
-					filter_dout <= (others => '0');	
-					dfilter_dout <= (others => '0'); 
-					m_axis_tvalid <= '0';
-					state <= IDLE;
-				end if;
-
-			when SHIFT_IDLE =>			 		
-				if(prev_state = SECOND_SAMPLE)then 
-					state <= PREV_SAMPLE;
-				else -- prev_state == NEXT_SAMPLE or others
-					state <= NEXT_SAMPLE;
-				end if;
-				filter_dout <= (others => '0');	
-				dfilter_dout <= (others => '0'); 
-				m_axis_tvalid <= '0';
-				
-		end case;	   
+				end if;						 
+				state <= IDLE;				
+		end case;
 	end if;
 end process;		  
 
 
-
+--		prev_state <= state; -- save previous state
+--		case state is
+--			when IDLE =>				
+--				if(prev_state = SECOND_SAMPLE)then 
+--					state <= NEXT_SAMPLE;
+--				else -- prev_state == NEXT_SAMPLE or others
+--					state <= SECOND_SAMPLE;
+--				end if;	
+--				filter_dout <= (others => '0');	
+--				dfilter_dout <= (others => '0'); 
+--				m_axis_tvalid <= '0';
+--				
+--			when SECOND_SAMPLE =>		
+--				if (s_axis_tvalid = '1') then
+--					
+--					if(underflow = '1') then
+--						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
+--						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
+--						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+--						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+--						m_axis_tvalid <= '1';
+--						state <= IDLE;	
+--					else
+--						filter_dout <= f_prev_sample;	
+--						dfilter_dout <= df_prev_sample; 
+--						m_axis_tvalid <= '1';
+--						--state <= SHIFT_IDLE;
+--						state <= IDLE;
+--					end if;	
+--				else						 
+--					filter_dout <= (others => '0');	
+--					dfilter_dout <= (others => '0'); 
+--					m_axis_tvalid <= '0';
+--					state <= IDLE;
+--				end if;
+--				
+--			when PREV_SAMPLE =>	
+----				if(s_axis_tvalid = '1') then 
+----					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+----					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+----					if(underflow = '1') then
+----						filter_dout <= f_prev_sample;
+----						dfilter_dout <= df_prev_sample;	
+----						m_axis_tvalid <= '1';
+----					else 
+----						filter_dout <= (others => '0');	
+----						dfilter_dout <= (others => '0'); 
+----						m_axis_tvalid <= '0';
+----					end if;
+----				else  
+----					filter_dout <= (others => '0');	
+----					dfilter_dout <= (others => '0'); 
+----				 	m_axis_tvalid <= '0';
+----				end if;					 
+----				state <= IDLE;
+--				
+--			when NEXT_SAMPLE => 	
+--				if(s_axis_tvalid = '1') then
+--					if(underflow = '1') then 					
+--						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
+--						dfilter_dout <=	dfilter_array_din(to_integer(unsigned(f_index)));
+--						
+--						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
+--						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+--						m_axis_tvalid <= '1';
+--						--state <= SHIFT_IDLE; 
+--						state <= IDLE;
+--					else 					 
+--						filter_dout <= f_prev_sample;	
+--						dfilter_dout <= df_prev_sample; 
+----						filter_dout <= (others => '0');		
+----						dfilter_dout <= (others => '0');	 
+--						m_axis_tvalid <= '1';
+--						state <= IDLE;
+--					end if;		
+--				else
+--					filter_dout <= (others => '0');	
+--					dfilter_dout <= (others => '0'); 
+--					m_axis_tvalid <= '0';
+--					state <= IDLE;
+--				end if;
+--
+--			when SHIFT_IDLE =>			 		
+--				if(prev_state = SECOND_SAMPLE)then 
+--					state <= PREV_SAMPLE;
+--				else -- prev_state == NEXT_SAMPLE or others
+--					state <= NEXT_SAMPLE;
+--				end if;
+--				filter_dout <= (others => '0');	
+--				dfilter_dout <= (others => '0'); 
+--				m_axis_tvalid <= '0';
+--				
+--		end case;
+--		
+--		
+--		
 --s_axis_tready <= t_ready;
 --f_prev_sample <= filter_array_din(to_integer(unsigned(f_index))) when s_axis_tvalid = '1' and t_ready = '1';
 --df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index))) when s_axis_tvalid = '1' and t_ready = '1';

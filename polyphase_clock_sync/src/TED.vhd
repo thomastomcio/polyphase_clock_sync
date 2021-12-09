@@ -77,7 +77,7 @@ architecture TED_arch of TED is
 
 begin
 process(arestn, clk)					  
-	variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
+	----variable sign : real range -1.0 to 1.0 := 1.0;	-- sprawdziæ czy nie da siê na dwóch wartoœciach (-1, 1) 
 	variable temp : real := 0.0;
 --	variable actual_f : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');  
 --	variable actual_df : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');		
@@ -100,14 +100,14 @@ begin
 	elsif (rising_edge(clk)) then
 		if (in_valid = '1') then
 		
-			if filter_din(filter_din'left) = '1' then 	-- determine sign of matched filter output
-				sign := -1.0;
+			if filter_din(filter_din'left) = '1' then 	-- determine sign of matched filter output																 
+				error := (-1.0)*real(to_integer(dfilter_din))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
 			else
-				sign := 1.0;
+				error := real(to_integer(dfilter_din))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
 			end if;
 			
 			-- error 
-			error := sign * real(to_integer(dfilter_din))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
+			--error := real(to_integer(dfilter_din))/(1024.0*1024.0);  -- integer(unsigned(f_index)))  
 --			prev_error := error;
 			
 			-- loop filter;
