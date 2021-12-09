@@ -45,7 +45,7 @@ y_transmit = interp(y_transmit, N2); % rate = sps = N2*N1
 %     title("Linear interpolation of SRRC filter output");
 
 % przesunicie 
-p = 15;
+p = 18;
 y_transmit = [zeros(1, p) , y_transmit];
 
 y_transmit = y_transmit(1 : N2 : end);   % rate = N1
@@ -145,6 +145,8 @@ K2= (4*loop_bw*loop_bw)/denom;
 % bez opóŸnienia
 num_of_samples = length(y_transmit) - taps_per_filter + 1;
 prev_e = 0;
+CNT_history = [];
+
 for n=1:num_of_samples
     CNT = CNT_next;
     if underflow == 1
@@ -166,6 +168,7 @@ for n=1:num_of_samples
         new_index = floor(rem(2*N2*abs(CNT_next), N2)) + 1;
         filter_indexes = [filter_indexes, new_index];
         CNT_next = 1 + CNT_next;
+        CNT_history = [CNT_history, CNT_next];
         underflow = 1;
     else
         underflow = 0;
