@@ -11,3 +11,4 @@ i<>.\src\TestBench\d_fir_filter_TB.vhd
 i<>.\src\TestBench\fir_filter_TB_tmp.vhd
 i<>.\src\TestBench\filters_bank_TB_tmp.vhd
 i<>.\src\TestBench\polyphase_clock_sync_TB_tmp.vhd
+i<>.\src\TestBench\d_filters_bank_TB.vhd

@@ -46,7 +46,7 @@ entity TED is
 		f_index : out std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
 		underflow : out std_logic;
 		
-		in_valid : in std_logic;
+		in_valid : in std_logic := '0';
 		filter_din : in signed(AXIS_DATA_WIDTH-1 downto 0); -- TODO: zdefiniowaæ rozmiar danych w tablicy
 		dfilter_din : in signed(AXIS_DATA_WIDTH-1 downto 0)												
 		
