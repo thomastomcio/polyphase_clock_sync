@@ -62,10 +62,10 @@ architecture TED_arch of TED is
 --	constant K2 : real := 9.77243613962953e-05; --0.014436477216089;	
 
 
-	constant scale : integer := 2 ** 10;
+	constant scale : integer := 2 ** 20;
 	constant K1 : integer := integer(real(scale)*0.0110017712591052); --0.162525308786227;	   
 	constant K2 : integer := integer(real(scale)*9.77243613962953e-05); --0.014436477216089;  
-	constant licznik : integer := scale*1024*1024;
+	constant licznik : integer := scale/(1024*1024);
 
 	--signal error : real := 0.0; -- signed(dfilter_din'range) := (others => '0');
 	--signal f_index_sig : std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0) := (others => '0');	-- TODO: ustaliæ typy
@@ -93,7 +93,7 @@ process(arestn, clk)
 	variable  vi : integer := 0;
 	variable  v : integer := 0;
 	variable  W : integer := 0;	
-	variable  CNT : integer := licznik; 	--modulo 1 counter 
+	variable  CNT : integer := scale/(1024*1024); 	--modulo 1 counter 
 	variable vi_add : integer := 0;
 begin
 	if (arestn = '0') then	
@@ -103,14 +103,14 @@ begin
 		vi := 0;
 		v := 0;
 		W := 0;
-		CNT := licznik;
+		CNT := scale/(1024*1024);
 	elsif (rising_edge(clk)) then
 		if (in_valid = '1') then
 		
 			if filter_din(filter_din'left) = '1' then 	-- determine sign of matched filter output																 
-				error := ((-1)*to_integer(dfilter_din));  -- integer(unsigned(f_index)))  
+				error := (-1)*to_integer(dfilter_din)/(1024*1024);  -- integer(unsigned(f_index)))  
 			else
-				error := (to_integer(dfilter_din));  -- integer(unsigned(f_index)))  
+				error := to_integer(dfilter_din)/(1024*1024);  -- integer(unsigned(f_index)))  
 			end if;
 			
 			-- error 
@@ -124,14 +124,14 @@ begin
 			
 			vi := vi + vi_add; 
 			v := vp + vi;
-			W := licznik/SAMPLES_PER_SYMBOL + v; -- update every SAMPLES_PER_SYMBOL in closed loop
+			W := scale/(1024*1024*SAMPLES_PER_SYMBOL) + v; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
 			CNT := CNT - W; 
 			
 			if (CNT < 0) then
 				f_index_sig <= ((SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE*abs(CNT)/scale)) mod (OVERSAMPLING_RATE);
-				CNT := licznik + CNT;
+				CNT := scale/(1024*1024) + CNT;
 				underflow <= '1';
 			else
 				underflow <= '0';

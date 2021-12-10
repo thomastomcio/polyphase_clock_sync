@@ -36,22 +36,22 @@ matlab_cosim=.
 
 [Folders]
 Name3=Makefiles
-Directory3=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory3=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension3=mak
 Name4=Memory
-Directory4=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory4=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension4=mem;mif;hex
 Name5=Dll Libraries
-Directory5=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory5=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension5=dll
 Name6=PDF
-Directory6=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory6=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension6=pdf
 Name7=HTML
-Directory7=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory7=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension7=htm;html
 Name8=ALINT-PRO Workspaces
-Directory8=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
+Directory8=c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\
 Extension8=alintws
 
 [SpecTracer]
@@ -78,6 +78,7 @@ impulse_response=1
 /filter_bank_test.asdb=-1
 /filter_bank_test.awc=-1
 /polyphase_clock_sync_HDL.vhd=-1
+/polyphase_clock_sync_HDL_2019.vhd=-1
 impulse_response/impulse_response.asdb=-1
 impulse_response/impulse_response.awc=-1
 
@@ -94,6 +95,8 @@ impulse_response/impulse_response.awc=-1
 .\src\filter_bank_test.asdb=Accelerated Waveform File
 .\src\filter_bank_test.awc=Accelerated Waveform Configuration
 .\src\polyphase_clock_sync_HDL.vhd=VHDL Source Code
+.\src\polyphase_clock_sync_HDL_2019.vhd=VHDL Source Code
 .\src\impulse_response\impulse_response.asdb=Accelerated Waveform File
 .\src\impulse_response\impulse_response.awc=Accelerated Waveform Configuration
 
+c:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\matlab_cosim\matlab_cosim.adf
