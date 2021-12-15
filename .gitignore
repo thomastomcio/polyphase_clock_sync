@@ -1,4 +1,3 @@
-*.asdb/
 log/
 Edfmap.ini
 *.wsp
@@ -8,19 +7,20 @@ Edfmap.ini
 *.sth
 *.cmd
 compile/
+synthesis/
 *.set
 
-# Comment to save compilation order:
 # compilation.order
+# synthesis.order
+
 projlib.cfg
 library.cfg
 *.lib
 *.mgf
 
 # Uncomment to ignore simulation results
-*.awc
-*.asdb
-#synthesis.order
+#*.awc
+#*.asdb
 
 wave.asdbw/
 polyphase_clock_sync/src/TestBench/*.txt

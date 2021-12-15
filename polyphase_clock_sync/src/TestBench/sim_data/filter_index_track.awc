@@ -1,0 +1,134 @@
+<config>
+    <version>
+        2.0
+    </version>
+    <comment>
+    </comment>
+    <databases>
+        <database id="">*virtual*</database>
+        <database id="5820b16aec383128ac614a58919d2800">filter_index_track.asdb</database>
+    </databases>
+    <signallists>
+        <signallist id="0">
+                AAAAEwABwAAAAAAQAQMhZwEOB8AAWQAAEBEAAAAA
+|
+        </signallist>
+    </signallists>
+    <propertybases>
+        <propertybase id="0">
+            <propclass name="radix">
+                <property first="268435491" last="268435491">
+                10
+                </property>
+                <property first="268435525" last="268435525">
+                10
+                </property>
+                <property first="268435531" last="268435532">
+                10
+                </property>
+            </propclass>
+            <propclass name="mode">
+                <property first="268435491" last="268435491">
+                2
+                </property>
+                <property first="268435525" last="268435525">
+                2
+                </property>
+                <property first="268435532" last="268435532">
+                2
+                </property>
+            </propclass>
+            <propclass name="notation">
+                <property first="268435491" last="268435491">
+                2
+                </property>
+                <property first="268435525" last="268435525">
+                1
+                </property>
+                <property first="268435532" last="268435532">
+                1
+                </property>
+            </propclass>
+            <propclass name="reverse">
+            </propclass>
+            <propclass name="bold">
+            </propclass>
+            <propclass name="row_height">
+                <property first="268435491" last="268435491">
+                200
+                </property>
+                <property first="268435525" last="268435525">
+                100
+                </property>
+                <property first="268435532" last="268435532">
+                50
+                </property>
+            </propclass>
+            <propclass name="color">
+            </propclass>
+            <propclass name="compared">
+            </propclass>
+            <propclass name="analog_bounds">
+                <property first="268435491" last="268435491">
+                [-326988,328144]
+                </property>
+                <property first="268435525" last="268435525">
+                [-2,33]
+                </property>
+                <property first="268435532" last="268435532">
+                [0,33]
+                </property>
+            </propclass>
+            <propclass name="fixedpoint">
+            </propclass>
+            <propclass name="floating_encoding">
+            </propclass>
+            <propclass name="floating_notation">
+            </propclass>
+            <propclass name="floating_precision">
+            </propclass>
+            <propclass name="rounding_method">
+            </propclass>
+            <propclass name="aliasname">
+            </propclass>
+        </propertybase>
+    </propertybases>
+    <prefbases>
+        <prefbase id="0" >
+            <pref name="End Time" value="26173696" />
+            <pref name="Start Time" value="0" />
+        </prefbase>
+    </prefbases>
+    <bookmarkbases>
+        <bookmarks id="0">
+        </bookmarks>
+    </bookmarkbases>
+    <cursorbases>
+        <cursors id="0">
+            <cursor value="6606222" label="Cursor 1" locked="0" />
+        </cursors>
+    </cursorbases>
+    <measurementbases>
+    </measurementbases>
+    <commentbases>
+        <comments id="0">
+        </comments>
+    </commentbases>
+    <views>
+        <view signallist="0" propertybase="0" prefbase="0" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
+    </views>
+    <virtualsources>
+        <virtualnamedrows>
+        </virtualnamedrows>
+        <virtualbuses>
+        </virtualbuses>
+        <virtualalias>
+        </virtualalias>
+        <virtualbusalias>
+        </virtualbusalias>
+        <virtualanalogalias>
+        </virtualanalogalias>
+        <virtualanalogbusalias>
+        </virtualanalogbusalias>
+        </virtualsources>
+</config>
