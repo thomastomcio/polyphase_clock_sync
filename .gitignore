@@ -24,3 +24,4 @@ library.cfg
 
 wave.asdbw/
 polyphase_clock_sync/src/TestBench/*.txt
+polyphase_clock_sync/src/wave.asdb
