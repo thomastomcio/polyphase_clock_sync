@@ -179,5 +179,9 @@ figure(4);
     grid on; hold on;
     plot(filter_indexes, 'b.-');
     title("Ustalanie indexu filtru z banków fitrów");
+figure(5);
+    grid on; hold on;
+    stem(rec_filtered(filter_indexes(end), : ));
+    
 
 
