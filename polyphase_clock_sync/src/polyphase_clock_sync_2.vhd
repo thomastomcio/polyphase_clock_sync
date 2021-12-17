@@ -142,6 +142,7 @@ signal d_filter_net : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 signal filter_array : dout_array_t(CHANNELS-1 downto 0);
 signal filter_net : SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 signal f_index : STD_LOGIC_VECTOR(integer(ceil(log2(real(CHANNELS))))-1 downto 0);
+signal m_axis_tvalid_net : STD_LOGIC;
 
 begin
 
@@ -157,7 +158,7 @@ MUX : dual_MUX
        filter_array_din => filter_array,
        filter_dout => filter_net(AXIS_DATA_WIDTH-1 downto 0),
        m_axis_tready => m_axis_tready,
-       m_axis_tvalid => m_axis_tvalid,
+       m_axis_tvalid => m_axis_tvalid_net,
        s_axis_tready => dual_MUX_s_tready,
        s_axis_tvalid => dual_MUX_s_axis_tvalid,
        underflow => underflow
@@ -170,7 +171,7 @@ U1 : TED
        dfilter_din => d_filter_net(AXIS_DATA_WIDTH-1 downto 0),
        f_index => f_index(integer(ceil(log2(real(CHANNELS))))-1 downto 0),
        filter_din => filter_net(AXIS_DATA_WIDTH-1 downto 0),
-       in_valid => m_axis_tvalid,
+       in_valid => m_axis_tvalid_net,
        underflow => underflow
   );
 
@@ -201,7 +202,7 @@ U4 : d_filters_bank
   );
 
 dual_MUX_s_axis_tvalid <= dfilters_m_valid and filters_m_valid;
-
+m_axis_tvalid <= m_axis_tvalid_net;
 
 ---- Terminal assignment ----
 

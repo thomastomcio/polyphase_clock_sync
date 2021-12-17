@@ -82,14 +82,6 @@ begin
 					s_axis_tready <= '1';
 				when TRANSMIT =>		 
 					s_axis_tready <= '0';
---				when SECOND_SAMPLE =>
---					s_axis_tready <= '0';
---				when PREV_SAMPLE =>		 
---					s_axis_tready <= '0';  
---				when NEXT_SAMPLE =>
---					s_axis_tready <= '0';
---				when SHIFT_IDLE => 
---					s_axis_tready <= '1';		
 			end case;					
 		else
 			s_axis_tready <= '0';
