@@ -1,6 +1,6 @@
 <config>
     <version>
-        2.0
+        3.0
     </version>
     <comment>
     </comment>
@@ -63,6 +63,11 @@
             </propclass>
         </propertybase>
     </propertybases>
+    <timebases>
+        <timebase id="0">
+            <time start_time="1879500" end_time="39469500" />
+        </timebase>
+    </timebases>
     <prefbases>
         <prefbase id="0" >
             <pref name="End Time" value="61346964" />
@@ -85,7 +90,7 @@
         </comments>
     </commentbases>
     <views>
-        <view signallist="0" propertybase="0" prefbase="0" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
+        <view signallist="0" propertybase="0" prefbase="-1" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
     </views>
     <virtualsources>
         <virtualnamedrows>

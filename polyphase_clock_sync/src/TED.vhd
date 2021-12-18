@@ -17,7 +17,6 @@
 -- Description : 
 --
 -------------------------------------------------------------------------------
-
 library polyphase_clock_sync;
 use polyphase_clock_sync.array_type_pkg.all;
 
@@ -69,51 +68,69 @@ architecture TED_arch of TED is
 
 	signal f_index_sig : integer := 0;	-- TODO: ustaliæ typy
 	
---	signal vp : real := 0.0;
---	signal vi : real := 0.0;
---	signal v : real := 0.0;
---	signal W : real := 0.0;	 
---	signal CNT : real := 1.0; 	--modulo 1 counter 
+	signal error : integer := 0;
+	signal vp : integer := 0;
+	signal  vi : integer := 0;
+	signal  v : integer := 0;
+	signal  W : integer := 0;	
+--	signal  CNT : integer := scale; 	--modulo 1 counter 
 
 begin
 process(arestn, clk)					  
-	variable error : integer := 0;
-	variable vp : integer := 0;
-	variable  vi : integer := 0;
-	variable  v : integer := 0;
-	variable  W : integer := 0;	
+--	variable error : integer := 0;
+--	variable vp : integer := 0;
+--	variable  vi : integer := 0;
+--	variable  v : integer := 0;
+--	variable  W : integer := 0;	
 	variable  CNT : integer := scale; 	--modulo 1 counter 
+    variable aux1 : integer := 0;
+	variable aux2 : integer := 0;
+	variable aux3 : integer := 0;
+	variable aux4 : integer := 0;
+	variable aux5 : integer := 0;
+	variable aux6 : integer := 0;
+	variable aux7 : integer := 0;
 begin
 	if (arestn = '0') then	
 		f_index_sig <= 0; -- (others => '0');
 		underflow <= '0';
-		vp := 0;
-		vi := 0;
-		v := 0;
-		W := 0;
+		vp <= 0;
+		vi <= 0;
+		v <= 0;
+		W <= 0;
 		CNT := scale;
 	elsif (rising_edge(clk)) then
 		if (in_valid = '1') then
 			
 			-- error
 			if filter_din(filter_din'left) = '1' then 	-- determine sign of matched filter output																 
-				error := ((-1)*to_integer(dfilter_din));
+				error <= ((-1)*to_integer(dfilter_din));
 			else
-				error := (to_integer(dfilter_din));
+				error <= (to_integer(dfilter_din));
 			end if;
 			
 			-- loop filter;
-			vp := (K1*error)/(1024*1024);	   
-			vi := vi + (K2*error)/(1024*1024); 
+--			vp := (K1*error)/(1024*1024);	   
+--			vi := vi + (K2*error)/(1024*1024);
+
+			aux4 := K1*error;
+			vp <= aux4/(1024*1024);
 			
-			v := vp + vi;
-			W := scale/SAMPLES_PER_SYMBOL + v; -- update every SAMPLES_PER_SYMBOL in closed loop
+			aux5 := K2*error;
+			aux6 := aux5/(1024*1024);
+			vi <= vi + aux6;
+			aux7 := vi + vp;
+			W <= scale/SAMPLES_PER_SYMBOL + aux7; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
 			CNT := CNT - W; 
 			
 			if (CNT < 0) then
-				f_index_sig <= ((SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE*abs(CNT)/scale)) mod (OVERSAMPLING_RATE);
+				-- f_index_sig <= ((SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE*abs(CNT)/scale)) mod (OVERSAMPLING_RATE);
+				aux1 := abs(CNT);
+				aux2 := aux1 * SAMPLES_PER_SYMBOL * OVERSAMPLING_RATE;
+				aux3 := aux2/scale;
+				f_index_sig <= aux3 mod (OVERSAMPLING_RATE);
 				CNT := scale + CNT;
 				underflow <= '1';
 			else
