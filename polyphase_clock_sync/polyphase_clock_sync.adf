@@ -5,10 +5,11 @@ version=4
 Current Config=compile
 
 [Configurations]
-compile=polyphase_clock_sync
+compile=polyphase_clock_sync_post_synthesis
 
 [Library]
 polyphase_clock_sync=.\polyphase_clock_sync\polyphase_clock_sync.lib
+polyphase_clock_sync_post_synthesis=.\polyphase_clock_sync_post_synthesis\polyphase_clock_sync_post_synthesis.lib
 
 [Settings]
 AccessRead=0
@@ -27,11 +28,27 @@ ON_SERVERFARM_IMPL=0
 ON_SERVERFARM_SIM=0
 DVM_DISPLAY=NO
 REFRESH_FLOW=1
-RUN_MODE_SYNTH=1
+RUN_MODE_SYNTH=0
 fileopenfolder=C:\My_Designs\2_polyphase_clock_sync\temp_polyphase_clock_sync\polyphase_clock_sync\polyphase_clock_sync\src\TestBench
 AddGeneratedFilesToDesignBrowser=0
 DesignStatusPath=$dsn\src\DESIGN_STATUS
 DesignActivationScript=$dsn\design.do
+VerilogDirsChanged=0
+SYNTH_STATUS=warnings
+IMPL_TOOL=MV_VIVADO_IMPL_2017_2
+SYNTH_TOOL=MV_VIVADO_SYNTH_2017_2
+CSYNTH_TOOL=
+PHYSSYNTH_TOOL=
+FAMILY=Xilinx2017x Virtex_UltraScale+
+CSYNTH_STATUS=NONE
+PHYSSYNTH_STATUS=none
+IMPL_STATUS=none
+PCBINTERFACE_STATUS=NONE
+FUNCTIONAL_SIMULATION_STATUS=
+POSTSYNTHESIS_SIMULATION_STATUS=
+TIMING_SIMULATION_STATUS=
+FUNC_LIB=polyphase_clock_sync
+POST_LIB=polyphase_clock_sync_post_synthesis
 
 [LocalVerilogSets]
 EnableSLP=1
@@ -64,21 +81,6 @@ xilinxun=ARTIX7
 UnlinkedDesignLibrary=ARTIX7
 DESIGNS=ARTIX7
 matlab_cosim=.
-
-[IMPLEMENTATION]
-UCF=
-IMPL_DONT_RUN_LOGIC_OPTIMIZATION=0
-IMPL_DONT_RUN_POWER_OPTIMIZATION=1
-IMPL_DONT_RUN_PLACE=0
-IMPL_DONT_RUN_POST_PLACE_POWER_OPTIMIZATION=0
-IMPL_DONT_RUN_PLACED_NETLIST_OPTIMIZATION=1
-IMPL_DONT_RUN_ROUTE=0
-IMPL_DONT_RUN_ROUTED_NETLIST_OPTIMIZATION=1
-IMPL_DONT_RUN_BITSTREAM=0
-FLOW_STEPS_RESET=0
-
-[SYNTHESIS]
-SYNTH_DONT_RUN_SYNTHESIS=0
 
 [Folders]
 Name3=Makefiles
@@ -137,14 +139,98 @@ GenerateToCustomFolder=0
 Synchronize=0
 
 [HierarchyViewer]
-HierarchyInformation=fir_filter_tb|testbench_for_fir_filter|1 polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1
+HierarchyInformation=polyphase_clock_sync|STRUCTURE|0 polyphase_clock_sync_tb_synth|testbench_for_polyphase_clock_sync|1 
 ShowHide=ShowTopLevel
 Selected=
+
+[PCB_INTERFACE]
+FAMILY=
+
+[SYNTHESIS]
+TOPLEVEL=polyphase_clock_sync
+SYNTH_DONT_RUN_SYNTHESIS=0
+FAMILY=Xilinx2017x Kintex_UltraScale+
+DEVICE=ku3p-ffva676
+SPEED=-1-e
+OBSOLETE_ALIASES=1
+SYNTH_VIEW_MODE=RTL
+VIEW_MODE=RTL
+SYNTH_TOPLEVEL=polyphase_clock_sync
+SYNTH_FAMILY=Xilinx2017x Kintex_UltraScale+
+SYNTH_DEVICE=ku3p-ffva676
+SYNTH_SPEED=-1-e
+SYNTH_RUN_MODE=0
+SYNTH_AUTO_CLOSE=0
+SYNTH_OVERWRITE_EXISTING_PRJ=1
+SYNTH_SIMULATION_OUTPUT_FORMAT=1
+SYNTH_SYNTHESIS_CHECKPOINT=synthesis\polyphase_clock_sync_synth.dcp
+SYNTH_SYNTHESIS_CONSTRAINT_FILE=
+SYNTH_FLATTEN_HIERARCHY=Rebuilt
+SYNTH_GATED_CLOCK_CONVERSION=Off
+SYNTH_FSM_EXTRACTION=Auto
+SYNTH_DISABLE_LUT_COMBINING=0
+SYNTH_NUMBER_OF_GLOBAL_CLOCK_BUFFERS=12
+SYNTH_FANOUT_LIMIT=10000
+SYNTH_DIRECTIVE=Default
+SYNTH_ADD_SPECIAL_LIBRARY_SOURCES=0
+SYNTH_ONE_FILE_MODE=0
+SYNTH_RUN_VIVADO_WITH=0
+SYNTH_SELECTED_TCL_FILE=
+SYNTH_SELECTED_CHECKPOINT_FILE=
+SYNTH_KEEP_EQUIVALENT_REGISTERS=0
+SYNTH_RESOURCE_SHARING=Auto
+SYNTH_CONTROL_SET_OPTIMIZATION_THRESHOLD=Auto
+SYNTH_SHIFT_REGISTER_MINIMUM_SIZE=3
+SYNTH_MAX_BRAM=-1
+SYNTH_MAX_DSP=-1
+SYNTH_CASCADE_DSP=Auto
+SYNTH_MAX_URAM=-1
+SYNTH_MAX_CASCADED_BRAM=-1
+SYNTH_MAX_CASCADED_URAM=-1
+SYNTH_RETIMING=0
+SYNTH_DISABLE_SHIFT_REGISTER_EXTRACTION=0
+SYNTH_ENABLE_VHDL_ASSERT_STATEMENT=0
+SYNTH_DISABLE_TIMING_DRIVEN=0
+OLD_FAMILY=Xilinx2017x Kintex_UltraScale+
+OUTPUT_NETLIST=synthesis\polyphase_clock_sync.edn
+LAST_RUN=1639187604
+OUTPUT_SIMUL_NETLIST=synthesis\polyphase_clock_sync.vhd
+
+[PHYS_SYNTHESIS]
+FAMILY=Xilinx2017x Virtex_UltraScale+
+DEVICE=
+SPEED=
+SCRIPTS_COPIED=0
+IN_DESIGN=synthesis\polyphase_clock_sync.edn
+OUT_DESIGN=
+IN_CONSTRAINT=
+OUT_CONSTRAINT=
+REPORT=
+
+[IMPLEMENTATION]
+FLOW_STEPS_RESET=0
+IMPL_DONT_RUN_LOGIC_OPTIMIZATION=0
+IMPL_DONT_RUN_POWER_OPTIMIZATION=1
+IMPL_DONT_RUN_PLACE=0
+IMPL_DONT_RUN_POST_PLACE_POWER_OPTIMIZATION=0
+IMPL_DONT_RUN_PLACED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_ROUTE=0
+IMPL_DONT_RUN_ROUTED_NETLIST_OPTIMIZATION=1
+IMPL_DONT_RUN_BITSTREAM=0
+FAMILY=Xilinx2017x Kintex_UltraScale+
+DEVICE=ku3p-ffva676
+SPEED=-1-e
+NETLIST=synthesis\polyphase_clock_sync.edn
+CHECKPOINT_FILE=synthesis\polyphase_clock_sync_synth.dcp
+
+[SIM.POST]
+TOPLEVEL=polyphase_clock_sync
 
 [Groups]
 TestBench=1
 TestBench\sim_data=1
 not_used=0
+post-synthesis=1
 
 [Files]
 /fir_filter.vhd=-1
@@ -175,10 +261,14 @@ TestBench\sim_data/filter_index_track.asdb=-1
 TestBench\sim_data/filter_index_track.awc=-1
 TestBench\sim_data/successful_f_index_tracking.asdb=-1
 TestBench\sim_data/successful_f_index_tracking.awc=-1
+TestBench\sim_data/post_synth_tracking.asdb=-1
+TestBench\sim_data/post_synth_tracking.awc=-1
 not_used/filter_bank.vhd=-1
 not_used/loop_filter.vhd=-1
 not_used/modulo_sps_counter.vhd=-1
 not_used/index_selector.vhd=-1
+post-synthesis/..\..\synthesis\polyphase_clock_sync.edn=-1
+post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 
 [Files.Data]
 .\src\fir_filter.vhd=VHDL Source Code
@@ -209,11 +299,14 @@ not_used/index_selector.vhd=-1
 .\src\TestBench\sim_data\filter_index_track.awc=Accelerated Waveform Configuration
 .\src\TestBench\sim_data\successful_f_index_tracking.asdb=Accelerated Waveform File
 .\src\TestBench\sim_data\successful_f_index_tracking.awc=Accelerated Waveform Configuration
+.\src\TestBench\sim_data\post_synth_tracking.asdb=Accelerated Waveform File
+.\src\TestBench\sim_data\post_synth_tracking.awc=Accelerated Waveform Configuration
 .\src\not_used\filter_bank.vhd=VHDL Source Code
 .\src\not_used\loop_filter.vhd=VHDL Source Code
 .\src\not_used\modulo_sps_counter.vhd=VHDL Source Code
 .\src\not_used\index_selector.vhd=VHDL Source Code
+.\synthesis\polyphase_clock_sync.edn=EDIF Netlist
+.\synthesis\polyphase_clock_sync.vhd=VHDL Source Code
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
-
