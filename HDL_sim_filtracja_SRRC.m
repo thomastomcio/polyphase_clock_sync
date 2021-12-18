@@ -165,7 +165,7 @@ for n=1:num_of_samples
     CNT_next = CNT - W;
 
     if CNT_next < 0
-        new_index = floor(rem(2*N2*abs(CNT_next), N2)) + 1;
+        new_index = floor(rem(sps*abs(CNT_next), N2)) + 1;
         filter_indexes = [filter_indexes, new_index];
         CNT_next = 1 + CNT_next;
         CNT_history = [CNT_history, CNT_next];
@@ -179,5 +179,9 @@ figure(4);
     grid on; hold on;
     plot(filter_indexes, 'b.-');
     title("Ustalanie indexu filtru z banków fitrów");
+figure(5);
+    grid on; hold on;
+    stem(rec_filtered(filter_indexes(end), : ));
+    
 
 
