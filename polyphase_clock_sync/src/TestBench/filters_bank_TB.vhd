@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;  
+use ieee.numeric_std.all;  	  
+use ieee.math_real.all;
 use std.textio.all;
 
 library polyphase_clock_sync;
@@ -27,11 +28,15 @@ architecture TB_ARCHITECTURE of filters_bank_tb is
 		CLK : in STD_LOGIC;
 		ARESTN : in STD_LOGIC;
 		DIN : in SIGNED(AXIS_DATA_WIDTH-1 downto 0);
-		DOUT : out dout_array_t(CHANNELS-1 downto 0);
+		DOUT : out SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 		s_axis_tready : out STD_LOGIC;
 		s_axis_tvalid : in STD_LOGIC;
 		m_axis_tvalid : out STD_LOGIC;
-		m_axis_tready : in STD_LOGIC );
+		m_axis_tready : in STD_LOGIC; 
+		
+		f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
+		underflow : in std_logic
+		);
 	end component;
 
 	-- Stimulus signals - signals mapped to the input and inout ports of tested entity
@@ -41,9 +46,12 @@ architecture TB_ARCHITECTURE of filters_bank_tb is
 	signal s_axis_tvalid : STD_LOGIC;
 	signal m_axis_tready : STD_LOGIC;
 	-- Observed signals - signals mapped to the output ports of tested entity
-	signal DOUT : dout_array_t(CHANNELS-1 downto 0);
+	signal DOUT :  SIGNED(AXIS_DATA_WIDTH-1 downto 0);
 	signal s_axis_tready : STD_LOGIC;
-	signal m_axis_tvalid : STD_LOGIC;
+	signal m_axis_tvalid : STD_LOGIC;	   
+	
+	signal f_index : std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
+	signal underflow : std_logic;
 
 	-- Add your code here ...
 	type impulse_t is array(2 downto 0) of signed(AXIS_DATA_WIDTH-1 downto 0);
@@ -69,7 +77,10 @@ begin
 			s_axis_tready => s_axis_tready,
 			s_axis_tvalid => s_axis_tvalid,
 			m_axis_tvalid => m_axis_tvalid,
-			m_axis_tready => m_axis_tready
+			m_axis_tready => m_axis_tready,
+			
+			f_index => f_index,
+			underflow => underflow
 		);
 
 	-- Add your stimulus here ...

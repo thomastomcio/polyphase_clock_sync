@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use ieee.numeric_std.all; 
+use ieee.math_real.all;
 
 -----------do zrobienia 1)signed  2)clken i reset 3)ready i valid
 entity d_fir_filter is
@@ -9,7 +10,7 @@ entity d_fir_filter is
 	generic(																		   			
 			AXIS_DATA_WIDTH : integer := 32;--te? potem zeby przy tb nie zapomniec 
 			--FILTER_SIZE : integer := 2;
-			FILTER_INDEX : integer := 0;
+			--FILTER_INDEX : integer := 0;
 			OVERSAMPLING_RATE : integer := 1; 
 			number_of_filters : integer := 32;
             num_of_coef : integer := 544;--51;--- number of coefficients
@@ -26,9 +27,13 @@ entity d_fir_filter is
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0)	-- by³o std_logic_vector
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);	-- by³o std_logic_vector
            -- m_axis_data_tvalid      : out std_logic;
-           -- m_axis_data_tready      : in std_logic
+           -- m_axis_data_tready      : in std_logic		 
+		   
+		   	f_index : in std_logic_vector(integer(ceil(log2(real(number_of_filters))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
+			underflow : in std_logic
+			
             );                                                               
             
 attribute syn_useioff : boolean;
@@ -71,7 +76,7 @@ constant coefs_const : coefs_table(num_of_coef - 1 downto 0) := (0,0,0,0,0,0,0,0
 --(0,51,74,82,70,35,-16,-74,-132,-167,-175,-136,-43,101,284,486,688,859,976,1019,968,828,603,315,0,-315,-603,-828,-968,-1019,-976,-859,-688,-486,-284,-101,43,136,175,167,132,74,16,-35,-70,-82,-74,-51,-19,0);
 
 -- table of sub coefficients		
-constant coefs : coefs_table(sub_num_of_coeffs - 1 downto 0) := decimate_and_shift(coefs_const, number_of_filters, FILTER_INDEX);
+signal coefs : coefs_table(sub_num_of_coeffs - 1 downto 0) := (others => 0);
 
 
 type mult_table is array (num_of_coef - 1 downto 0) of signed (((coef_size)+(s_axis_data_tdata'length))-1 downto 0); 
@@ -123,5 +128,7 @@ begin
             end if;
       end if;         
 end process;  
+
+coefs <= decimate_and_shift(coefs_const, number_of_filters, to_integer(unsigned(f_index))) when underflow = '1';
 
 end d_fir_arch;

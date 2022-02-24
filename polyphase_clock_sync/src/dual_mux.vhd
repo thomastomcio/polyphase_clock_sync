@@ -39,8 +39,8 @@ entity dual_MUX is
 		f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	 -- synthesizable
 		underflow : in std_logic;
 		
-		filter_array_din : in dout_array_t(CHANNELS-1 downto 0); -- TODO: zdefiniowaæ rozmiar danych w tablicy
-		dfilter_array_din : in dout_array_t(CHANNELS-1 downto 0);												
+		filter_array_din : in signed(AXIS_DATA_WIDTH-1 downto 0); -- TODO: zdefiniowaæ rozmiar danych w tablicy
+		dfilter_array_din : in signed(AXIS_DATA_WIDTH-1 downto 0);												
 		
 		--valid	: out std_logic;
 		filter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);
@@ -112,11 +112,11 @@ begin
 			when TRANSMIT => 
 				if (s_axis_tvalid = '1') then	
 					if(underflow = '1') then
-						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
-						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index))); 
+						filter_dout <= filter_array_din;
+						dfilter_dout <= dfilter_array_din; 
 						
-						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
+						f_prev_sample <= filter_array_din;
+						df_prev_sample <= dfilter_array_din;
 						m_axis_tvalid <= '1';
 					else
 						filter_dout <= f_prev_sample;	
