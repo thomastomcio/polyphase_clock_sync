@@ -20,8 +20,8 @@ library.cfg
 
 # Uncomment to ignore simulation results
 #*.awc
-#*.asdb
+*.asdb
 
 wave.asdbw/
 polyphase_clock_sync/src/TestBench/*.txt
-polyphase_clock_sync/src/wave.asdb
+#polyphase_clock_sync/src/wave.asdb
