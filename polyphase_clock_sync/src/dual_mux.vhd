@@ -18,8 +18,8 @@
 --
 -------------------------------------------------------------------------------
 
-library polyphase_clock_sync;
-use polyphase_clock_sync.array_type_pkg.all;
+--library polyphase_clock_sync;
+--use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -81,7 +81,7 @@ begin
 				when IDLE =>
 					s_axis_tready <= '1';
 				when TRANSMIT =>		 
-					s_axis_tready <= '0';
+					s_axis_tready <= '1';
 			end case;					
 		else
 			s_axis_tready <= '0';
@@ -118,17 +118,20 @@ begin
 						f_prev_sample <= filter_array_din;
 						df_prev_sample <= dfilter_array_din;
 						m_axis_tvalid <= '1';
+						state <= TRANSMIT;
 					else
-						filter_dout <= f_prev_sample;	
-						dfilter_dout <= df_prev_sample; 
+						filter_dout <= (others => '0');	
+						dfilter_dout <= (others => '0');
 						m_axis_tvalid <= '1';
+						state <= TRANSMIT;
 					end if;	
 				else						 
 					filter_dout <= (others => '0');	
 					dfilter_dout <= (others => '0'); 
 					m_axis_tvalid <= '0';
+					state <= TRANSMIT;
 				end if;						 
-				state <= IDLE;				
+								
 		end case;
 	end if;
 end process;		  

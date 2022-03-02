@@ -17,8 +17,8 @@
 -- Description : 
 --
 -------------------------------------------------------------------------------
-library polyphase_clock_sync;
-use polyphase_clock_sync.array_type_pkg.all;
+--library polyphase_clock_sync;
+--use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;

@@ -18,8 +18,8 @@
 --
 -------------------------------------------------------------------------------
 																			   	 
-library polyphase_clock_sync;
-use polyphase_clock_sync.array_type_pkg.all;
+--library polyphase_clock_sync;
+--use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -82,7 +82,7 @@ architecture filters_bank_arch of filters_bank is
             
             -- Ports of Axi Master Bus Interface s_axis   
             m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);
-            --m_axis_data_tvalid      : out std_logic;
+            m_axis_data_tvalid      : out std_logic;
             --m_axis_data_tready      : in std_logic	 
 			
 			f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
@@ -120,7 +120,7 @@ begin
 		--s_axis_data_tready => s_axis_tready,
 		s_axis_data_tdata => DIN,
 		--m_axis_data_tready => m_axis_tready,	
-		--m_axis_data_tvalid => m_axis_tvalid,
+	    m_axis_data_tvalid => m_axis_tvalid,
 		m_axis_data_tdata => DOUT,
 		
 		f_index => f_index,
@@ -153,7 +153,7 @@ begin
 --	   );
 --   end generate GEN_FILTER_BANK;  
 
-s_axis_tready <= m_axis_tready;
-m_axis_tvalid <= s_axis_tvalid and m_axis_tready;
+s_axis_tready <= '1';
+--m_axis_tvalid <= s_axis_tvalid and m_axis_tready;
    
 end filters_bank_arch;

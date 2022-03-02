@@ -23,8 +23,8 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use IEEE.math_real.all;
 
-library polyphase_clock_sync;
-use polyphase_clock_sync.array_type_pkg.all;
+--library polyphase_clock_sync;
+--use polyphase_clock_sync.array_type_pkg.all;
 
 entity polyphase_clock_sync is
   generic(

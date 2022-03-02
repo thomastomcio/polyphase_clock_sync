@@ -28,7 +28,7 @@ entity fir_filter is
             
             -- Ports of Axi Master Bus Interface s_axis   
             m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);	-- by³o std_logic_vector
-            --m_axis_data_tvalid      : out std_logic;
+            m_axis_data_tvalid      : out std_logic;
             --m_axis_data_tready      : in std_logic	 
 			
 			f_index : in std_logic_vector(integer(ceil(log2(real(number_of_filters))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
@@ -122,7 +122,8 @@ begin
                                     add(i) <= mult(i) + add(i-1);
                               end if;
                         end loop;
-						m_axis_data_tdata <= add(sub_num_of_coeffs-1)(31 downto 0);--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
+						m_axis_data_tdata <= add(sub_num_of_coeffs-1)(AXIS_DATA_WIDTH-1 downto 0);--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));
+						m_axis_data_tvalid <= '1';           
                         -- by³o to: m_axis_data_tdata <= std_logic_vector(add(num_of_coef-1)(31 downto 0));--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
                         --full_out :=  std_logic_vector(add(num_of_coef-1));
                   end if;       
