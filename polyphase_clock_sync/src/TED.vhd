@@ -59,12 +59,12 @@ architecture TED_arch of TED is
 --	constant K1 : real := (4*DAMPING_FACTOR*LOOP_BW)/DENOM; -- alpha
 --	constant K2 : real := (4*LOOP_BW*LOOP_BW)/DENOM;		-- beta	 
 
---	constant K1 : real := 0.0110017712591052; --0.162525308786227;	   
---	constant K2 : real := 9.77243613962953e-05; --0.014436477216089;	
+	constant scale : integer := 2 ** 15;		
 
-	constant scale : integer := 2 ** 18;
-	constant K1 : integer := integer(real(scale)*0.0110017712591052); --0.162525308786227;	   
-	constant K2 : integer := integer(real(scale)*9.77243613962953e-05); --0.014436477216089;  
+	-- parametry dzia³aj¹ce w pierwszej wersji
+	constant K1 : integer := integer(real(scale)*(0.0110017712591052)); --0.162525308786227;	   
+	constant K2 : integer := integer(real(scale)*(9.77243613962953e-05)); --0.014436477216089;  	   
+	
 
 	signal f_index_sig : integer := 0;	-- TODO: ustaliæ typy
 	

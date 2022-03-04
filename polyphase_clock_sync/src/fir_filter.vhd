@@ -111,7 +111,7 @@ begin
       elsif rising_edge(aclk)  then 
             if aclken = '1' then         -- clock enable             
                   if (s_axis_data_tvalid = '1') then
-                        data<= s_axis_data_tdata;            -- assign input data to variable         
+                        data<= s_axis_data_tdata(AXIS_DATA_WIDTH -1) & s_axis_data_tdata(AXIS_DATA_WIDTH -1 downto 1);            -- assign input data to variable         
                         --DINS <= DINS(N-2 downto 0) & data;
                         for i in  sub_num_of_coeffs - 1 downto 0  loop-- loop that make convolution
                               --mult(i) <=  to_signed((coefs(num_of_coef - 1 -i)),coef_size)*signed(data);  -- multiplicate data with coeficients
@@ -126,6 +126,9 @@ begin
 						m_axis_data_tvalid <= '1';           
                         -- by³o to: m_axis_data_tdata <= std_logic_vector(add(num_of_coef-1)(31 downto 0));--LSB not MSB(((coef_size)+(s_axis_data_tdata'length))+6 -1 downto ((coef_size)+(s_axis_data_tdata'length)) +6 - m_axis_data_tdata'length));           
                         --full_out :=  std_logic_vector(add(num_of_coef-1));
+                  else
+                    m_axis_data_tdata <= (others => '0');
+                    m_axis_data_tvalid <= '0';                 
                   end if;       
             end if;
       end if;         

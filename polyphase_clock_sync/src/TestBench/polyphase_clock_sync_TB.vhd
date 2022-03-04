@@ -97,19 +97,34 @@ READ_FILE : process(CLK)
 file QPSK_data_file : text open read_mode is "./Testbench/QPSK_data.txt";
 variable row : line;
 variable data_read : integer;
+variable r : real;					
+variable seed1, seed2 : integer := 999;	 
+variable random_choice : std_logic := '1';	  
+variable counter : integer := 0;
 begin
-	if(falling_edge(CLK)) then
-		if(s_axis_tready = '1')	then
-			if(not endfile(QPSK_data_file)) then
-				readline(QPSK_data_file, row);
-			end if;
+	if(rising_edge(CLK)) then
+		if(s_axis_tready = '1')	then  	  
 			
-			read(row, data_read);
+			uniform(seed1, seed2, r);
+			random_choice := '1' when r > 0.5 else '0';
 			
-			DIN <= to_signed(data_read, DIN'length);
-			s_axis_tvalid <= '1';
-		else 
-			s_axis_tvalid <= '0';
+			if(counter = 10) then
+				if(not endfile(QPSK_data_file)) then
+					readline(QPSK_data_file, row);
+				
+					read(row, data_read);
+					
+					DIN <= to_signed(data_read, DIN'length);
+					s_axis_tvalid <= '1';
+				else
+					DIN <= to_signed(0, DIN'length);
+					s_axis_tvalid <= '1';
+				end if;				 
+				counter := 0;
+			else 
+				s_axis_tvalid <= '0';	
+				counter := counter + 1;
+			end if;	
 		end if;
 	end if;
 end process READ_FILE;

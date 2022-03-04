@@ -1,4 +1,3 @@
-.\src\array_type_pkg.vhd
 .\src\fir_filter.vhd
 .\src\d_fir_filter.vhd
 .\src\filters_bank.vhd
@@ -9,4 +8,4 @@
 .\src\TestBench\filters_bank_TB.vhd
 .\src\TestBench\d_filters_bank_TB.vhd
 .\src\TestBench\polyphase_clock_sync_TB.vhd
-.\src\polyphase_clock_sync_2.vhd
+.\src\polyphase_clock_sync.bde

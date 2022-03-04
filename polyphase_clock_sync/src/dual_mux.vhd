@@ -39,14 +39,14 @@ entity dual_MUX is
 		f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	 -- synthesizable
 		underflow : in std_logic;
 		
-		filter_array_din : in signed(AXIS_DATA_WIDTH-1 downto 0); -- TODO: zdefiniowaæ rozmiar danych w tablicy
+		filter_array_din : in signed(AXIS_DATA_WIDTH-1 downto 0);
 		dfilter_array_din : in signed(AXIS_DATA_WIDTH-1 downto 0);												
 		
-		--valid	: out std_logic;
+		TED_valid	: out std_logic;
 		filter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);
 		dfilter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);
 		
-	            -- Ports of Axi Slave Bus Interface s_axis   
+	    -- Ports of Axi Slave Bus Interface s_axis   
         s_axis_tready      : out std_logic;
         s_axis_tvalid      : in std_logic;
         
@@ -60,210 +60,125 @@ end dual_MUX;
 
 architecture dual_MUX of dual_MUX is 		 
 
-type state_type is (IDLE, TRANSMIT); --SECOND_SAMPLE, PREV_SAMPLE, NEXT_SAMPLE, SHIFT_IDLE);
-signal state : state_type := IDLE;
---signal state, prev_state : state_type;
-
---signal t_ready : std_logic := '0';
-signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
-signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
+type state_type is (START, FIRST_SAMPLE, TRANSMIT_ZEROS, IDLE_1, SECOND_SAMPLE, IDLE_2, IGNORE);
+signal state : state_type := START;
+signal m_valid : std_logic := '0';
+--signal f_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+--signal df_prev_sample : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
 
 begin												
-	
--- state machine for AXIS control
-process(arestn, clk)
-begin
-	if(arestn = '0') then
-		s_axis_tready <= '0';
-	elsif(rising_edge(clk)) then 
-		if (m_axis_tready='1') then 
-			case state is
-				when IDLE =>
-					s_axis_tready <= '1';
-				when TRANSMIT =>		 
-					s_axis_tready <= '1';
-			end case;					
-		else
-			s_axis_tready <= '0';
-		end if;
-	end if;	
-end process;
 
 process (arestn, clk)
 begin		 
 	if(arestn = '0') then	    
-		f_prev_sample <= (others => '0');	
-		df_prev_sample <= (others => '0');
-		
-		filter_dout <= (others => '0');	
-		dfilter_dout <= (others => '0'); 
-		m_axis_tvalid <= '0';
-		
-		state <= IDLE;	
-		
+		state <= START;
+					
 	elsif (rising_edge(clk)) then 
 		case state is
-			when IDLE =>
-				filter_dout <= (others=>'0');
-				dfilter_dout <= (others=>'0');
-				m_axis_tvalid <= '0';
-				state <= TRANSMIT;	
-				
-			when TRANSMIT => 
-				if (s_axis_tvalid = '1') then	
-					if(underflow = '1') then
-						filter_dout <= filter_array_din;
-						dfilter_dout <= dfilter_array_din; 
-						
-						f_prev_sample <= filter_array_din;
-						df_prev_sample <= dfilter_array_din;
-						m_axis_tvalid <= '1';
-						state <= TRANSMIT;
-					else
-						filter_dout <= (others => '0');	
-						dfilter_dout <= (others => '0');
-						m_axis_tvalid <= '1';
-						state <= TRANSMIT;
-					end if;	
-				else						 
-					filter_dout <= (others => '0');	
-					dfilter_dout <= (others => '0'); 
-					m_axis_tvalid <= '0';
-					state <= TRANSMIT;
-				end if;						 
-								
+		      when START =>
+		          if (s_axis_tvalid = '1') then
+                    state <= IDLE_1;  
+		          end if;
+		          
+		      when IDLE_1 =>
+                    state <= FIRST_SAMPLE;
+                    		          		          
+		      when FIRST_SAMPLE =>
+                    if(underflow = '1') then
+                        state <= START;
+                    else
+                        state <= TRANSMIT_ZEROS;
+                    end if;
+                          
+              when TRANSMIT_ZEROS =>
+                    state <= IDLE_2;
+                                  
+              when IDLE_2 =>
+                    state <= SECOND_SAMPLE;
+                                                        
+		      when SECOND_SAMPLE =>
+		            if(underflow = '1') then
+                        state <= IGNORE;
+                    else
+                        state <= START;
+                    end if;
+                    
+		      when IGNORE =>
+                if (s_axis_tvalid = '1') then
+                    state <= START;  
+		        end if;     
 		end case;
 	end if;
-end process;		  
+end process;
 
 
---		prev_state <= state; -- save previous state
---		case state is
---			when IDLE =>				
---				if(prev_state = SECOND_SAMPLE)then 
---					state <= NEXT_SAMPLE;
---				else -- prev_state == NEXT_SAMPLE or others
---					state <= SECOND_SAMPLE;
---				end if;	
---				filter_dout <= (others => '0');	
---				dfilter_dout <= (others => '0'); 
---				m_axis_tvalid <= '0';
---				
---			when SECOND_SAMPLE =>		
---				if (s_axis_tvalid = '1') then
---					
---					if(underflow = '1') then
---						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
---						dfilter_dout <= dfilter_array_din(to_integer(unsigned(f_index)));
---						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
---						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
---						m_axis_tvalid <= '1';
---						state <= IDLE;	
---					else
---						filter_dout <= f_prev_sample;	
---						dfilter_dout <= df_prev_sample; 
---						m_axis_tvalid <= '1';
---						--state <= SHIFT_IDLE;
---						state <= IDLE;
---					end if;	
---				else						 
---					filter_dout <= (others => '0');	
---					dfilter_dout <= (others => '0'); 
---					m_axis_tvalid <= '0';
---					state <= IDLE;
---				end if;
---				
---			when PREV_SAMPLE =>	
-----				if(s_axis_tvalid = '1') then 
-----					f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
-----					df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
-----					if(underflow = '1') then
-----						filter_dout <= f_prev_sample;
-----						dfilter_dout <= df_prev_sample;	
-----						m_axis_tvalid <= '1';
-----					else 
-----						filter_dout <= (others => '0');	
-----						dfilter_dout <= (others => '0'); 
-----						m_axis_tvalid <= '0';
-----					end if;
-----				else  
-----					filter_dout <= (others => '0');	
-----					dfilter_dout <= (others => '0'); 
-----				 	m_axis_tvalid <= '0';
-----				end if;					 
-----				state <= IDLE;
---				
---			when NEXT_SAMPLE => 	
---				if(s_axis_tvalid = '1') then
---					if(underflow = '1') then 					
---						filter_dout <= filter_array_din(to_integer(unsigned(f_index)));
---						dfilter_dout <=	dfilter_array_din(to_integer(unsigned(f_index)));
---						
---						f_prev_sample <= filter_array_din(to_integer(unsigned(f_index)));
---						df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index)));
---						m_axis_tvalid <= '1';
---						--state <= SHIFT_IDLE; 
---						state <= IDLE;
---					else 					 
---						filter_dout <= f_prev_sample;	
---						dfilter_dout <= df_prev_sample; 
-----						filter_dout <= (others => '0');		
-----						dfilter_dout <= (others => '0');	 
---						m_axis_tvalid <= '1';
---						state <= IDLE;
---					end if;		
---				else
---					filter_dout <= (others => '0');	
---					dfilter_dout <= (others => '0'); 
---					m_axis_tvalid <= '0';
---					state <= IDLE;
---				end if;
---
---			when SHIFT_IDLE =>			 		
---				if(prev_state = SECOND_SAMPLE)then 
---					state <= PREV_SAMPLE;
---				else -- prev_state == NEXT_SAMPLE or others
---					state <= NEXT_SAMPLE;
---				end if;
---				filter_dout <= (others => '0');	
---				dfilter_dout <= (others => '0'); 
---				m_axis_tvalid <= '0';
---				
---		end case;
---		
---		
---		
---s_axis_tready <= t_ready;
---f_prev_sample <= filter_array_din(to_integer(unsigned(f_index))) when s_axis_tvalid = '1' and t_ready = '1';
---df_prev_sample <= dfilter_array_din(to_integer(unsigned(f_index))) when s_axis_tvalid = '1' and t_ready = '1';
+-- state machine for AXIS control
+process(arestn, clk)
+begin
+	if(arestn = '0') then
+        filter_dout <= (others => '0');	
+        dfilter_dout <= (others => '0'); 
+        m_valid <= '0';
+        m_axis_tvalid <= '0';
+        
+	elsif(rising_edge(clk)) then 
+	   case state is
+		      when START =>
+		          if (s_axis_tvalid = '1') then
+                    filter_dout <= filter_array_din;	
+                    dfilter_dout <= dfilter_array_din;
+                    m_valid <= '1';
+                    m_axis_tvalid <= '1';
+                  else
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0'; 
+                    m_axis_tvalid <= '0';
+		          end if;
+		          
+		      when IDLE_1 =>
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0';
+                    m_axis_tvalid <= '0';
+                              		          
+		      when FIRST_SAMPLE =>  
+		            filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0';
+                    m_axis_tvalid <= '0';
+                    
+              when TRANSMIT_ZEROS =>
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '1';
+                    m_axis_tvalid <= '0';
+                              
+              when IDLE_2 =>
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0';
+                    m_axis_tvalid <= '0';
+                                                  
+		      when SECOND_SAMPLE =>
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0';
+                    m_axis_tvalid <= '0';
+                    
+		      when IGNORE =>
+                    filter_dout <= (others => '0');	
+                    dfilter_dout <= (others => '0');
+                    m_valid <= '0';
+                    m_axis_tvalid <= '0';  
+                          
+		end case;				
+	end if;	
+end process;
 
+s_axis_tready <= '1';
+TED_valid <= m_valid;
+--m_axis_tvalid <= m_valid when state /= TRANSMIT_ZEROS else '0';
 
 end dual_MUX;
-
-
---signal filter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
---signal dfilter_dout_sig : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');	
---
---begin
---	filter_dout_sig <= filter_array_din(to_integer(unsigned(f_index))) when underflow='1' else filter_dout_sig;
---	dfilter_dout_sig <= dfilter_array_din(to_integer(unsigned(f_index))) when underflow='1' else dfilter_dout_sig;
---	
---	filter_dout	 <= filter_dout_sig when arestn='1' else (others => '0');
---	dfilter_dout <= dfilter_dout_sig when arestn='1' else (others => '0');
---end dual_MUX;
-
-
---begin
---process(arestn) -- clk
---		begin
---		if(arestn = '0') then	
---			filter_dout <= (others => '0');	
---			filter_dout	<= (others => '0');
---			dfilter_dout <= (others => '0');
---		else then	-- TODO: sprawdziæ czy nie jest potrzebny clk
---			if(underflow = '1') then
---				filter_dout_sig <= filter_array_din(to_integer(unsigned(f_index)));
---				dfilter_dout_sig <= dfilter_array_din(to_integer(unsigned(f_index)));
---			end if;				
---		end if;	
---end process;  	
+	
