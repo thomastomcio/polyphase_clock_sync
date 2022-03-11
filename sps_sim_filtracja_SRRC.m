@@ -98,8 +98,11 @@ vi = 0;
 autocorr = conv(A, A);
 slopes = diff(diff(autocorr)); % 32 - timing error definition
 slope = min(slopes);
-Eavg = 1; %sum(power(B, 2))/symbols;
-K = max(y_transmit)-min(y_transmit);
+
+M = 2; % quantity of possible patterns mapped later to symbols
+A = 1; % QAM data minimum amplitude
+Eavg = ((M.^2-1)/3)*A.^2;
+K = 1;
 
 % na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
 K0 = -1;
