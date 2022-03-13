@@ -12,7 +12,7 @@ sps_tran = 8;           % probek na symbol w odp. impulsowej tranmitera
 F = 32;                 % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
 sps_recv = F*sps_tran;  % probek na symbol w odp. impulsowej odbiornika
 
-DataL = 20000;          % ilość transmitowanych symboli;
+DataL = 8000;          % ilość transmitowanych symboli;
 snr = 15;
 
 data = 2*randi([0 1],DataL,1)-1;
@@ -95,21 +95,21 @@ CNT_next = 1;
 underflow = 1;
 vi = 0;
 
-autocorr = conv(A, A);
+autocorr = xcorr(A);
 slopes = diff(diff(autocorr)); % 32 - timing error definition
 slope = min(slopes);
 
 M = 2; % quantity of possible patterns mapped later to symbols
 A = 1; % QAM data minimum amplitude
 Eavg = ((M.^2-1)/3)*A.^2;
-K = 1;
+K = max(y_transmit) - min(y_transmit);
 
 % na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
 K0 = -1;
-Kp = K*Eavg*slope;
+Kp = K*Eavg*slope/sps_tran;
 
-damping_factor = 0.707;
-loop_bw = 0.0062832;
+damping_factor = sqrt(2)/2;
+loop_bw = 0.005/sps_tran;
 theta = loop_bw/((damping_factor+(1/(4*damping_factor))));
 
 denom = K0*Kp*(1 + 2*damping_factor*theta + theta*theta);
@@ -142,7 +142,13 @@ for n=1:num_of_samples
     CNT_next = CNT - W;
     
     if CNT_next < 0
-        new_index = floor(rem(sps_recv*abs(CNT_next), F)) + 1;
+          u = CNT/W;
+%         if (abs(u) >= 0.5)
+%             u = 1-u;
+%         else
+%             u = u;
+%         end
+        new_index = floor(rem(F*abs(u), F)) + 1;
         filter_indexes = [filter_indexes, new_index];
        
         CNT_history = [CNT_history, CNT_next];
