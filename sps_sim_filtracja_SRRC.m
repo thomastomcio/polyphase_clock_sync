@@ -6,7 +6,7 @@
 clear; close all; clc;
 
 rolloff = 0.5;
-symbols = 30;            % szerokość odpowiedzi impulsowych
+symbols = 11;            % szerokość odpowiedzi impulsowych
 
 sps_tran = 8;           % probek na symbol w odp. impulsowej tranmitera
 F = 32;                 % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
@@ -19,11 +19,8 @@ data = 2*randi([0 1],DataL,1)-1;
 data = data';
 
 A = rcosdesign(rolloff, symbols, sps_tran, 'sqrt'); % nadajnik, filter enery is one
-A = A; % linear gains = symbols
 
 B = rcosdesign(rolloff, symbols,  sps_recv, 'sqrt'); % odbiornik, filter enery is one
-B = B; % linear gains = symbols
-
 
 % TRANSMITER
 y_transmit = upfirdn(data, A, sps_tran);  % shaped interpolated transmit data
@@ -32,7 +29,7 @@ y_transmit = upfirdn(data, A, sps_tran);  % shaped interpolated transmit data
 y_transmit = interp(y_transmit, F);
 
 % przesunicie 
-p = 15;
+p = 46;
 
 y_transmit = [zeros(1, p) , y_transmit];
 y_transmit = y_transmit(1 : F : end); 
@@ -52,9 +49,9 @@ y_transmit = y_transmit(1 : F : end);
 % plot(y_transmit);
 
 % RECEIVER
-% dekompozycja polifazowa filtru (jego odp. impulsowej) wcześniej zinterpolowanego
 
-% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
+% dodanie szumu
+y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
 
 rec_filtered = [];
 diff_rec_filtered = [];
@@ -69,7 +66,7 @@ deriv = diff(B1);
 difftaps = deriv;
 difftaps = [difftaps, zeros(1, F*taps_per_filter-length(difftaps))];
 
-
+% dekompozycja polifazowa filtru (jego odp. impulsowej) wcześniej zinterpolowanego
 for n=0:F-1
    x = n : F : F*taps_per_filter - 1;   
    
@@ -100,16 +97,15 @@ slopes = diff(diff(autocorr)); % 32 - timing error definition
 slope = min(slopes);
 
 M = 2; % quantity of possible patterns mapped later to symbols
-A = 1; % QAM data minimum amplitude
-Eavg = ((M.^2-1)/3)*A.^2;
-K = max(y_transmit) - min(y_transmit);
+Amp = 1; % QAM data minimum amplitude
+Eavg = ((M.^2-1)/3)*Amp.^2;
+K = max(abs(A));
 
-% na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
 K0 = -1;
-Kp = K*Eavg*slope/sps_tran;
+Kp = K*Eavg*slope/sps_recv;
 
 damping_factor = sqrt(2)/2;
-loop_bw = 0.005/sps_tran;
+loop_bw = 0.005/sps_recv;
 theta = loop_bw/((damping_factor+(1/(4*damping_factor))));
 
 denom = K0*Kp*(1 + 2*damping_factor*theta + theta*theta);
@@ -123,12 +119,16 @@ K2= (4*theta*theta)/denom;
 num_of_samples = length(y_transmit) - taps_per_filter + 1;
 
 CNT_history = [];
+odebrane = [];
 
-for n=1:num_of_samples
+half_symbol = floor(sps_tran/2);
+
+for n=half_symbol + 1 : num_of_samples
     CNT = CNT_next;
 
     if underflow == 1
-        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n);
+        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n);               
+        odebrane = [odebrane, rec_filtered(new_index, n-half_symbol)];
     else
         e = 0;
     end
@@ -140,14 +140,8 @@ for n=1:num_of_samples
     W = 1/sps_tran + v;        
 
     CNT_next = CNT - W;
-    
-    if CNT_next < 0
-          u = CNT/W;
-%         if (abs(u) >= 0.5)
-%             u = 1-u;
-%         else
-%             u = u;
-%         end
+    if CNT_next < 0         
+        u = CNT/W;         
         new_index = floor(rem(F*abs(u), F)) + 1;
         filter_indexes = [filter_indexes, new_index];
        
@@ -160,14 +154,24 @@ for n=1:num_of_samples
     end
 end
 
+num_of_samps = 80;
+
 figure(4);
     grid on; hold on;
-    plot(filter_indexes);
+    plot(filter_indexes-1);
     ylim([0, 32]);
-% figure(5);
-%     grid on; hold on;
-%     plot(filter_indexes-1, 'b.-');
-%     title("Ustalanie indexu filtru z banków fitrów");    
+    
+    delay = symbols;
+figure(5);
+    grid on; hold on;
+    stem(odebrane( end-num_of_samps+1+delay : end ), 'bo');
+    title("Odebrane dane");    
+    
+    
+    data = data*max(odebrane( end-num_of_samps : end ) );
+    
+    plot(data( end-num_of_samps : end-delay ), 'X');
+    
 % figure(6);
 %     grid on; hold on;
 %     stem(rec_filtered(filter_indexes(end), : ));
