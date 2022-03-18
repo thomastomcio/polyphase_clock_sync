@@ -68,113 +68,115 @@ signal m_valid : std_logic := '0';
 
 begin												
 
-process (arestn, clk)
-begin		 
-	if(arestn = '0') then	    
-		state <= START;
-					
-	elsif (rising_edge(clk)) then 
-		case state is
-		      when START =>
-		          if (s_axis_tvalid = '1') then
-                    state <= IDLE_1;  
-		          end if;
-		          
-		      when IDLE_1 =>
-                    state <= FIRST_SAMPLE;
-                    		          		          
-		      when FIRST_SAMPLE =>
-                    if(underflow = '1') then
-                        state <= START;
-                    else
-                        state <= TRANSMIT_ZEROS;
-                    end if;
-                          
-              when TRANSMIT_ZEROS =>
-                    state <= IDLE_2;
-                                  
-              when IDLE_2 =>
-                    state <= SECOND_SAMPLE;
-                                                        
-		      when SECOND_SAMPLE =>
-		            if(underflow = '1') then
-                        state <= IGNORE;
-                    else
-                        state <= START;
-                    end if;
-                    
-		      when IGNORE =>
-                if (s_axis_tvalid = '1') then
-                    state <= START;  
-		        end if;     
-		end case;
-	end if;
-end process;
-
-
+-- WIP : zmieniæ FSM do pracy z 8 sps lub wiêcej	
+--process (arestn, clk)
+--begin		 
+--	if(arestn = '0') then	    
+--		state <= START;
+--					
+--	elsif (rising_edge(clk)) then 
+--		case state is
+--		      when START =>
+--		          if (s_axis_tvalid = '1') then
+--                    state <= IDLE_1;  
+--		          end if;
+--		          
+--		      when IDLE_1 =>
+--                    state <= FIRST_SAMPLE;
+--                    		          		          
+--		      when FIRST_SAMPLE =>
+--                    if(underflow = '1') then
+--                        state <= START;
+--                    else
+--                        state <= TRANSMIT_ZEROS;
+--                    end if;
+--                          
+--              when TRANSMIT_ZEROS =>
+--                    state <= IDLE_2;
+--                                  
+--              when IDLE_2 =>
+--                    state <= SECOND_SAMPLE;
+--                                                        
+--		      when SECOND_SAMPLE =>
+--		            if(underflow = '1') then
+--                        state <= IGNORE;
+--                    else
+--                        state <= START;
+--                    end if;
+--                    
+--		      when IGNORE =>
+--                if (s_axis_tvalid = '1') then
+--                    state <= START;  
+--		        end if;     
+--		end case;
+--	end if;
+--end process;
+--
+--
 -- state machine for AXIS control
-process(arestn, clk)
-begin
-	if(arestn = '0') then
-        filter_dout <= (others => '0');	
-        dfilter_dout <= (others => '0'); 
-        m_valid <= '0';
-        m_axis_tvalid <= '0';
-        
-	elsif(rising_edge(clk)) then 
-	   case state is
-		      when START =>
-		          if (s_axis_tvalid = '1') then
-                    filter_dout <= filter_array_din;	
-                    dfilter_dout <= dfilter_array_din;
-                    m_valid <= '1';
-                    m_axis_tvalid <= '1';
-                  else
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0'; 
-                    m_axis_tvalid <= '0';
-		          end if;
-		          
-		      when IDLE_1 =>
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0';
-                    m_axis_tvalid <= '0';
-                              		          
-		      when FIRST_SAMPLE =>  
-		            filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0';
-                    m_axis_tvalid <= '0';
-                    
-              when TRANSMIT_ZEROS =>
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '1';
-                    m_axis_tvalid <= '0';
-                              
-              when IDLE_2 =>
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0';
-                    m_axis_tvalid <= '0';
-                                                  
-		      when SECOND_SAMPLE =>
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0';
-                    m_axis_tvalid <= '0';
-                    
-		      when IGNORE =>
-                    filter_dout <= (others => '0');	
-                    dfilter_dout <= (others => '0');
-                    m_valid <= '0';
-                    m_axis_tvalid <= '0';  
-                          
-		end case;				
-	end if;	
-end process;
+--process(arestn, clk)
+--begin
+--	if(arestn = '0') then
+--        filter_dout <= (others => '0');	
+--        dfilter_dout <= (others => '0'); 
+--        m_valid <= '0';
+--        m_axis_tvalid <= '0';
+--        
+--	elsif(rising_edge(clk)) then 
+--	   case state is
+--		      when START =>
+--		          if (s_axis_tvalid = '1') then
+--                    filter_dout <= filter_array_din;	
+--                    dfilter_dout <= dfilter_array_din;
+--                    m_valid <= '1';
+--                    m_axis_tvalid <= '1';
+--                  else
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0'; 
+--                    m_axis_tvalid <= '0';
+--		          end if;
+--		          
+--		      when IDLE_1 =>
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0';
+--                    m_axis_tvalid <= '0';
+--                              		          
+--		      when FIRST_SAMPLE =>  
+--		            filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0';
+--                    m_axis_tvalid <= '0';
+--                    
+--              when TRANSMIT_ZEROS =>
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '1';
+--                    m_axis_tvalid <= '0';
+--                              
+--              when IDLE_2 =>
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0';
+--                    m_axis_tvalid <= '0';
+--                                                  
+--		      when SECOND_SAMPLE =>
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0';
+--                    m_axis_tvalid <= '0';
+--                    
+--		      when IGNORE =>
+--                    filter_dout <= (others => '0');	
+--                    dfilter_dout <= (others => '0');
+--                    m_valid <= '0';
+--                    m_axis_tvalid <= '0';  
+--                          
+--		end case;				
+--	end if;	
+--end process;
+-- WIP : zmieniæ FSM do pracy z 8 sps lub wiêcej
 
 s_axis_tready <= '1';
 TED_valid <= m_valid;

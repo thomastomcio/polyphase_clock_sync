@@ -30,7 +30,7 @@ entity TED is
 		(
 		CHANNELS : integer := 32;
 		AXIS_DATA_WIDTH : integer := 32;  
-		SAMPLES_PER_SYMBOL : integer := 2;
+		SAMPLES_PER_SYMBOL : integer := 8;
 		OVERSAMPLING_RATE : integer := 32 -- ogólnie OVERSAMPLING_RATE jest zawsze równe CHANNELS
 
 --		PHASE_DETECOR_GAIN : real := 1.0; 
@@ -61,9 +61,13 @@ architecture TED_arch of TED is
 
 	constant scale : integer := 2 ** 15;		
 
-	-- parametry dzia³aj¹ce w pierwszej wersji
-	constant K1 : integer := integer(real(scale)*(0.0110017712591052)); --0.162525308786227;	   
-	constant K2 : integer := integer(real(scale)*(9.77243613962953e-05)); --0.014436477216089;  	   
+	-- parametry dzia³aj¹ce w pierwszej wersji (dla 2 próbek na symbol)
+--	constant K1 : integer := integer(real(scale)*(0.0110017712591052)); --0.162525308786227;	   
+--	constant K2 : integer := integer(real(scale)*(9.77243613962953e-05)); --0.014436477216089;  	   
+
+	-- parametry dla drugiej wersji (dla 8 próbek na symbol)	
+	constant K1 : integer := integer(real(scale)*(1.48697220148666e-05)); --0.162525308786227;	   
+	constant K2 : integer := integer(real(scale)*(0.570997325370878)); --0.014436477216089;  	   	1.48697220148666e-05
 	
 
 	signal f_index_sig : integer := 0;	-- TODO: ustaliæ typy
@@ -110,8 +114,6 @@ begin
 			end if;
 			
 			-- loop filter;
---			vp := (K1*error)/(1024*1024);	   
---			vi := vi + (K2*error)/(1024*1024);
 
 			aux4 := K1*error;
 			vp <= aux4/(1024*1024);
@@ -126,12 +128,18 @@ begin
 			CNT := CNT - W; 
 			
 			if (CNT < 0) then
-				-- f_index_sig <= ((SAMPLES_PER_SYMBOL*OVERSAMPLING_RATE*abs(CNT)/scale)) mod (OVERSAMPLING_RATE);
-				aux1 := abs(CNT);
-				aux2 := aux1 * SAMPLES_PER_SYMBOL * OVERSAMPLING_RATE;
-				aux3 := aux2/scale;
+--				aux1 := abs(CNT);
+--				aux2 := aux1 * SAMPLES_PER_SYMBOL * OVERSAMPLING_RATE;
+--				aux3 := aux2/scale;
+--				f_index_sig <= aux3 mod (OVERSAMPLING_RATE);
+--				CNT := scale + CNT;
+
+				aux1 := CNT*OVERSAMPLING_RATE;
+				aux2 := aux1/W;
+				aux3 := abs(aux2);
 				f_index_sig <= aux3 mod (OVERSAMPLING_RATE);
 				CNT := scale + CNT;
+				
 				underflow <= '1';
 			else
 				underflow <= '0';

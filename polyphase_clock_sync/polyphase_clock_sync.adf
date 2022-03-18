@@ -206,7 +206,7 @@ GenerateToCustomFolder=0
 Synchronize=0
 
 [HierarchyViewer]
-HierarchyInformation=polyphase_clock_sync|polyphase_clock_sync|0
+HierarchyInformation=polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1 
 ShowHide=ShowTopLevel
 Selected=
 
@@ -228,10 +228,6 @@ TestBench=1
 TestBench\sim_data=1
 not_used=0
 post-synthesis=0
-
-[file_out:not_used/testowy.bde]
-not_used/..\..\compile\testowy.vhd=-1
-
 
 [Files]
 /fir_filter.vhd=-1
@@ -310,7 +306,10 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\src\not_used\index_selector.vhd=VHDL Source Code
 .\synthesis\polyphase_clock_sync.edn=EDIF Netlist
 .\synthesis\polyphase_clock_sync.vhd=VHDL Source Code
-.\compile\polyphase_clock_sync.vhd=VHDL Source Code
 
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
+
+[file_out:not_used/testowy.bde]
+not_used/..\..\compile\testowy.vhd=-1
+
