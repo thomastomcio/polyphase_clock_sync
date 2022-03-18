@@ -5,7 +5,7 @@ clear; close all; clc;
 rolloff = 0.5;
 symbols = 20;                   % szerokość odpowiedzi impulsowych
 
-sps_recv = 32*8;                  % probek na symbol w odp. impulsowej odbiornika
+sps_recv = 32*8;                % probek na symbol w odp. impulsowej odbiornika
 
 DataL = 10;                     % ilość transmitowanych symboli;
 data = 2*randi([0 1],DataL,1)-1;
@@ -36,10 +36,13 @@ figure(1); grid on; hold on;
     plot(y_tansmit_delayed_norm, 'o');
     xlim([0, DataL*sps_recv]);
     title("Shaped and interpolated data with SRRC filter");
+    legend(["dane (symbole) przed kształtowaniem", "dane (symbole) po kształtowaniu"]);
 
 filter_indxes = floor(length(B)/2) + symbols/2*sps_recv + 1 : sps_recv : length(rec_filtered) - ((floor(length(B)/2) + symbols/2*sps_recv));
+
 % Porównanie danych po transmisji i po odebraniu ( odzyskaniu )
 figure(2);grid on; hold on;
     stem(data, '*');
     stem(rec_filtered(filter_indxes));
     title("Comparison of transmit data with recovered receiver data");
+    legend(["dane (symbole) z nadajnika - przed kształtowaniem", "dane (symbole) odzyskane"]);
