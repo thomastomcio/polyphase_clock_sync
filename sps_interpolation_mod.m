@@ -6,11 +6,12 @@
 clear; close all; clc;
 
 rolloff = 0.5;
-symbols = 8;            % szerokość odpowiedzi impulsowych
+symbols = 20;            % szerokość odpowiedzi impulsowych
 
-sps_tran = 16;           % probek na symbol w odp. impulsowej tranmitera
-F = 2;                 % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
+sps_tran = 8;           % probek na symbol w odp. impulsowej tranmitera
+% F = 2;                 % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
 sps_recv = 32 ;%F*sps_tran;  % probek na symbol w odp. impulsowej odbiornika
+F = sps_recv/sps_tran; % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
 
 DataL = 2000;          % ilość transmitowanych symboli;
 snr = 15;
@@ -18,13 +19,16 @@ snr = 15;
 data = 2*randi([0 1],DataL,1)-1;
 data = data';
 
-A = rcosdesign(rolloff, symbols, sps_recv, 'sqrt'); % nadajnik, filter enery is one
+A = rcosdesign(rolloff, symbols, sps_tran, 'sqrt'); % nadajnik, filter enery is one
 
 % TRANSMITER
 y_transmit = upfirdn(data, A, sps_recv);  % shaped interpolated transmit data
 
+% interpolacja
+y_transmit = interp(y_transmit, F); % rate = sps = N2*N1
+
 % przesunicie 
-p = 18;
+p = 15;
 y_transmit = [zeros(1, p) , y_transmit];
 
 % RECEIVER
@@ -48,14 +52,15 @@ CNT_next = 1;
 underflow = 1;
 vi = 0;
 
-slopes = diff(diff(A));
+autocorr = xcorr(A);
+slopes = diff(diff(autocorr));
 slope = min(slopes);
-Eavg = sum(power(A, 2))/symbols;
-K = max(y_transmit);
+Eavg = 1;
+K = max(y_transmit) - min(y_transmit);
 
 % na podstawie http://www.trondeau.com/blog/2011/8/13/control-loop-gain-values.html
 K0 = -1;
-Kp = -0.0036;
+Kp = K*Eavg*slope;
 
 damping_factor = 0.707;
 loop_bw = 2*pi/100;
