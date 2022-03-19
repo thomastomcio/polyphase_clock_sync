@@ -6,13 +6,13 @@
 clear; close all; clc;
 
 rolloff = 0.5;
-symbols = 11;            % szerokość odpowiedzi impulsowych
+symbols = 11;               % szerokość odpowiedzi impulsowych
 
-sps_tran = 8;           % probek na symbol w odp. impulsowej tranmitera
-F = 32;                 % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
-sps_recv = F*sps_tran;  % probek na symbol w odp. impulsowej odbiornika
+sps_tran = 8;               % probek na symbol w odp. impulsowej tranmitera
+F = 32;                     % poziom nadpróbkowania odp. impulsowej transmitera -> odp. impulsowa odbiornika  
+sps_recv = F*sps_tran;      % probek na symbol w odp. impulsowej odbiornika
 
-DataL = 8000;          % ilość transmitowanych symboli;
+DataL = 8000;               % ilość transmitowanych symboli;
 snr = 15;
 
 data = 2*randi([0 1],DataL,1)-1;
@@ -29,12 +29,17 @@ y_transmit = upfirdn(data, A, sps_tran);  % shaped interpolated transmit data
 y_transmit = interp(y_transmit, F);
 
 % przesunicie 
-p = 46;
+p = 15;
 
 y_transmit = [zeros(1, p) , y_transmit];
 y_transmit = y_transmit(1 : F : end); 
 
-% y_transmit = y_transmit/max(y_transmit);
+% scale data and write to file
+y_transmit_1024 = round(1024*y_transmit);
+
+fid = fopen(getenv("QPSK_DATA_FILE"), 'wt');
+fprintf(fid, "%d\n", y_transmit_1024); 
+disp("ok");
 
 % figure(1);
 %     hold on; grid on;
@@ -45,13 +50,12 @@ y_transmit = y_transmit(1 : F : end);
 %     title("Shaped and interpolated data with SRRC filter");
 % return;
 
-% signal transmited
-% plot(y_transmit);
+y_transmit = y_transmit_1024;
 
 % RECEIVER
 
 % dodanie szumu
-y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
+% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
 
 rec_filtered = [];
 diff_rec_filtered = [];
@@ -59,11 +63,11 @@ diff_rec_filtered = [];
 taps_per_filter = ceil(length(B)/F);
 
 B1 = B;
+B = round(1024*B);% scale by 1024
 B = [B, zeros(1, F*taps_per_filter-length(B))];
 
 % wyliczenie pochodnej wraz z normalizacją do mocy równej 1 na symbol
-deriv = diff(B1);
-difftaps = deriv;
+difftaps = diff(B);
 difftaps = [difftaps, zeros(1, F*taps_per_filter-length(difftaps))];
 
 % dekompozycja polifazowa filtru (jego odp. impulsowej) wcześniej zinterpolowanego
@@ -96,8 +100,8 @@ autocorr = xcorr(A);
 slopes = diff(diff(autocorr)); % 32 - timing error definition
 slope = min(slopes);
 
-M = 2; % quantity of possible patterns mapped later to symbols
-Amp = 1; % QAM data minimum amplitude
+M = 2;          % quantity of possible patterns mapped later to symbols
+Amp = 1;        % QAM data minimum amplitude
 Eavg = ((M.^2-1)/3)*Amp.^2;
 K = max(abs(A));
 
@@ -125,9 +129,8 @@ half_symbol = floor(sps_tran/2);
 
 for n=half_symbol + 1 : num_of_samples
     CNT = CNT_next;
-
     if underflow == 1
-        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n);               
+        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n) / power(1024,2);               
         odebrane = [odebrane, rec_filtered(new_index, n-half_symbol)];
     else
         e = 0;
@@ -154,24 +157,26 @@ for n=half_symbol + 1 : num_of_samples
     end
 end
 
-num_of_samps = 80;
-
 figure(4);
-    grid on; hold on;
-    plot(filter_indexes-1);
-    ylim([0, 32]);
+    subplot(1, 2, 1); grid on; hold on;
+        plot(filter_indexes-1);
+        ylim([0, 32]);    
+        
+        str = sprintf("Detekcja opóźnienia (delay = %d)", p);
+        title(str);
     
-    delay = symbols;
-figure(5);
-    grid on; hold on;
-    stem(odebrane( end-num_of_samps+1+delay : end ), 'bo');
-    title("Odebrane dane");    
-    
-    
-    data = data*max(odebrane( end-num_of_samps : end ) );
-    
-    plot(data( end-num_of_samps : end-delay ), 'X');
-    
+    subplot(1, 2, 2); grid on; hold on;
+        num_of_samps = 50;
+        delay = symbols;
+        stem(odebrane( end-num_of_samps+1+delay : end ), 'bo');
+
+        data = data*max(odebrane( end-num_of_samps : end ) ); % normalizacja do max wartości odebranej
+        plot(data( end-num_of_samps : end-delay-1 ), 'X');
+        legend(["odebrane"], ["nadane"]);
+
+        title("Dane nadane (NRZ) vs odebrane (NRZ)");    
+   set(gcf, 'Position',  [0, 0, 1920, 1000])
+   
 % figure(6);
 %     grid on; hold on;
 %     stem(rec_filtered(filter_indexes(end), : ));
