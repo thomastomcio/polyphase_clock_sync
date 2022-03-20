@@ -175,11 +175,7 @@ figure(4);
         legend(["odebrane"], ["nadane"]);
 
         title("Dane nadane (NRZ) vs odebrane (NRZ)");    
-   set(gcf, 'Position',  [0, 0, 1920, 1000])
-   
-% figure(6);
-%     grid on; hold on;
-%     stem(rec_filtered(filter_indexes(end), : ));
+        set(gcf, 'WindowState', 'maximized');
     
 
 

@@ -178,11 +178,21 @@ for n=half_symbol + 1 : num_of_samples
 end
 
 figure(4);
-    grid on; hold on;
-    plot(filter_indexes-1);
-    ylim([0, 32]);
-figure(5);
-    grid on; hold on;
-    stem(odebrane(end-150:end), 'bo');
-    title("Odebrane dane");  
+    subplot(1, 2, 1); grid on; hold on;
+        plot(filter_indexes-1);
+        ylim([0, 32]);    
+        
+        str = sprintf("Detekcja opóźnienia (delay = %d)", p);
+        title(str);
+    
+    subplot(1, 2, 2); grid on; hold on;
+        num_of_samps = 50;
+        delay = symbols;
+        stem(odebrane( end-num_of_samps+delay : end ), 'bo');
 
+        data = data*max(odebrane( end-num_of_samps : end ) ); % normalizacja do max wartości odebranej
+        plot(data( end-num_of_samps : end-delay ), 'X');
+        legend(["odebrane"], ["nadane"]);
+
+        title("Dane nadane (NRZ) vs odebrane (NRZ)");    
+        set(gcf, 'WindowState', 'maximized');
