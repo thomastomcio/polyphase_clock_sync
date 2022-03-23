@@ -2,10 +2,9 @@
 .\src\d_fir_filter.vhd
 .\src\filters_bank.vhd
 .\src\d_filters_bank.vhd
-.\src\dual_mux.vhd
-.\src\TED.vhd
 .\src\TestBench\fir_filter_TB.vhd
 .\src\TestBench\filters_bank_TB.vhd
 .\src\TestBench\d_filters_bank_TB.vhd
 .\src\TestBench\polyphase_clock_sync_TB.vhd
 .\src\polyphase_clock_sync.bde
+.\src\ted_and_mux.vhd

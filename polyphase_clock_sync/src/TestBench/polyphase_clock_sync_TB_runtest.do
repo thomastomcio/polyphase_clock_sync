@@ -27,7 +27,7 @@ wave -noreg /polyphase_clock_sync_tb/UUT/MUX/s_axis_tvalid
 wave -noreg	/polyphase_clock_sync_tb/UUT/MUX/filter_dout 
 wave -noreg /polyphase_clock_sync_tb/UUT/MUX/m_axis_tvalid
 wave -noreg CLK
-run 300ns	  											 
+run 300 us	  											 
 
 # The following lines can be used for timing simulation
 # acom <backannotated_vhdl_file_name>

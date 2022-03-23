@@ -108,7 +108,7 @@ begin
 			uniform(seed1, seed2, r);
 			random_choice := '1' when r > 0.5 else '0';
 			
-			if(counter = 10) then
+			if(counter = 100) then
 				if(not endfile(QPSK_data_file)) then
 					readline(QPSK_data_file, row);
 				

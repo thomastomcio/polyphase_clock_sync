@@ -206,7 +206,7 @@ GenerateToCustomFolder=0
 Synchronize=0
 
 [HierarchyViewer]
-HierarchyInformation=polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1 
+HierarchyInformation=polyphase_clock_sync_tb|testbench_for_polyphase_clock_sync|1
 ShowHide=ShowTopLevel
 Selected=
 
@@ -223,20 +223,25 @@ TOPLEVEL=polyphase_clock_sync
 [file_out:/testowy.bde]
 /..\compile\testowy.vhd=-1
 
+[file_out:not_used/testowy.bde]
+not_used/..\..\compile\testowy.vhd=-1
+
 [Groups]
 TestBench=1
 TestBench\sim_data=1
 not_used=0
 post-synthesis=0
 
+
 [Files]
 /fir_filter.vhd=-1
 /d_fir_filter.vhd=-1
 /filters_bank.vhd=-1
+/TED_and_MUX.vhd=-1
 /dual_mux.vhd=-1
-/array_type_pkg.vhd=-1
-/TED.vhd=-1
 /polyphase_clock_sync.bde=-1
+/TED.vhd=-1
+/array_type_pkg.vhd=-1
 /polyphase_clock_sync_2.vhd=-1
 /d_filters_bank.vhd=-1
 TestBench/polyphase_clock_sync_TB_runtest.do=-1
@@ -272,10 +277,11 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\src\fir_filter.vhd=VHDL Source Code
 .\src\d_fir_filter.vhd=VHDL Source Code
 .\src\filters_bank.vhd=VHDL Source Code
+.\src\TED_and_MUX.vhd=VHDL Source Code
 .\src\dual_mux.vhd=VHDL Source Code
-.\src\array_type_pkg.vhd=VHDL Source Code
-.\src\TED.vhd=VHDL Source Code
 .\src\polyphase_clock_sync.bde=Block Diagram
+.\src\TED.vhd=VHDL Source Code
+.\src\array_type_pkg.vhd=VHDL Source Code
 .\src\polyphase_clock_sync_2.vhd=VHDL Source Code
 .\src\d_filters_bank.vhd=VHDL Source Code
 .\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
@@ -307,9 +313,6 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\synthesis\polyphase_clock_sync.edn=EDIF Netlist
 .\synthesis\polyphase_clock_sync.vhd=VHDL Source Code
 
+.\compile\polyphase_clock_sync.vhd=VHDL Source Code
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1
-
-[file_out:not_used/testowy.bde]
-not_used/..\..\compile\testowy.vhd=-1
-

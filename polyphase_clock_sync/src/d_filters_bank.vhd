@@ -108,7 +108,7 @@ begin
 		--FILTER_INDEX => I,
 		OVERSAMPLING_RATE => OVERSAMPLING_RATE,
 		number_of_filters => CHANNELS,
-		num_of_coef => 544,
+		num_of_coef => 2848,
 		coef_size => 12
 		)
 	  port map
