@@ -29,7 +29,7 @@ y_transmit = upfirdn(data, A, sps_tran);  % shaped interpolated transmit data
 y_transmit = interp(y_transmit, F);
 
 % przesunicie 
-p = 15;
+p = 28;
 
 y_transmit = [zeros(1, p) , y_transmit];
 y_transmit = y_transmit(1 : F : end); 
@@ -91,8 +91,9 @@ filter_indexes = [];
 new_index = 1;  % obliczany indeks filtru z banków filtrów
 
 % sprzężenie zwrotne - pętla PLL
-CNT = 1;
-CNT_next = 1;
+scale = 1024*1024;
+CNT = scale;
+CNT_next = scale;
 underflow = 1;
 vi = 0;
 
@@ -130,7 +131,7 @@ half_symbol = floor(sps_tran/2);
 for n=half_symbol + 1 : num_of_samples
     CNT = CNT_next;
     if underflow == 1
-        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n) / power(1024,2);               
+        e = sign(rec_filtered(new_index, n)) * diff_rec_filtered(new_index, n);               
         odebrane = [odebrane, rec_filtered(new_index, n-half_symbol)];
     else
         e = 0;
@@ -140,7 +141,7 @@ for n=half_symbol + 1 : num_of_samples
     vp = K1*e;
     vi = vi + K2*e;
     v = vp + vi;
-    W = 1/sps_tran + v;        
+    W = scale/sps_tran + v;        
 
     CNT_next = CNT - W;
     if CNT_next < 0         
@@ -149,7 +150,7 @@ for n=half_symbol + 1 : num_of_samples
         filter_indexes = [filter_indexes, new_index];
        
         CNT_history = [CNT_history, CNT_next];
-        CNT_next = 1 + CNT_next;        
+        CNT_next = scale + CNT_next;        
         
         underflow = 1;
     else
@@ -159,7 +160,7 @@ end
 
 figure(4);
     subplot(1, 2, 1); grid on; hold on;
-        plot(filter_indexes-1);
+        plot(filter_indexes-1, 'b.-');
         ylim([0, 32]);    
         
         str = sprintf("Detekcja opóźnienia (delay = %d)", p);

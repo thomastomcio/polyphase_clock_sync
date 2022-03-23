@@ -13,7 +13,7 @@ F = 32;                 % poziom nadpróbkowania odp. impulsowej transmitera -> 
 sps_recv = F*sps_tran;  % probek na symbol w odp. impulsowej odbiornika
 
 DataL = 8000;          % ilość transmitowanych symboli;
-snr = 15;
+snr = 10;
 
 data = 2*randi([0 1],DataL,1)-1;
 data = data';
@@ -29,7 +29,7 @@ y_transmit = upfirdn(data, A, sps_tran);  % shaped interpolated transmit data
 y_transmit = interp(y_transmit, F);
 
 % przesunicie 
-p = 46;
+p = 15;
 
 y_transmit = [zeros(1, p) , y_transmit];
 y_transmit = y_transmit(1 : F : end); 
@@ -51,7 +51,7 @@ y_transmit = y_transmit(1 : F : end);
 % RECEIVER
 
 % dodanie szumu
-y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
+% y_transmit = awgn(y_transmit, snr, 'measured');   % dodanie szumu do sygnału nadajnika
 
 rec_filtered = [];
 diff_rec_filtered = [];
@@ -99,7 +99,7 @@ slope = min(slopes);
 M = 2; % quantity of possible patterns mapped later to symbols
 Amp = 1; % QAM data minimum amplitude
 Eavg = ((M.^2-1)/3)*Amp.^2;
-K = max(abs(A));
+K = max(abs(A))*2;
 
 K0 = -1;
 Kp = K*Eavg*slope/sps_recv;
@@ -154,23 +154,25 @@ for n=half_symbol + 1 : num_of_samples
     end
 end
 
-num_of_samps = 80;
-
 figure(4);
-    grid on; hold on;
-    plot(filter_indexes-1);
-    ylim([0, 32]);
+    subplot(1, 2, 1); grid on; hold on;
+        plot(filter_indexes-1, 'b.-');
+        ylim([0, 32]);    
+        
+        str = sprintf("Detekcja opóźnienia (delay = %d)", p);
+        title(str);
     
-    delay = symbols;
-figure(5);
-    grid on; hold on;
-    stem(odebrane( end-num_of_samps+1+delay : end ), 'bo');
-    title("Odebrane dane");    
-    
-    
-    data = data*max(odebrane( end-num_of_samps : end ) );
-    
-    plot(data( end-num_of_samps : end-delay ), 'X');
+    subplot(1, 2, 2); grid on; hold on;
+        num_of_samps = 50;
+        delay = symbols;
+        stem(odebrane( end-num_of_samps+1+delay : end ), 'bo');
+
+        data = data*max(odebrane( end-num_of_samps : end ) ); % normalizacja do max wartości odebranej
+        plot(data( end-num_of_samps : end-delay-1 ), 'X');
+        legend(["odebrane"], ["nadane"]);
+
+        title("Dane nadane (NRZ) vs odebrane (NRZ)");    
+        set(gcf, 'WindowState', 'maximized');
     
 % figure(6);
 %     grid on; hold on;
