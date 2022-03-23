@@ -226,23 +226,20 @@ TOPLEVEL=polyphase_clock_sync
 [file_out:not_used/testowy.bde]
 not_used/..\..\compile\testowy.vhd=-1
 
+
 [Groups]
 TestBench=1
 TestBench\sim_data=1
 not_used=0
 post-synthesis=0
 
-
 [Files]
+/array_type_pkg.vhd=-1
 /fir_filter.vhd=-1
 /d_fir_filter.vhd=-1
 /filters_bank.vhd=-1
 /TED_and_MUX.vhd=-1
-/dual_mux.vhd=-1
 /polyphase_clock_sync.bde=-1
-/TED.vhd=-1
-/array_type_pkg.vhd=-1
-/polyphase_clock_sync_2.vhd=-1
 /d_filters_bank.vhd=-1
 TestBench/polyphase_clock_sync_TB_runtest.do=-1
 TestBench/filters_bank_TB_runtest.do=-1
@@ -265,6 +262,9 @@ TestBench\sim_data/successful_f_index_tracking.asdb=-1
 TestBench\sim_data/successful_f_index_tracking.awc=-1
 TestBench\sim_data/post_synth_tracking.asdb=-1
 TestBench\sim_data/post_synth_tracking.awc=-1
+not_used/dual_mux.vhd=-1
+not_used/TED.vhd=-1
+not_used/polyphase_clock_sync_2.vhd=-1
 not_used/testowy.bde=-1
 not_used/filter_bank.vhd=-1
 not_used/loop_filter.vhd=-1
@@ -274,15 +274,12 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.edn=-1
 post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 
 [Files.Data]
+.\src\array_type_pkg.vhd=VHDL Source Code
 .\src\fir_filter.vhd=VHDL Source Code
 .\src\d_fir_filter.vhd=VHDL Source Code
 .\src\filters_bank.vhd=VHDL Source Code
 .\src\TED_and_MUX.vhd=VHDL Source Code
-.\src\dual_mux.vhd=VHDL Source Code
 .\src\polyphase_clock_sync.bde=Block Diagram
-.\src\TED.vhd=VHDL Source Code
-.\src\array_type_pkg.vhd=VHDL Source Code
-.\src\polyphase_clock_sync_2.vhd=VHDL Source Code
 .\src\d_filters_bank.vhd=VHDL Source Code
 .\src\TestBench\polyphase_clock_sync_TB_runtest.do=Macro
 .\src\TestBench\filters_bank_TB_runtest.do=Macro
@@ -305,6 +302,9 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\src\TestBench\sim_data\successful_f_index_tracking.awc=Accelerated Waveform Configuration
 .\src\TestBench\sim_data\post_synth_tracking.asdb=Accelerated Waveform File
 .\src\TestBench\sim_data\post_synth_tracking.awc=Accelerated Waveform Configuration
+.\src\not_used\dual_mux.vhd=VHDL Source Code
+.\src\not_used\TED.vhd=VHDL Source Code
+.\src\not_used\polyphase_clock_sync_2.vhd=VHDL Source Code
 .\src\not_used\testowy.bde=Block Diagram
 .\src\not_used\filter_bank.vhd=VHDL Source Code
 .\src\not_used\loop_filter.vhd=VHDL Source Code
@@ -312,7 +312,7 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\src\not_used\index_selector.vhd=VHDL Source Code
 .\synthesis\polyphase_clock_sync.edn=EDIF Netlist
 .\synthesis\polyphase_clock_sync.vhd=VHDL Source Code
-
 .\compile\polyphase_clock_sync.vhd=VHDL Source Code
+
 [file_out:/polyphase_clock_sync.bde]
 /..\compile\polyphase_clock_sync.vhd=-1

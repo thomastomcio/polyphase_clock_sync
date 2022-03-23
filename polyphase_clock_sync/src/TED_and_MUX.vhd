@@ -17,6 +17,8 @@
 -- Description : 
 --
 -------------------------------------------------------------------------------
+library polyphase_clock_sync;
+use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -35,12 +37,12 @@ entity TED_and_MUX is
 		clk : in std_logic;
 		arestn : in std_logic;
 		
-		f_index : out std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);
-		underflow : out std_logic;
-		
+--		f_index : out std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);
+--		underflow : out std_logic;
+--		
 		s_tvalid : in std_logic;
-		filter_din : in signed(AXIS_DATA_WIDTH-1 downto 0);
-		dfilter_din : in signed(AXIS_DATA_WIDTH-1 downto 0);	
+		filter_din : in dout_array_t(CHANNELS-1 downto 0);
+		dfilter_din : in dout_array_t(CHANNELS-1 downto 0);	
 		
 		filter_dout : out signed(AXIS_DATA_WIDTH-1 downto 0);	
 		m_tvalid : out std_logic
@@ -50,13 +52,18 @@ end TED_and_MUX;
 
 architecture TED_and_MUX_arch of TED_and_MUX is			   
 
+
+	signal f_index : std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0) := (others => '0');
+	signal underflow : std_logic := '0';
+	
+		
 -- ##### MUX - start #####
 	type state_type is (NEXT_SAMPLE, SEND_ZEROS, WAIT_FOR_UNDERFLOW);
 	signal state : state_type := NEXT_SAMPLE;	  
 	--signal counter : integer := 0;	   
 	
-	signal prev_filter_din : signed(AXIS_DATA_WIDTH-1 downto 0)	:= (others => '0');
-	signal prev_dfilter_din : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+	signal prev_filter_din : dout_array_t(CHANNELS-1 downto 0)	:= (others => (others => '0'));
+	signal prev_dfilter_din : dout_array_t(CHANNELS-1 downto 0) := (others => (others => '0'));
 -- ##### MUX - end #####
 
 
@@ -64,7 +71,7 @@ architecture TED_and_MUX_arch of TED_and_MUX is
 	signal vi_saving : std_logic := '0';
 	signal vi_load : std_logic := '0';
 
-	signal TED_dfilter_din	: signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
+	signal TED_deriv_filter_din	: signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
 	signal TED_filter_din : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
 	signal TED_tvalid : std_logic := '0';
 
@@ -115,7 +122,7 @@ begin
 				sr(i) <= sr(i - 1);
 			end loop;
 			
-			sr(sr'low) <= filter_din;	
+			sr(sr'low) <= filter_din(f_index_sig);	
 		end if;
 			
 	end if;
@@ -160,8 +167,8 @@ begin
 	end if;	
 end process MUX;
 
-TED_filter_din <= prev_filter_din when state = NEXT_SAMPLE else (others => '0');
-TED_dfilter_din <= prev_dfilter_din when state = NEXT_SAMPLE else (others => '0');
+TED_filter_din <= prev_filter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
+TED_deriv_filter_din <= prev_dfilter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
 TED_tvalid <= '1' when (s_tvalid = '1' or state = NEXT_SAMPLE) else '0';
 
 --vi_saving <= '1' when state = SEND_ZEROS and underflow /= '1' else '0';
@@ -178,7 +185,8 @@ TED: process(arestn, clk)
 	variable vp : integer := 0;		  
 	variable vi : integer := 0;		  
 	variable W : integer := 0;	
-	variable CNT  : integer := scale; 	--modulo scale counter 
+	variable CNT  : integer := scale; 	--modulo scale counter 	 
+	variable CNT_next : integer := scale;
 --	variable vi_saved : integer := 0;
 begin
 	if (arestn = '0') then	
@@ -189,16 +197,19 @@ begin
 		vp := 0;
 		W := 0;
 		error := 0;
-		CNT := scale;
+		CNT := scale;					 
+		CNT_next := scale;
 --		vi_saved := 0;
 	elsif (rising_edge(clk)) then
-		if (TED_tvalid = '1') then
+		if (TED_tvalid = '1') then	
+			
+			CNT := CNT_next;			
 			
 			-- error
 			if TED_filter_din(TED_filter_din'left) = '1' then 	-- determine sign of matched filter output																 
-				error := ((-1)*to_integer(TED_dfilter_din));
+				error := ((-1)*to_integer(TED_deriv_filter_din));
 			else
-				error := (to_integer(TED_dfilter_din));
+				error := (to_integer(TED_deriv_filter_din));
 			end if;
 			
 			-- loop filter;				
@@ -218,14 +229,14 @@ begin
 			W := scale/SAMPLES_PER_SYMBOL + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
-			CNT := CNT - W; 
+			CNT_next := CNT - W; 
 			
-			if (CNT < 0) then
+			if (CNT_next < 0) then
 				aux1 := CNT*OVERSAMPLING_RATE;
 				aux2 := aux1/W;
 				aux3 := abs(aux2);
 				f_index_sig <= aux3 mod (OVERSAMPLING_RATE);
-				CNT := scale + CNT;
+				CNT_next := scale + CNT_next;
 				
 				underflow <= '1';
 			else

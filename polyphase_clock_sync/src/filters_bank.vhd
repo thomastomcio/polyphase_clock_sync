@@ -18,13 +18,12 @@
 --
 -------------------------------------------------------------------------------
 																			   	 
---library polyphase_clock_sync;
---use polyphase_clock_sync.array_type_pkg.all;
+library polyphase_clock_sync;
+use polyphase_clock_sync.array_type_pkg.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all; 
-use ieee.math_real.all;
+use ieee.numeric_std.all;
 
 entity filters_bank is	
 	generic
@@ -37,7 +36,7 @@ entity filters_bank is
 		CLK : in std_logic;
 		ARESTN : in std_logic;
 		DIN : in signed(AXIS_DATA_WIDTH-1 downto 0);
-		DOUT : out signed(AXIS_DATA_WIDTH-1 downto 0);
+		DOUT : out 	dout_array_t(CHANNELS-1 downto 0);  
 		
 	            -- Ports of Axi Slave Bus Interface s_axis   
         s_axis_tready      : out std_logic;
@@ -45,10 +44,7 @@ entity filters_bank is
         
         -- Ports of Axi Master Bus Interface s_axis   
         m_axis_tvalid      : out std_logic;
-        m_axis_tready      : in std_logic;
-		
-		f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
-		underflow : in std_logic
+        m_axis_tready      : in std_logic
 		
 	);
 	
@@ -65,7 +61,7 @@ architecture filters_bank_arch of filters_bank is
 	component fir_filter  
 		  generic(
 		  	AXIS_DATA_WIDTH : integer;
-			--FILTER_INDEX : integer;
+			FILTER_INDEX : integer;
 			OVERSAMPLING_RATE : integer;
 			number_of_filters : integer;
             num_of_coef : integer;
@@ -81,12 +77,9 @@ architecture filters_bank_arch of filters_bank is
             s_axis_data_tvalid      : in std_logic;
             
             -- Ports of Axi Master Bus Interface s_axis   
-            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0);
-            m_axis_data_tvalid      : out std_logic;
-            --m_axis_data_tready      : in std_logic	 
-			
-			f_index : in std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);	  -- sprawdziæ czy nie da siê sam 'integer'
-			underflow : in std_logic
+            m_axis_data_tdata      : out signed(AXIS_DATA_WIDTH -1 downto 0)
+            --m_axis_data_tvalid      : out std_logic;
+            --m_axis_data_tready      : in std_logic
             );
 	end component fir_filter;				   
 	
@@ -96,16 +89,15 @@ signal ACKLEN : std_logic := '1';
 --signal S_AXIS_TREADY : std_logic; 
 ----signal M_AXIS_TVALID : std_logic;
 --signal M_AXIS_TREADY : std_logic := '1';
+
   
 begin
-	
--- TODO: ustaliæ sposób przekazywania wspó³czynników !!!!!
-
+   GEN_FILTER_BANK: for I in 0 to CHANNELS-1 generate
       FIR : fir_filter
 	  generic map
 	  (	
-		AXIS_DATA_WIDTH => AXIS_DATA_WIDTH,
-		--FILTER_INDEX => I,
+		AXIS_DATA_WIDTH => 32,
+		FILTER_INDEX => I,
 		OVERSAMPLING_RATE => OVERSAMPLING_RATE,
 		number_of_filters => CHANNELS,
 		num_of_coef => 2848,
@@ -120,40 +112,12 @@ begin
 		--s_axis_data_tready => s_axis_tready,
 		s_axis_data_tdata => DIN,
 		--m_axis_data_tready => m_axis_tready,	
-	    m_axis_data_tvalid => m_axis_tvalid,
-		m_axis_data_tdata => DOUT,
-		
-		f_index => f_index,
-		underflow => underflow
-	   );  
+		--m_axis_data_tvalid => m_axis_tvalid,
+		m_axis_data_tdata => DOUT(I)
+	   );
+   end generate GEN_FILTER_BANK;  
 
-
---   GEN_FILTER_BANK: for I in 0 to CHANNELS-1 generate
---      FIR : fir_filter
---	  generic map
---	  (	
---		AXIS_DATA_WIDTH => 32,
---		FILTER_INDEX => I,
---		OVERSAMPLING_RATE => OVERSAMPLING_RATE,
---		number_of_filters => CHANNELS,
---		num_of_coef => 544,
---		coef_size => 12
---		)
---	  port map
---	  ( 
---		aclk => CLK, 
---		aresetn => ARESTN,
---		aclken => ACKLEN,
---		s_axis_data_tvalid => s_axis_tvalid,
---		--s_axis_data_tready => s_axis_tready,
---		s_axis_data_tdata => DIN,
---		--m_axis_data_tready => m_axis_tready,	
---		--m_axis_data_tvalid => m_axis_tvalid,
---		m_axis_data_tdata => DOUT(I)
---	   );
---   end generate GEN_FILTER_BANK;  
-
-s_axis_tready <= '1';
---m_axis_tvalid <= s_axis_tvalid and m_axis_tready;
+s_axis_tready <= m_axis_tready;
+m_axis_tvalid <= s_axis_tvalid and m_axis_tready;
    
 end filters_bank_arch;
