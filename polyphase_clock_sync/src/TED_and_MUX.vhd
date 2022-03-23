@@ -82,8 +82,11 @@ architecture TED_and_MUX_arch of TED_and_MUX is
 --	constant K2 : integer := integer(real(scale)*(9.77243613962953e-05)); --0.014436477216089;  	   
 
 	-- parameters used in second version (for 8 sps)	
-	constant K1 : integer := integer(real(scale)*(0.570997325370878));
-	constant K2 : integer := integer(real(scale)*(1.48697220148666e-05));
+--	constant K1 : integer := integer(real(scale)*(0.570997325370878));
+--	constant K2 : integer := integer(real(scale)*(1.48697220148666e-05));		
+	
+	constant K1 : real := 0.570997325370878;
+	constant K2 : real := 1.48697220148666e-05;
 
 	signal f_index_sig : integer := 0;
 	
@@ -175,30 +178,30 @@ TED_tvalid <= '1' when (s_tvalid = '1' or state = NEXT_SAMPLE) else '0';
 --vi_load <= '1' when state = WAIT_3_CYCLES and counter >= 3 else '0'; 
 
 TED: process(arestn, clk)					  
-    variable aux1 : integer := 0;
-	variable aux2 : integer := 0;
-	variable aux3 : integer := 0;
-	variable aux4 : integer := 0;
-	variable aux5 : integer := 0;		  	  
+    variable aux1 : real := 0.0;
+	variable aux2 : real := 0.0;
+	variable aux3 : real := 0.0;
+	variable aux4 : real := 0.0;
+	variable aux5 : real := 0.0;		  	  
 	
-	variable error : integer := 0;		  
-	variable vp : integer := 0;		  
-	variable vi : integer := 0;		  
-	variable W : integer := 0;	
-	variable CNT  : integer := scale; 	--modulo scale counter 	 
-	variable CNT_next : integer := scale;
+	variable error : real := 0.0;		  
+	variable vp : real := 0.0;		  
+	variable vi : real := 0.0;		  
+	variable W : real := 0.0;	
+	variable CNT  : real := real(scale); 	--modulo scale counter 	 
+	variable CNT_next : real := real(scale);
 --	variable vi_saved : integer := 0;
 begin
 	if (arestn = '0') then	
 		f_index_sig <= 0;
 		underflow <= '0';
-		vp := 0;
-		vi := 0;
-		vp := 0;
-		W := 0;
-		error := 0;
-		CNT := scale;					 
-		CNT_next := scale;
+		vp := 0.0;
+		vi := 0.0;
+		vp := 0.0;
+		W := 0.0;
+		error := 0.0;
+		CNT := real(scale);					 
+		CNT_next := real(scale);
 --		vi_saved := 0;
 	elsif (rising_edge(clk)) then
 		if (TED_tvalid = '1') then	
@@ -207,9 +210,9 @@ begin
 			
 			-- error
 			if TED_filter_din(TED_filter_din'left) = '1' then 	-- determine sign of matched filter output																 
-				error := ((-1)*to_integer(TED_deriv_filter_din));
+				error := real((-1)*to_integer(TED_deriv_filter_din));
 			else
-				error := (to_integer(TED_deriv_filter_din));
+				error := real(to_integer(TED_deriv_filter_din));
 			end if;
 			
 			-- loop filter;				
@@ -226,17 +229,17 @@ begin
 			aux4 := K2*error;
 			vi := vi + aux4;
 			aux5 := vi + vp;
-			W := scale/SAMPLES_PER_SYMBOL + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
+			W := real(scale/SAMPLES_PER_SYMBOL) + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
 			CNT_next := CNT - W; 
 			
-			if (CNT_next < 0) then
-				aux1 := CNT*OVERSAMPLING_RATE;
+			if (CNT_next < 0.0) then
+				aux1 := CNT*real(OVERSAMPLING_RATE);
 				aux2 := aux1/W;
 				aux3 := abs(aux2);
-				f_index_sig <= aux3 mod (OVERSAMPLING_RATE);
-				CNT_next := scale + CNT_next;
+				f_index_sig <= integer(floor(aux3) mod real(OVERSAMPLING_RATE));
+				CNT_next := real(scale) + CNT_next;
 				
 				underflow <= '1';
 			else

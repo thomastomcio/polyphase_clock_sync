@@ -15,7 +15,7 @@ entity polyphase_clock_sync_tb is
 		DATA_WIDTH : INTEGER := 32;
 		FACTOR_WIDTH : INTEGER := 12;
 		AXIS_DATA_WIDTH : INTEGER := 32;
-		SAMPLES_PER_SYMBOL : INTEGER := 2;
+		SAMPLES_PER_SYMBOL : INTEGER := 8;
 		OVERSAMPLING_RATE : INTEGER := 32 );
 end polyphase_clock_sync_tb;
 
@@ -27,7 +27,7 @@ architecture TB_ARCHITECTURE of polyphase_clock_sync_tb is
 		DATA_WIDTH : INTEGER := 32;
 		FACTOR_WIDTH : INTEGER := 12;
 		AXIS_DATA_WIDTH : INTEGER := 32;
-		SAMPLES_PER_SYMBOL : INTEGER := 2;
+		SAMPLES_PER_SYMBOL : INTEGER := 8;
 		OVERSAMPLING_RATE : INTEGER := 32 );
 	port(
 		ARESTN : in STD_LOGIC;
