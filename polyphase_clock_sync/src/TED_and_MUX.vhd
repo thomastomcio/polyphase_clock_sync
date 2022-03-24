@@ -37,9 +37,6 @@ entity TED_and_MUX is
 		clk : in std_logic;
 		arestn : in std_logic;
 		
---		f_index : out std_logic_vector(integer(ceil(log2(real(CHANNELS))))-1 downto 0);
---		underflow : out std_logic;
---		
 		s_tvalid : in std_logic;
 		filter_din : in dout_array_t(CHANNELS-1 downto 0);
 		dfilter_din : in dout_array_t(CHANNELS-1 downto 0);	
@@ -59,8 +56,7 @@ architecture TED_and_MUX_arch of TED_and_MUX is
 		
 -- ##### MUX - start #####
 	type state_type is (NEXT_SAMPLE, SEND_ZEROS, WAIT_FOR_UNDERFLOW);
-	signal state : state_type := NEXT_SAMPLE;	  
-	--signal counter : integer := 0;	   
+	signal state : state_type := NEXT_SAMPLE;	  	   
 	
 	signal prev_filter_din : dout_array_t(CHANNELS-1 downto 0)	:= (others => (others => '0'));
 	signal prev_dfilter_din : dout_array_t(CHANNELS-1 downto 0) := (others => (others => '0'));
@@ -73,7 +69,7 @@ architecture TED_and_MUX_arch of TED_and_MUX is
 
 	signal TED_deriv_filter_din	: signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0');
 	signal TED_filter_din : signed(AXIS_DATA_WIDTH-1 downto 0) := (others => '0'); 
-	signal TED_tvalid : std_logic := '0';
+--	signal TED_tvalid : std_logic := '0';
 
 	constant scale : integer := 2 ** 20;		
 
@@ -123,8 +119,7 @@ begin
 		if (s_tvalid = '1') then
 			for i in sr'high downto sr'low + 1 loop
 				sr(i) <= sr(i - 1);
-			end loop;
-			
+			end loop;	
 			sr(sr'low) <= filter_din(f_index_sig);	
 		end if;
 			
@@ -137,26 +132,18 @@ begin
 	if(arestn = '0') then		
 		state <= NEXT_SAMPLE;
 	elsif(rising_edge(clk)) then  		
---		if ( s_tvalid = '1' ) then
---			prev_filter_din <= filter_din;
---			prev_dfilter_din <= dfilter_din;
---		else
---			prev_filter_din <= prev_filter_din;
---			prev_dfilter_din <= prev_dfilter_din;
---		end if;
-		
 		case state is
 			when NEXT_SAMPLE =>
 				if (s_tvalid = '1') then	
-					TED_filter_din <= filter_din(f_index_sig);
-					TED_deriv_filter_din <= dfilter_din(f_index_sig);					
+--					TED_filter_din <= filter_din(f_index_sig);
+--					TED_deriv_filter_din <= dfilter_din(f_index_sig);
 					state <= SEND_ZEROS;	
 				else	 
 					state <= NEXT_SAMPLE;
 				end if;
 				  
 			when SEND_ZEROS =>			 
-				if (s_tvalid = '1') then
+				if (s_tvalid = '1') then  
 					state <= WAIT_FOR_UNDERFLOW;
 				else 
 					state <= SEND_ZEROS;
@@ -172,12 +159,10 @@ begin
 	end if;	
 end process MUX;
 
---TED_filter_din <= prev_filter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
---TED_deriv_filter_din <= prev_dfilter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
-TED_tvalid <= '1' when s_tvalid = '1' else '0';
+TED_filter_din <= filter_din(f_index_sig) when (state = NEXT_SAMPLE and s_tvalid = '1')else (others => '0');
+TED_deriv_filter_din <= dfilter_din(f_index_sig) when (state = NEXT_SAMPLE and s_tvalid = '1') else (others => '0');
+--TED_tvalid <= '1' when s_tvalid = '1' else '0';
 
---vi_saving <= '1' when state = SEND_ZEROS and underflow /= '1' else '0';
---vi_load <= '1' when state = WAIT_3_CYCLES and counter >= 3 else '0'; 
 
 TED: process(arestn, clk)					  
     variable aux1 : real := 0.0;
@@ -190,9 +175,8 @@ TED: process(arestn, clk)
 	variable vp : real := 0.0;		  
 	variable vi : real := 0.0;		  
 	variable W : real := 0.0;	
-	variable CNT  : real := real(scale); 	--modulo scale counter 	 
+	variable CNT  : real := real(scale); 	-- modulo scale counter 	 
 	variable CNT_next : real := real(scale);
---	variable vi_saved : integer := 0;
 begin
 	if (arestn = '0') then	
 		f_index_sig <= 0;
@@ -204,34 +188,26 @@ begin
 		error := 0.0;
 		CNT := real(scale);					 
 		CNT_next := real(scale);
---		vi_saved := 0;
 	elsif (rising_edge(clk)) then
-		if (TED_tvalid = '1') then	
+		if (s_tvalid = '1') then	
 			
-			CNT := CNT_next;			
+			CNT := CNT_next;
 			
 			-- error
 			if TED_filter_din(TED_filter_din'left) = '1' then 	-- determine sign of matched filter output																 
 				error := real((-1)*to_integer(TED_deriv_filter_din));
 			else
-				error := real(to_integer(TED_deriv_filter_din));
+				error :=real(to_integer(TED_deriv_filter_din));
 			end if;
 			
 			-- loop filter;				
 			vp := K1*error;
+			aux4 := K2*error;	 
 			
-			--if( vi_saving = '1' ) then
---				vi_saved := vi;				
---			end if;
---			
---			if ( vi_load = '1') then
---				vi <= vi_saved;
---			end if;
-			
-			aux4 := K2*error;
 			vi := vi + aux4;
 			aux5 := vi + vp;
-			W := real(scale/SAMPLES_PER_SYMBOL) + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
+			
+			W := real(scale)/real(SAMPLES_PER_SYMBOL) + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
 			CNT_next := CNT - W; 
