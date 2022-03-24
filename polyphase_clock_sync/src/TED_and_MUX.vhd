@@ -78,11 +78,11 @@ architecture TED_and_MUX_arch of TED_and_MUX is
 --	constant K2 : integer := integer(real(scale)*(9.77243613962953e-05)); --0.014436477216089;  	   
 
 	-- parameters used in second version (for 8 sps)	
---	constant K1 : integer := integer(real(scale)*(0.570997325370878));
---	constant K2 : integer := integer(real(scale)*(1.48697220148666e-05));		
+	constant K1 : integer := integer(real(scale)*(0.570997325370878));
+	constant K2 : integer := integer(real(scale)*(1.48697220148666e-05));		
 	
-	constant K1 : real := 0.570997325370878;
-	constant K2 : real := 1.48697220148666e-05;
+--	constant K1 : real := 0.570997325370878;
+--	constant K2 : real := 1.48697220148666e-05;
 
 	signal f_index_sig : integer := 0;
 	
@@ -175,8 +175,8 @@ TED: process(arestn, clk)
 	variable vp : real := 0.0;		  
 	variable vi : real := 0.0;		  
 	variable W : real := 0.0;	
-	variable CNT  : real := real(scale); 	-- modulo scale counter 	 
-	variable CNT_next : real := real(scale);
+	variable CNT  : real := real(scale*scale); 	-- modulo scale counter 	 
+	variable CNT_next : real := real(scale*scale);
 begin
 	if (arestn = '0') then	
 		f_index_sig <= 0;
@@ -186,8 +186,8 @@ begin
 		vp := 0.0;
 		W := 0.0;
 		error := 0.0;
-		CNT := real(scale);					 
-		CNT_next := real(scale);
+		CNT := real(scale*scale);					 
+		CNT_next := real(scale*scale);
 	elsif (rising_edge(clk)) then
 		if (s_tvalid = '1') then	
 			
@@ -201,13 +201,13 @@ begin
 			end if;
 			
 			-- loop filter;				
-			vp := K1*error;
-			aux4 := K2*error;	 
+			vp := real(K1)*error;
+			aux4 := real(K2)*error;	 
 			
 			vi := vi + aux4;
 			aux5 := vi + vp;
 			
-			W := real(scale)/real(SAMPLES_PER_SYMBOL) + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
+			W := real(scale*scale)/real(SAMPLES_PER_SYMBOL) + aux5; -- update every SAMPLES_PER_SYMBOL in closed loop
 		
 			-- counter														   
 			CNT_next := CNT - W; 
@@ -217,7 +217,7 @@ begin
 				aux2 := aux1/W;
 				aux3 := abs(aux2);
 				f_index_sig <= integer(floor(aux3) mod real(OVERSAMPLING_RATE));
-				CNT_next := real(scale) + CNT_next;
+				CNT_next := real(scale*scale) + CNT_next;
 				
 				underflow <= '1';
 			else
