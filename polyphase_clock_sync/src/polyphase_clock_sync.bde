@@ -2,7 +2,7 @@ SCHM0106
 
 HEADER
 {
- FREEID 9301
+ FREEID 9318
  VARIABLES
  {
   #ARCHITECTURE="polyphase_clock_sync"
@@ -845,8 +845,8 @@ PAGE ""
 "use IEEE.numeric_std.all;\n"+
 "use IEEE.math_real.all;\n"+
 "\n"+
-"--library polyphase_clock_sync;\n"+
-"--use polyphase_clock_sync.array_type_pkg.all;"
+"library polyphase_clock_sync;\n"+
+"use polyphase_clock_sync.array_type_pkg.all;"
    RECT (880,320,1500,680)
    OUTLINE 5,1, (0,0,0)
    FILL (0,(239,235,255),0)
@@ -1725,7 +1725,7 @@ PAGE ""
  
  BODY
  {
-  TEXT  9284, 0, 0
+  TEXT  9301, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1736,7 +1736,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  9285, 0, 0
+  TEXT  9302, 0, 0
   {
    PAGEALIGN 10
    TEXT "$CREATIONDATE"
@@ -1747,7 +1747,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  9286, 0, 0
+  TEXT  9303, 0, 0
   {
    PAGEALIGN 10
    TEXT "Title:"
@@ -1757,7 +1757,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  9287, 0, 0
+  TEXT  9304, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1769,7 +1769,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  9288, 0, 0
+  TEXT  9305, 0, 0
   {
    PAGEALIGN 10
    TEXT 
@@ -1782,7 +1782,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    MULTILINE
   }
-  TEXT  9289, 0, 0
+  TEXT  9306, 0, 0
   {
    PAGEALIGN 10
    TEXT "Page:"
@@ -1792,7 +1792,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  9290, 0, 0
+  TEXT  9307, 0, 0
   {
    PAGEALIGN 10
    OUTLINE 5,1, (0,0,0)
@@ -1804,7 +1804,7 @@ PAGE ""
    FONT (12,0,0,700,0,238,0,"Arial")
    UPDATE 0
   }
-  TEXT  9291, 0, 0
+  TEXT  9308, 0, 0
   {
    PAGEALIGN 10
    TEXT "Revision:"
@@ -1814,7 +1814,7 @@ PAGE ""
    COLOR (0,0,0)
    FONT (12,0,0,700,0,238,0,"Arial")
   }
-  TEXT  9292, 0, 0
+  TEXT  9309, 0, 0
   {
    PAGEALIGN 10
    TEXT "$Revision"
@@ -1825,7 +1825,7 @@ PAGE ""
    FONT (12,0,0,700,0,204,0,"Arial")
    UPDATE 0
   }
-  GROUP  9293, 0, 0
+  GROUP  9310, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1758,3108,2139)
@@ -1837,7 +1837,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  9294, 0, 0
+  GROUP  9311, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1958,3108,1959)
@@ -1849,7 +1849,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  9295, 0, 0
+  GROUP  9312, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,1898,3108,1899)
@@ -1861,7 +1861,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  9296, 0, 0
+  GROUP  9313, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,2018,3108,2019)
@@ -1873,7 +1873,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  9297, 0, 0
+  GROUP  9314, 0, 0
   {
    PAGEALIGN 10
    RECT (2227,2078,3108,2079)
@@ -1885,7 +1885,7 @@ PAGE ""
     FILL (1,(0,0,0),0)
    }
   }
-  GROUP  9298, 0, 0
+  GROUP  9315, 0, 0
   {
    PAGEALIGN 10
    RECT (2407,1758,2408,1899)
@@ -1896,7 +1896,7 @@ PAGE ""
     POINTS ( (0,0), (0,140) )
    }
   }
-  GROUP  9299, 0, 0
+  GROUP  9316, 0, 0
   {
    PAGEALIGN 10
    RECT (2407,1898,2408,2139)
@@ -1907,7 +1907,7 @@ PAGE ""
     POINTS ( (0,0), (0,240) )
    }
   }
-  BMPPICT  9300, 0, 0
+  BMPPICT  9317, 0, 0
   {
    PAGEALIGN 10
    RECT (2247,1818,2386,1863)

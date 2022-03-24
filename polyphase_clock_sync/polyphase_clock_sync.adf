@@ -42,6 +42,7 @@ FAMILY=Xilinx2020x ARTIX7
 FUNC_LIB=polyphase_clock_sync_post_synthesis
 PHYSSYNTH_STATUS=none
 IMPL_STATUS=none
+CDebugWatchList=
 
 [LocalVerilogSets]
 EnableSLP=1
@@ -232,8 +233,6 @@ TestBench\sim_data=1
 not_used=0
 post-synthesis=0
 
-[file_out:/polyphase_clock_sync.bde]
-/..\compile\polyphase_clock_sync.vhd=-1
 
 [Files]
 /array_type_pkg.vhd=-1
@@ -316,3 +315,5 @@ post-synthesis/..\..\synthesis\polyphase_clock_sync.vhd=-1
 .\synthesis\polyphase_clock_sync.vhd=VHDL Source Code
 
 .\compile\polyphase_clock_sync.vhd=VHDL Source Code
+[file_out:/polyphase_clock_sync.bde]
+/..\compile\polyphase_clock_sync.vhd=-1

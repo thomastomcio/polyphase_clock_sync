@@ -137,21 +137,23 @@ begin
 	if(arestn = '0') then		
 		state <= NEXT_SAMPLE;
 	elsif(rising_edge(clk)) then  		
-		if ( s_tvalid = '1' ) then
-			prev_filter_din <= filter_din;
-			prev_dfilter_din <= dfilter_din;
-		else
-			prev_filter_din <= prev_filter_din;
-			prev_dfilter_din <= prev_dfilter_din;
-		end if;
+--		if ( s_tvalid = '1' ) then
+--			prev_filter_din <= filter_din;
+--			prev_dfilter_din <= dfilter_din;
+--		else
+--			prev_filter_din <= prev_filter_din;
+--			prev_dfilter_din <= prev_dfilter_din;
+--		end if;
 		
 		case state is
 			when NEXT_SAMPLE =>
---				if (s_tvalid = '1') then									
+				if (s_tvalid = '1') then	
+					TED_filter_din <= filter_din(f_index_sig);
+					TED_deriv_filter_din <= dfilter_din(f_index_sig);					
 					state <= SEND_ZEROS;	
---				else	 
---					state <= NEXT_SAMPLE;
---				end if;
+				else	 
+					state <= NEXT_SAMPLE;
+				end if;
 				  
 			when SEND_ZEROS =>			 
 				if (s_tvalid = '1') then
@@ -170,9 +172,9 @@ begin
 	end if;	
 end process MUX;
 
-TED_filter_din <= prev_filter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
-TED_deriv_filter_din <= prev_dfilter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
-TED_tvalid <= '1' when (s_tvalid = '1' or state = NEXT_SAMPLE) else '0';
+--TED_filter_din <= prev_filter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
+--TED_deriv_filter_din <= prev_dfilter_din(f_index_sig) when state = NEXT_SAMPLE else (others => '0');
+TED_tvalid <= '1' when s_tvalid = '1' else '0';
 
 --vi_saving <= '1' when state = SEND_ZEROS and underflow /= '1' else '0';
 --vi_load <= '1' when state = WAIT_3_CYCLES and counter >= 3 else '0'; 
